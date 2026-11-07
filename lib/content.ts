@@ -174,7 +174,6 @@ export const contactSection = {
 } as const;
 
 export const footer = {
-  eyebrow: "hablemos",
   cta: "Construyamos lo que viene",
   ctaButton: "Hablemos",
 } as const;

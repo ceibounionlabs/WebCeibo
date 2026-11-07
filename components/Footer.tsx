@@ -3,7 +3,6 @@ import { contact, isPending, mailHref, site, whatsappHref } from "@/lib/site";
 import { leafShapes } from "@/lib/brand";
 import { Logo } from "@/components/ui/Logo";
 import { Confirmable } from "@/components/ui/Confirmable";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { button } from "@/components/ui/button";
 import { ArrowUp, BtnArrow } from "@/components/ui/icons";
 
@@ -29,10 +28,7 @@ export function Footer() {
     <footer id="pie" data-header="dark" className="relative overflow-hidden bg-ink text-white">
       <div className="wrap grid gap-14 pt-section pb-14 lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-5">
-          <Eyebrow className="text-white/70" reveal={false}>
-            {footer.eyebrow}
-          </Eyebrow>
-          <h2 className="mt-6 max-w-[14ch] text-[clamp(2rem,1.4rem+2.6vw,3.5rem)] leading-[1.02] font-medium tracking-[-0.03em] text-balance">{footer.cta}</h2>
+          <h2 className="max-w-[14ch] text-[clamp(2rem,1.4rem+2.6vw,3.5rem)] leading-[1.02] font-medium tracking-[-0.03em] text-balance">{footer.cta}</h2>
           <a href="#hablemos" className={`${button.primary} mt-8`} data-magnetic>
             {footer.ctaButton}
             <BtnArrow />

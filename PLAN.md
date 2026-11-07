@@ -22,6 +22,8 @@ Quedan fuera hasta tener contenido: **B9** (faltan las respuestas) y **B10** (fa
 
 ## Orden
 
+Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tiene su commit.
+
 1. **Fundamentos** — tokens de C (eyebrows, numeración, radios, botones ↗, aire), eases `lente` y `cortina`, motor de animación por módulos, títulos que se enfocan (5.2).
 2. **Navegación (A)** — header en píldoras de vidrio con tema por sección (A1), lupita (A2), progreso (A3), anclas (A5), menú diafragma (A4), CTA flotante (A6), loader + entrada del hero (A7).
 3. **Hero** — lente 3D con carga diferida, lupa DOM de respaldo y chips de índice (5.3).
@@ -42,3 +44,10 @@ Quedan fuera hasta tener contenido: **B9** (faltan las respuestas) y **B10** (fa
 - **B2 en mobile** solo en los pasos del proceso: las tarjetas de servicios son un acordeón (B3).
 - **B5:** el escalonado de 0.6 s se reparte entre las 9 celdas, en orden aleatorio.
 - **Borradores** (enunciados de B1, detalles de B3b, ítems de B5): se usan tal cual y quedan marcados como [CONFIRMAR] en `lib/content.ts`.
+
+## Pendiente
+
+- Datos [CONFIRMAR] y borradores a revisar: ver la sección "Pendientes de ustedes" del README.
+- QA en dispositivos reales: iPhone (Safari) y Android (Chrome), también con 4G lento. En este
+  entorno solo se pudo probar con Chromium (escritorio y emulación de celular).
+- Elegir el color de las hojas del footer (`LEAF_TONE` en components/Footer.tsx).
