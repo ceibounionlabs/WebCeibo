@@ -47,7 +47,7 @@ Mientras un dato de `lib/site.ts` siga pendiente, la web muestra `[CONFIRMAR …
 
 ```
 app/
-  layout.tsx              fuentes, metadata/SEO, boot script (.js, loader, stand, vidrio)
+  layout.tsx              fuentes, metadata/SEO, boot script (.js, stand, vidrio)
   page.tsx                orden de las secciones
   globals.css             tokens de marca y estilos de cada bloque
   icon.svg                favicon (generado)
