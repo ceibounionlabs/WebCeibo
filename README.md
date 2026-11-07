@@ -56,7 +56,7 @@ components/
   FloatingCta.tsx         CTA de WhatsApp en mobile (A6)
   Footer.tsx              footer con las hojas del ceibo (B8)
   StandMode.tsx, StandQr.tsx   modo stand con QR (5.8)
-  SeedFall.tsx            la hoja que cae del ceibo hasta Contacto
+  SeedFall.tsx, LeafSlot.tsx   las hojas que caen del ceibo hasta Contacto
   hero/                   lente 3D (LensScene) y lupa DOM (5.3)
   services/               lista de servicios y zoom al detalle (B3b)
   sections/               Hero, Manifesto, Services, Solves, HowWeWork, Future, Contact
@@ -74,7 +74,7 @@ scripts/sync-brand.mjs
 
 ## Rendimiento y accesibilidad
 
-- Sin animaciones de aparición: el contenido está siempre a la vista. Solo hay interacciones (la lente, el menú, el zoom de servicios, los hovers), el scroll suave y una única animación narrativa: la hoja que se cae del ceibo hasta Contacto ("¿Se te cayó una idea?", `components/SeedFall.tsx`).
+- Sin animaciones de aparición: el contenido está siempre a la vista. Solo hay interacciones (la lente, el menú, el zoom de servicios, los hovers), el scroll suave y una única animación narrativa: cuatro hojas que se caen del ceibo hasta Contacto ("¿Se te cayó una idea?", `components/SeedFall.tsx`; dónde aterriza cada una se define con `LeafSlot` en `components/sections/Contact.tsx`).
 - El título del hero se pinta al instante en HTML (es el LCP). Lenis se carga después de hidratar; GSAP solo cuando se abre un servicio; three.js (la lente 3D, ~310 KB comprimido) se carga aparte: en desktop cuando el navegador está libre y en mobile con la primera interacción. Antes de eso hay una lupa DOM.
 - `prefers-reduced-motion`: sin Lenis ni lente; el detalle de servicio abre con un fundido corto.
 - Sin JS, todo el contenido se lee.

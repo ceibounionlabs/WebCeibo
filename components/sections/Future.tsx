@@ -2,12 +2,14 @@ import { future } from "@/lib/content";
 import { isotipoParts } from "@/lib/brand";
 
 const TREE = ["tronco", "rama", "hoja-1", "hoja-2", "hoja-3", "hoja-4", "hoja-5", "hoja-6", "hoja-7", "hoja-8"] as const;
+/** Las hojas que se caen (y aterrizan en Contacto). */
+const FALLING: string[] = ["hoja-1", "hoja-3", "hoja-5", "hoja-6"];
 
 /**
  * Hacia dónde vamos: franja roja con el mensaje y el ceibo en blanco.
- * La hoja de la punta (hoja-1) es la "idea" que se cae hasta Contacto
+ * Cuatro hojas (la punta, hoja-1, es la "idea") se caen hasta Contacto
  * (components/SeedFall.tsx). Acá queda su lugar marcado, invisible: es el
- * punto de partida de la caída.
+ * punto de partida de cada caída.
  */
 export function Future() {
   const tree = isotipoParts(TREE);
@@ -28,7 +30,7 @@ export function Future() {
                 d={p.d}
                 fill="currentColor"
                 fillRule="evenodd"
-                {...(p.id === "hoja-1" ? { "data-seed-origin": "", opacity: 0 } : {})}
+                {...(FALLING.includes(p.id) ? { "data-seed-origin": p.id, opacity: 0 } : {})}
               />
             ))}
           </svg>

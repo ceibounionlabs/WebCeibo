@@ -81,3 +81,4 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 
 - La franja roja suma el ceibo en blanco. La hoja de la punta se suelta al llegar al centro de la pantalla y cae hasta Contacto a la velocidad del scroll (queda fija en el centro: el foco está en la hoja), meciéndose y creciendo; al cruzar al blanco pasa a rojo y aterriza sobre el título nuevo, "¿Se te cayó una idea? Contactanos.".
 - Es la única animación ligada al scroll. Sin JS o con reduced motion, la hoja ya está en Contacto. GSAP se carga recién cuando la sección roja se acerca.
+- Ahora caen cuatro hojas (hoja-1, la "idea", más hoja-3, hoja-5 y hoja-6), cada una a su altura de pantalla y con su propio vaivén, así caen desparramadas y en momentos distintos. Todas aterrizan, como tarde, cuando Contacto queda entero a la vista, repartidas por la sección. El color cambia según dónde está cada hoja respecto del borde rojo/blanco.
