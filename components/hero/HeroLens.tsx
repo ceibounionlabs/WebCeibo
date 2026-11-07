@@ -270,7 +270,7 @@ export function HeroLens({ lead, accent }: { lead: string; accent: string }) {
       {/* Lupa DOM, entre el título y el resto del contenido */}
       <div ref={domLensRef} className="dom-lens pointer-events-none absolute inset-0 z-[2] bg-corteza" style={{ clipPath: "circle(0px at 0 0)" }}>
         <div ref={cloneRef} className="absolute text-display font-medium text-balance text-white">
-          <span className="block">{lead}</span> <span className="block text-ceibo">{accent}</span>
+          <span className="block">{lead}</span> <span className="hero-accent block">{accent}</span>
         </div>
       </div>
       <div

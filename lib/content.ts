@@ -13,8 +13,6 @@ export const hero = {
   titleLead: "Construimos las herramientas que el rubro óptico necesita,",
   titleAccent: "con la tecnología que viene.",
   lead: "Software a medida para ópticas y laboratorios, hecho por un equipo joven que trabaja con las herramientas que están cambiando cómo se construye software.",
-  ctaPrimary: "Hablemos",
-  ctaSecondary: "Conocé el lab",
 } as const;
 
 export const manifesto = {

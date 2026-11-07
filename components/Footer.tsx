@@ -36,7 +36,7 @@ export function Footer() {
             Navegación
           </h2>
           <ul className="mt-5 space-y-3">
-            {[...nav, { href: "#hablemos", label: "Hablemos" }].map((item) => (
+            {[...nav, { href: "#hablemos", label: "Contacto" }].map((item) => (
               <li key={item.href}>
                 <a href={item.href} className={link}>
                   {item.label}

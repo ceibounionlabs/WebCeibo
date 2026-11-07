@@ -6,11 +6,11 @@ import { getLenis, scrollToHash } from "@/lib/scroll";
 import { contact, isPending, mailHref, whatsappHref } from "@/lib/site";
 import { focusables, setPageInert, setUiFlag, trapFocus } from "@/lib/ui-flags";
 import { button } from "@/components/ui/button";
-import { BtnArrow, MailIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { BtnArrow, InstagramIcon, MailIcon, WhatsAppIcon } from "@/components/ui/icons";
 
 type Theme = "light" | "dark" | "red";
 
-const menuItems = [...nav, { href: "#hablemos", label: "Hablemos" }];
+const menuItems = [...nav, { href: "#hablemos", label: "Contacto" }];
 const MENU_CLOSE_MS = 450;
 
 /**
@@ -132,6 +132,8 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
   const shownTheme: Theme = open ? "red" : theme;
   const wa = whatsappHref();
   const mail = mailHref();
+  // Instagram: CONFIRMAR la URL en lib/site.ts (contact.instagram).
+  const ig = typeof contact.instagram === "string" ? contact.instagram : null;
 
   return (
     <>
@@ -182,13 +184,24 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
             </ul>
           </nav>
 
-          {/* 3. CTA (+ botón de menú en mobile) */}
+          {/* 3. Instagram + Contacto (+ botón de menú en mobile) */}
           <div className="pointer-events-auto flex items-center gap-2">
+            <a
+              href={ig ?? "#"}
+              {...(ig
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : { "data-confirmar": "", title: "[CONFIRMAR Instagram]", onClick: (e: React.MouseEvent) => e.preventDefault() })}
+              aria-label="Instagram de Ceibo Union Labs"
+              className={`glass-pill size-12 justify-center ${open ? "invisible" : ""}`}
+            >
+              <GlassLayers />
+              <InstagramIcon className="relative size-5" />
+            </a>
             <a
               href="#hablemos"
               className={`header-cta group/btn hidden h-12 items-center gap-2 rounded-full px-5 text-[0.9375rem] font-medium transition-colors duration-300 sm:inline-flex ${open ? "sm:hidden" : ""}`}
             >
-              Hablemos
+              Contacto
               <BtnArrow />
             </a>
             <button

@@ -267,6 +267,17 @@ html:is([data-menu-open], [data-detail-open], [data-stand]) .cta-flotante {
 /* ==========================================================================
    Hero: la lente (5.3)
    ========================================================================== */
+/* Glow suave: un resplandor rojo tenue abajo a la derecha, sobre la corteza. */
+.hero-bg {
+  background:
+    radial-gradient(48% 58% at 88% 92%, rgb(206 49 61 / 0.16) 0%, rgb(206 49 61 / 0.05) 45%, transparent 72%),
+    var(--color-corteza);
+}
+/* El acento brilla apenas. */
+.hero-accent {
+  color: var(--color-ceibo);
+  text-shadow: 0 0 28px rgb(206 49 61 / 0.22);
+}
 .hero-canvas,
 .dom-lens {
   opacity: 0;

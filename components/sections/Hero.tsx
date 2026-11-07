@@ -2,7 +2,7 @@ import { hero } from "@/lib/content";
 import { HeroLens } from "@/components/hero/HeroLens";
 
 /**
- * Hero "La lente" (5.3), sobre el marrón corteza, plano.
+ * Hero "La lente" (5.3), sobre el marrón corteza con un glow rojo suave.
  * El título es el LCP: se pinta al instante en HTML y queda siempre visible.
  * Encima flota la lente: primero una lupa DOM y, si el dispositivo puede, la
  * lente 3D, que refracta una copia del lema calcada del título.
@@ -11,7 +11,7 @@ import { HeroLens } from "@/components/hero/HeroLens";
  */
 export function Hero() {
   return (
-    <section id="top" data-header="dark" aria-labelledby="hero-title" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-corteza text-white">
+    <section id="top" data-header="dark" aria-labelledby="hero-title" className="relative isolate flex min-h-svh flex-col overflow-hidden hero-bg text-white">
       <HeroLens lead={hero.titleLead} accent={hero.titleAccent} />
 
       <div className="wrap relative flex flex-1 flex-col justify-end pt-[calc(var(--spacing-header)+3.5rem)] pb-20 sm:pb-24 lg:justify-center lg:pb-28">
@@ -22,7 +22,7 @@ export function Hero() {
           <span className="block" data-accent="false">
             {hero.titleLead}
           </span>{" "}
-          <span className="block text-ceibo" data-accent="true">
+          <span className="hero-accent block" data-accent="true">
             {hero.titleAccent}
           </span>
         </h1>
