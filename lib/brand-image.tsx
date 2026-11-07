@@ -20,11 +20,14 @@ export function Isotipo({ height, color = "#FFFFFF" }: { height: number; color?:
   );
 }
 
-/** Ícono: isotipo blanco sobre un cuadrado rojo ceibo. */
-export function IconArt({ size, radius }: { size: number; radius: number }) {
+/**
+ * Ícono: isotipo rojo ceibo. Sin fondo (transparente) para la pestaña; con
+ * fondo blanco para el ícono de iPhone, que no admite transparencia.
+ */
+export function IconArt({ size, background, fill = 0.94 }: { size: number; background?: string; fill?: number }) {
   return (
-    <div style={{ width: size, height: size, display: "flex", alignItems: "center", justifyContent: "center", background: CEIBO, borderRadius: radius }}>
-      <Isotipo height={size * 0.74} />
+    <div style={{ width: size, height: size, display: "flex", alignItems: "center", justifyContent: "center", background: background ?? "transparent" }}>
+      <Isotipo height={size * fill} color={CEIBO} />
     </div>
   );
 }
