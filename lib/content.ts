@@ -107,6 +107,23 @@ export type Service = (typeof services.cards)[number];
 
 export const serviceWhatsappMessage = (title: string) => `¡Hola Ceibo! Quiero saber más sobre ${title}.`;
 
+export const solves = {
+  eyebrow: "qué hacemos",
+  title: "Lo que resolvemos",
+  // CONFIRMAR lista (borrador de CAMBIOS-v2, B5).
+  items: [
+    "Historias clínicas",
+    "Recetas y graduaciones",
+    "Seguimiento de trabajos",
+    "Pedidos a laboratorio",
+    "Listas de precios",
+    "Stock",
+    "Ventas y compras",
+    "Reportes",
+    "Automatización de planillas",
+  ],
+} as const;
+
 export const howWeWork = {
   eyebrow: "cómo trabajamos",
   title: "De la semilla a la flor, en cuatro etapas",

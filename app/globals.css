@@ -714,3 +714,47 @@ html:not(.js) .lens-chips {
     opacity: 0;
   }
 }
+
+/* ==========================================================================
+   Lo que resolvemos: grilla con linterna (B5)
+   ========================================================================== */
+.flash-cell {
+  position: relative;
+  background-color: rgb(255 255 255 / 0.03);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+  transition: background-color 0.4s var(--ease-lente);
+}
+.flash-cell:hover {
+  background-color: rgb(194 38 64 / 0.06);
+}
+/* Borde de 1px iluminado: gradiente radial recortado al borde con máscara. */
+.flash-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    160px circle at calc(var(--mx, -999px) - var(--cx, 0px)) calc(var(--my, -999px) - var(--cy, 0px)),
+    rgb(194 38 64 / 0.9),
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.flashlight-grid.is-lit .flash-cell::before {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js:not(.no-motion) [data-cell] {
+    opacity: 0;
+  }
+}
