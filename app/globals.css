@@ -758,3 +758,13 @@ html:not(.js) .lens-chips {
     opacity: 0;
   }
 }
+
+/* ==========================================================================
+   Cómo trabajamos: pasos compactos mientras el bloque está pineado (5.5)
+   ========================================================================== */
+.process.is-pinned .process-step {
+  padding-block: 1.25rem;
+}
+.process.is-pinned .process-step p {
+  font-size: 1rem;
+}
