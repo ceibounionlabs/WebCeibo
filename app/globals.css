@@ -32,27 +32,22 @@
   --text-marquee--line-height: 1;
   --text-marquee--letter-spacing: -0.04em;
 
-  /* Espaciado de secciones y alto del header. */
-  --spacing-section: clamp(6rem, 4.5rem + 6vw, 10rem);
-  --spacing-header: 4.25rem;
+  /* Aire entre secciones (CAMBIOS-v2 C: al menos clamp(96px, 14vh, 180px)). */
+  --spacing-section: clamp(6rem, 14vh, 11.25rem);
+  /* Zona que ocupa el header flotante (margen superior + píldora). */
+  --spacing-header: 5rem;
+
+  /* Radios (CAMBIOS-v2 C): 20px tarjetas; píldoras y botones con rounded-full. */
+  --radius-card: 1.25rem;
 
   /* Mirror CSS del lenguaje de movimiento (ver lib/motion.ts). */
   --ease-main: cubic-bezier(0.25, 1, 0.5, 1); /* ≈ power4.out */
   --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1); /* ≈ back.out(1.7) */
+  --ease-lente: cubic-bezier(0.17, 0.84, 0.44, 1); /* UI: arranca rápido, frena largo */
+  --ease-cortina: cubic-bezier(0.05, 0.55, 0.15, 1); /* cortinas y aperturas */
+  --ease-soft: cubic-bezier(0.215, 0.61, 0.355, 1); /* ≈ power3.out */
 
-  --animate-hero-in: hero-in 1.2s var(--ease-main) both;
   --animate-scroll-cue: scroll-cue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-
-  @keyframes hero-in {
-    from {
-      opacity: 0;
-      transform: translateY(32px);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
 
   @keyframes scroll-cue {
     0% {
@@ -76,7 +71,7 @@
 
 @media (min-width: 64rem) {
   :root {
-    --spacing-header: 5rem;
+    --spacing-header: 6rem;
   }
 }
 
@@ -160,7 +155,7 @@
    movimiento. Sin JS, o si las animaciones no arrancan, todo queda visible.
    ========================================================================== */
 @media (prefers-reduced-motion: no-preference) {
-  .js:not(.no-motion) [data-reveal] {
+  .js:not(.no-motion) :is([data-reveal], [data-focus]) {
     opacity: 0;
   }
 }
@@ -180,4 +175,232 @@
    ========================================================================== */
 .tree-bloom :is([data-part="hoja-1"], [data-part="hoja-2"], [data-part="hoja-3"]) {
   fill: var(--color-ceibo);
+}
+
+/* ==========================================================================
+   Navegación (CAMBIOS-v2, bloque A)
+   ========================================================================== */
+:root {
+  /* Demora de las entradas (header, hero): más larga si hay loader. */
+  --intro-delay: 0.1s;
+}
+html.loader {
+  --intro-delay: 1.55s;
+}
+
+/* A1. Tema del header según la sección de abajo. */
+.site-header {
+  --header-fg: var(--color-white);
+  --glass-bg: rgb(255 255 255 / 0.1);
+  --lupa-bg: rgb(255 255 255 / 0.14);
+}
+.site-header[data-theme="light"] {
+  --header-fg: var(--color-ink);
+  --glass-bg: rgb(20 17 19 / 0.06);
+  --lupa-bg: rgb(194 38 64 / 0.1);
+}
+html[data-detail-open] .site-header {
+  translate: 0 -130%;
+}
+html[data-stand] .site-header {
+  display: none;
+}
+
+/* A1. Píldora de vidrio. */
+@layer components {
+  .glass-pill {
+    position: relative;
+    z-index: 0;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    color: var(--header-fg);
+    transition: color 0.3s;
+  }
+}
+.glass-base,
+.glass-distort-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.glass-base {
+  z-index: -1;
+  background-color: var(--glass-bg);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow:
+    inset -1px -1px 1px -0.3px rgb(255 255 255 / 0.3),
+    inset 2px 2px 1px -1.3px rgb(255 255 255 / 0.3);
+  transition: background-color 0.3s;
+}
+.glass-distort-layer {
+  display: none;
+}
+/* Distorsión de lente: solo Chromium de escritorio (clase puesta en el boot script). */
+.glass-distort .glass-distort-layer {
+  display: block;
+  z-index: -2;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  filter: url(#lente-distorsion);
+}
+/* Con distorsión, el blur base baja para que la refracción se note sin perder lectura. */
+.glass-distort .glass-base {
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+}
+
+/* A2. Lupita y CTA del header. */
+.lupita {
+  background-color: var(--lupa-bg);
+}
+.header-cta {
+  background-color: var(--color-ceibo);
+  color: var(--color-white);
+}
+.header-cta:hover {
+  background-color: var(--color-ceibo-deep);
+}
+.site-header[data-theme="red"] .header-cta {
+  background-color: var(--color-white);
+  color: var(--color-ceibo);
+}
+
+/* A3. Progreso de lectura. */
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 60;
+  height: 2px;
+  background-color: var(--color-ceibo);
+  transform-origin: left center;
+  scale: var(--progress, 0) 1;
+  pointer-events: none;
+}
+html[data-stand] .reading-progress {
+  display: none;
+}
+
+/* A4. Menú "diafragma": un círculo rojo que se abre desde el botón. */
+.menu-diafragma {
+  clip-path: circle(0% at var(--mx) var(--my));
+  visibility: hidden;
+  transition:
+    clip-path 0.45s cubic-bezier(0.56, 0, 0.83, 0.16),
+    visibility 0s linear 0.45s;
+}
+.menu-diafragma[data-open] {
+  clip-path: circle(150% at var(--mx) var(--my));
+  visibility: visible;
+  transition:
+    clip-path 0.7s var(--ease-lente),
+    visibility 0s;
+}
+.menu-item {
+  opacity: 0;
+  translate: 0 30px;
+  filter: blur(8px);
+  transition:
+    opacity 0.25s,
+    translate 0.25s,
+    filter 0.25s;
+}
+.menu-diafragma[data-open] .menu-item {
+  opacity: 1;
+  translate: 0 0;
+  filter: blur(0);
+  transition:
+    opacity 0.7s var(--ease-lente),
+    translate 0.7s var(--ease-lente),
+    filter 0.7s var(--ease-lente);
+  transition-delay: calc(0.15s + var(--i, 0) * 0.06s);
+}
+
+/* A6. CTA flotante en mobile. */
+.cta-flotante {
+  translate: 0 calc(100% + 1.5rem + env(safe-area-inset-bottom));
+  transition: translate 0.6s var(--ease-lente);
+}
+.cta-flotante[data-show] {
+  translate: 0 0;
+}
+html:is([data-menu-open], [data-detail-open], [data-stand]) .cta-flotante {
+  translate: 0 calc(100% + 1.5rem + env(safe-area-inset-bottom));
+}
+
+/* A7. Loader de primera visita: corre en CSS puro, antes de que llegue el JS. */
+.site-loader {
+  display: none;
+}
+html.loader .site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background-color: var(--color-ink);
+  color: var(--color-white);
+  animation: loader-curtain 0.95s var(--ease-cortina) 1s forwards;
+}
+.loader-ring circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: loader-ring 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+.loader-logo {
+  filter: blur(12px);
+  animation: loader-focus 1s var(--ease-soft) forwards;
+}
+@keyframes loader-ring {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes loader-focus {
+  to {
+    filter: blur(0);
+  }
+}
+@keyframes loader-curtain {
+  to {
+    translate: 0 -100%;
+    visibility: hidden;
+  }
+}
+
+/* Entradas: el header cae (A1) y los textos del hero suben escalonados (A7). */
+@media (prefers-reduced-motion: no-preference) {
+  /* backwards (no both): si la animación queda activa sobre opacity, el
+     backdrop-filter del vidrio deja de funcionar. */
+  .header-in {
+    animation: header-in 1.5s var(--ease-soft) var(--intro-delay) backwards;
+  }
+  .hero-in {
+    animation: hero-in 1.4s var(--ease-soft) both;
+    animation-delay: calc(var(--intro-delay) + var(--i, 0) * 0.2s);
+  }
+  /* El título no se desvanece (es el LCP): solo sube. */
+  .hero-rise {
+    animation: hero-rise 1.4s var(--ease-soft) both;
+    animation-delay: calc(var(--intro-delay) + var(--i, 0) * 0.2s);
+  }
+}
+@keyframes header-in {
+  from {
+    opacity: 0;
+    translate: 0 -20%;
+  }
+}
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+  }
+}
+@keyframes hero-rise {
+  from {
+    translate: 0 20px;
+  }
 }

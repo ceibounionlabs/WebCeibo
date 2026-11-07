@@ -19,3 +19,6 @@ npm-debug.log*
 # generados desde assets/logo por scripts/sync-brand.mjs
 /public/brand/
 /app/icon.svg
+
+# capturas de pruebas sueltas
+/*.png

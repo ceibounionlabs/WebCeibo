@@ -8,11 +8,11 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 export function Future() {
   const phrase = future.marquee.replace(/\s*·\s*$/, "");
   return (
-    <section id="hacia-donde" aria-labelledby="future-title" className="overflow-hidden bg-ceibo py-section text-white">
+    <section id="hacia-donde" data-header="red" aria-labelledby="future-title" className="overflow-hidden bg-ceibo py-section text-white">
       <div className="wrap grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-8">
         <div className="lg:col-span-8">
-          <Eyebrow dot="white">{future.eyebrow}</Eyebrow>
-          <h2 id="future-title" className="mt-6 text-title font-medium text-balance lg:mt-8" data-reveal>
+          <Eyebrow className="text-white">{future.eyebrow}</Eyebrow>
+          <h2 id="future-title" className="mt-6 text-title font-medium text-balance lg:mt-8" data-focus>
             <span className="block">{future.titleLead}</span> <span className="block">{future.titleAccent}</span>
           </h2>
         </div>

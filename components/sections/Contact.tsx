@@ -3,7 +3,7 @@ import { contact, isPending, mailHref, whatsappHref } from "@/lib/site";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Confirmable } from "@/components/ui/Confirmable";
 import { button } from "@/components/ui/button";
-import { MailIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { BtnArrow, MailIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { ContactForm } from "@/components/ContactForm";
 
 /** Hablemos: el objetivo de toda la web. */
@@ -16,11 +16,11 @@ export function Contact() {
   ].filter((s) => s.value !== null);
 
   return (
-    <section id="hablemos" aria-labelledby="contact-title" className="bg-ink py-section text-white">
+    <section id="hablemos" data-header="dark" aria-labelledby="contact-title" className="bg-ink py-section text-white">
       <div className="wrap grid gap-16 lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-6">
           <Eyebrow className="text-white/70">{copy.eyebrow}</Eyebrow>
-          <h2 id="contact-title" className="mt-6 text-title font-medium text-balance lg:mt-8" data-reveal>
+          <h2 id="contact-title" className="mt-6 text-title font-medium text-balance lg:mt-8" data-focus>
             <span className="block">{copy.titleLead}</span> <span className="block text-ceibo">{copy.titleAccent}</span>
           </h2>
           <p className="mt-8 max-w-[32rem] text-lead text-white/70 text-pretty lg:mt-10" data-reveal>
@@ -35,10 +35,12 @@ export function Contact() {
             >
               <WhatsAppIcon className="size-5" />
               {copy.whatsappLabel}
+              <BtnArrow />
             </a>
             <a href={mail ?? "#contacto-form"} className={button.ghostDark}>
               <MailIcon className="size-5" />
               <Confirmable value={contact.email} />
+              <BtnArrow />
             </a>
           </div>
           {!wa && (

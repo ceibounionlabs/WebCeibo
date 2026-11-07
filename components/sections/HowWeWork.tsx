@@ -1,6 +1,7 @@
 import { howWeWork } from "@/lib/content";
 import { inlineSvg } from "@/lib/brand";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { listNumber } from "@/components/ui/button";
 
 /**
  * Cómo trabajamos: el ceibo crece. Fase 1: árbol completo (las hojas de
@@ -12,12 +13,12 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
  */
 export function HowWeWork() {
   return (
-    <section id="como-trabajamos" aria-labelledby="process-title" className="bg-paper py-section text-ink">
+    <section id="como-trabajamos" data-header="light" data-nav="#como-trabajamos" aria-labelledby="process-title" className="bg-paper py-section text-ink">
       <div className="wrap">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="lg:col-span-7">
             <Eyebrow className="text-muted">{howWeWork.eyebrow}</Eyebrow>
-            <h2 id="process-title" className="mt-6 max-w-[15ch] text-title font-medium text-balance lg:mt-8" data-reveal>
+            <h2 id="process-title" className="mt-6 max-w-[15ch] text-title font-medium text-balance lg:mt-8" data-focus>
               {howWeWork.title}
             </h2>
           </div>
@@ -47,8 +48,8 @@ export function HowWeWork() {
                 data-step
               >
                 <span aria-hidden="true" data-step-line className="absolute -top-px left-0 h-px w-0 bg-ceibo" />
-                <span aria-hidden="true" className="pt-1.5 text-sm font-medium text-ceibo tabular-nums lg:pt-3">
-                  {String(i + 1).padStart(2, "0")}
+                <span aria-hidden="true" className="pt-1.5 text-sm font-medium text-muted tabular-nums lg:pt-3">
+                  {listNumber(i)}
                 </span>
                 <div>
                   <h3 className="text-[2rem] leading-none font-medium tracking-[-0.03em] lg:text-[2.75rem]">{step.title}</h3>

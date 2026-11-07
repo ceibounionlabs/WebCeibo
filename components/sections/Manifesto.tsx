@@ -8,12 +8,12 @@ import { Logo } from "@/components/ui/Logo";
  */
 export function Manifesto() {
   return (
-    <section id="nosotros" aria-labelledby="manifesto-title" className="bg-paper py-section text-ink">
+    <section id="nosotros" data-header="light" data-nav="#nosotros" aria-labelledby="manifesto-title" className="bg-paper py-section text-ink">
       <div className="wrap grid gap-y-8 lg:grid-cols-12 lg:gap-x-8">
         <Eyebrow className="text-muted lg:col-span-3 lg:pt-4">{manifesto.eyebrow}</Eyebrow>
 
         <div className="lg:col-span-9">
-          <h2 id="manifesto-title" className="max-w-[20ch] text-title font-medium text-balance" data-reveal>
+          <h2 id="manifesto-title" className="max-w-[20ch] text-title font-medium text-balance" data-focus>
             {manifesto.title}
           </h2>
 

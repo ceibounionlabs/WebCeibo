@@ -1,4 +1,11 @@
+import { btnArrow } from "./button";
+
 type IconProps = { className?: string };
+
+/** Flecha ↗ de los botones: se corre 2px en diagonal con el hover del botón. */
+export function BtnArrow({ className = "" }: IconProps) {
+  return <ArrowUpRight className={`${btnArrow} ${className}`} />;
+}
 
 export function ArrowRight({ className = "size-4" }: IconProps) {
   return (

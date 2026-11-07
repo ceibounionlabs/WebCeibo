@@ -1,18 +1,14 @@
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { reveal, smoothScroll } from "@/lib/motion";
+import { gsap, ScrollTrigger, SplitText, CustomEase, Flip } from "@/lib/gsap";
+import { smoothScroll } from "@/lib/motion";
 import { setLenis } from "@/lib/scroll";
-
-gsap.registerPlugin(ScrollTrigger);
+import { features } from "./features";
 
 /**
- * Motor de animación (se carga con import dinámico, fuera del bundle inicial):
- * - Lenis para el scroll suave, sincronizado con ScrollTrigger.
- * - Reveal estándar para todo lo marcado con `data-reveal`.
- *
+ * Motor de animación. Se carga con import dinámico, después de hidratar.
  * Todo vive dentro de gsap.matchMedia: con `prefers-reduced-motion: reduce`
- * no se monta nada y el contenido queda estático.
+ * no se monta nada, y al cruzar el breakpoint de desktop se desarma y se
+ * vuelve a armar con la variante que corresponde.
  * Devuelve la función que desarma todo.
  */
 export function startMotion(): () => void {
@@ -20,47 +16,43 @@ export function startMotion(): () => void {
   // Si el failsafe ya mostró el contenido (JS que tardó demasiado), no lo
   // volvemos a ocultar para animarlo.
   const skipReveals = html.classList.contains("no-motion");
+  const stand = html.dataset.stand === "1";
   html.classList.add("motion-ready");
 
   const mm = gsap.matchMedia();
-  mm.add("(prefers-reduced-motion: no-preference)", () => {
-    // Scroll suave
-    const lenis = new Lenis({ lerp: smoothScroll.lerp });
-    const raf = (time: number) => lenis.raf(time * 1000);
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
-    setLenis(lenis);
+  mm.add(
+    {
+      motion: "(prefers-reduced-motion: no-preference)",
+      desktop: "(min-width: 64rem)",
+      finePointer: "(hover: hover) and (pointer: fine)",
+    },
+    (context) => {
+      const { motion, desktop, finePointer } = context.conditions as Record<string, boolean>;
+      if (!motion) return;
 
-    // Reveal estándar: los elementos que entran juntos se escalonan solos.
-    if (!skipReveals) {
-      const items = gsap.utils.toArray<HTMLElement>("[data-reveal]");
-      gsap.set(items, reveal.from);
-      ScrollTrigger.batch(items, {
-        start: reveal.start,
-        once: true,
-        onEnter: (batch) =>
-          gsap.to(batch, {
-            ...reveal.to,
-            duration: reveal.duration,
-            ease: reveal.ease,
-            stagger: reveal.stagger,
-            overwrite: true,
-            clearProps: "transform",
-          }),
-      });
-    }
+      // Scroll suave
+      const lenis = new Lenis({ lerp: smoothScroll.lerp });
+      const raf = (time: number) => lenis.raf(time * 1000);
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(raf);
+      gsap.ticker.lagSmoothing(0);
+      setLenis(lenis);
 
-    // Las fuentes cambian alturas: recalcular posiciones cuando cargan.
-    document.fonts?.ready.then(() => ScrollTrigger.refresh());
+      const ctx = { gsap, ScrollTrigger, SplitText, CustomEase, Flip, desktop, finePointer, skipReveals, stand, lenis };
+      const cleanups = features.map((feature) => feature(ctx)).filter((fn): fn is () => void => typeof fn === "function");
 
-    return () => {
-      setLenis(null);
-      gsap.ticker.remove(raf);
-      gsap.ticker.lagSmoothing(500, 33);
-      lenis.destroy();
-    };
-  });
+      // Las fuentes cambian alturas: recalcular posiciones cuando cargan.
+      document.fonts?.ready.then(() => ScrollTrigger.refresh());
+
+      return () => {
+        cleanups.forEach((fn) => fn());
+        setLenis(null);
+        gsap.ticker.remove(raf);
+        gsap.ticker.lagSmoothing(500, 33);
+        lenis.destroy();
+      };
+    },
+  );
 
   return () => mm.revert();
 }

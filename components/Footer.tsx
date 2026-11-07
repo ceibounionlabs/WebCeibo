@@ -15,7 +15,7 @@ export function Footer() {
   ].filter((s) => s.value !== null);
 
   return (
-    <footer id="pie" className="border-t border-white/10 bg-ink text-white">
+    <footer id="pie" data-header="dark" className="border-t border-white/10 bg-ink text-white">
       <div className="wrap grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8 lg:py-20">
         <div className="sm:col-span-2 lg:col-span-5">
           <Logo className="h-14 lg:h-16" />

@@ -4,7 +4,7 @@ import { useId, useState, type FormEvent } from "react";
 import { contactSection } from "@/lib/content";
 import { mailHref } from "@/lib/site";
 import { button } from "@/components/ui/button";
-import { ArrowRight } from "@/components/ui/icons";
+import { BtnArrow } from "@/components/ui/icons";
 
 const copy = contactSection.form;
 
@@ -48,7 +48,7 @@ export function ContactForm() {
       id="contacto-form"
       onSubmit={onSubmit}
       aria-labelledby={`${id}-title`}
-      className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:p-10"
+      className="rounded-card border border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:p-10"
     >
       <h3 id={`${id}-title`} className="text-[1.375rem] font-medium tracking-[-0.02em]">
         {copy.title}
@@ -84,7 +84,7 @@ export function ContactForm() {
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <button type="submit" className={`${button.primary} w-full sm:w-auto`}>
           {copy.submit}
-          <ArrowRight className="size-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
+          <BtnArrow />
         </button>
         <p role="status" aria-live="polite" className="text-sm text-white/70">
           {status === "opened" && "Listo: se abrió tu app de correo con el mensaje."}
