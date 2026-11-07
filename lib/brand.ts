@@ -64,3 +64,11 @@ export const leafShapes = cache((): LeafShape[] => {
   }
   return leaves;
 });
+
+/** Paths del isotipo y su viewBox, para dibujarlo en imágenes generadas (OG, íconos). */
+export const isotipoPaths = cache(() => {
+  const svg = read("ceibo-isotipo.svg");
+  const viewBox = svg.match(/viewBox="([^"]+)"/)?.[1] ?? "0 0 100 100";
+  const paths = Array.from(svg.matchAll(/<path[^>]*\sd="([^"]+)"/g)).map((m) => m[1].replace(/(\d+\.\d)\d+/g, "$1"));
+  return { viewBox, paths };
+});

@@ -29,6 +29,14 @@ export const metadata: Metadata = {
   description: site.tagline,
   applicationName: site.name,
   alternates: { canonical: "/" },
+  // Íconos e imagen OG generados en build (app/icon.svg, app/*.png/route.tsx).
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "es_AR",
@@ -36,10 +44,11 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.title,
     description: site.tagline,
-    // Fase 3: imagen OG 1200×630 (logo sobre rojo + lema).
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${site.name}: ${site.tagline}` }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    images: ["/og.png"],
     title: site.title,
     description: site.tagline,
   },

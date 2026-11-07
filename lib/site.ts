@@ -42,6 +42,10 @@ export const contact = {
   responseTime: "menos de 48 horas" as string | Pending,
   responseTimeConfirmed: false,
 
+  // CONFIRMAR ID del formulario de Formspree (formspree.io/f/<ID>). Mientras sea null,
+  // el formulario arma un mail y abre la app de correo.
+  formspreeId: null as string | null,
+
   // CONFIRMAR redes. URL completa o null para no mostrarla.
   instagram: confirmar("Instagram") as string | Pending | null,
   linkedin: confirmar("LinkedIn") as string | Pending | null,

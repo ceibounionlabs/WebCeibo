@@ -819,3 +819,13 @@ html:not(.js) .lens-chips {
 .section-rounded + section {
   padding-top: calc(var(--spacing-section) + 2.5rem);
 }
+
+/* ==========================================================================
+   Modo stand (5.8): QR fijo, solo con ?stand=1
+   ========================================================================== */
+.stand-qr {
+  display: none;
+}
+html[data-stand] .stand-qr {
+  display: flex;
+}

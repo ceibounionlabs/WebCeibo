@@ -5,6 +5,8 @@ import { ReadingProgress } from "@/components/ReadingProgress";
 import { FloatingCta } from "@/components/FloatingCta";
 import { Logo } from "@/components/ui/Logo";
 import { MotionRoot } from "@/components/motion/MotionRoot";
+import { StandMode } from "@/components/StandMode";
+import { StandQr } from "@/components/StandQr";
 import { Hero } from "@/components/sections/Hero";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Services } from "@/components/sections/Services";
@@ -43,6 +45,8 @@ export default function Home() {
       </main>
       <Footer />
       <FloatingCta />
+      <StandQr />
+      <StandMode />
       <MotionRoot />
     </>
   );
