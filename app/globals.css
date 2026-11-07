@@ -449,12 +449,28 @@ html[data-stand] .stand-qr {
    ========================================================================== */
 .seed-leaf {
   overflow: visible;
+}
+html.seedfall-ready .seed-leaf {
   transition: color 0.35s var(--ease-soft);
+}
+/* Hasta que la animación está lista, el árbol muestra sus hojas y las que
+   van a caer quedan ocultas; después se intercambian en el mismo frame. */
+html.seedfall:not(.seedfall-ready) [data-seed-origin] {
+  opacity: 1;
+}
+html.seedfall:not(.seedfall-ready) [data-seed] {
+  visibility: hidden;
 }
 .seed-leaf.is-over-red {
   color: var(--color-white);
 }
+/* Con la caída activa, la sección roja suma aire debajo del árbol para que
+   las hojas planeen (sin JS o con reduced motion no hace falta). */
+html.seedfall #hacia-donde {
+  padding-bottom: calc(var(--spacing-section) + 75svh);
+}
 [data-seed],
 [data-seed-zoom] {
   will-change: transform;
+  backface-visibility: visible;
 }
