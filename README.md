@@ -4,6 +4,10 @@ Web de **Ceibo Union Labs**. La especificación está en [`BRIEF.md`](./BRIEF.md
 
 **Estado:** implementado todo lo del brief (Fases 1, 2 y 3) y de CAMBIOS-v2 (bloques A, B y C), salvo lo que depende de ustedes: los datos **[CONFIRMAR]**, las respuestas de las preguntas frecuentes (B9) y las fotos del equipo (B10).
 
+## Paleta
+
+Rojo ceibo `#CE313D` (principal, en bloques grandes con texto blanco), blanco, paper `#F7F3F1` y, como único fondo oscuro, un vino `#2A1013` derivado del rojo (no se usa negro de fondo). Los tintes `ceibo-100/200/300` solo se usan en las etapas de "Cómo trabajamos". Todo está en el bloque `@theme` de `app/globals.css` y, para el código JS (3D, imágenes generadas), en `lib/colors.ts`.
+
 ## Correr el proyecto
 
 Requiere Node 20.9 o superior.
@@ -29,6 +33,7 @@ npm run typecheck
 | Cada efecto del scroll (un archivo por efecto) | `components/motion/features/` |
 | Logos | `assets/logo/*.svg` |
 | Color de las hojas del footer (blanco 8% o rojo) | `LEAF_TONE` en `components/Footer.tsx` |
+| Colores para JS (lente 3D, OG, íconos) | `lib/colors.ts` |
 
 ## Pendientes de ustedes ([CONFIRMAR])
 
@@ -55,13 +60,13 @@ components/
   FloatingCta.tsx         CTA de WhatsApp en mobile (A6)
   Footer.tsx              footer con las hojas del ceibo (B8)
   StandMode.tsx, StandQr.tsx   modo stand con QR (5.8)
-  hero/                   lente 3D (LensScene), lupa DOM y chips de índice (5.3)
-  services/               tarjetas que se expanden y zoom al detalle (B3, B4, B3b)
+  hero/                   lente 3D (LensScene) y lupa DOM (5.3)
+  services/               lista de servicios y zoom al detalle (B3b)
   sections/               Hero, Manifesto, Services, Solves, HowWeWork, Future, Contact
   motion/
     MotionRoot.tsx        anclas accesibles; carga el motor después de hidratar
     engine.ts             Lenis + ScrollTrigger dentro de gsap.matchMedia
-    features/             un archivo por efecto (enunciados, linterna, árbol, sección roja…)
+    features/             un archivo por efecto (reveals, títulos, linterna, etapas, hojas, magnéticos)
   ui/                     Logo, Eyebrow, Confirmable, botones, íconos
 lib/
   content.ts  site.ts  motion.ts  scroll.ts  brand.ts  gsap.ts  load-gsap.ts  ui-flags.ts
@@ -77,7 +82,7 @@ scripts/sync-brand.mjs
 - El loader es CSS puro (menos de 2 s, solo en la primera visita) y no tapa el LCP.
 - `prefers-reduced-motion`: sin loader, sin Lenis, sin blur, sin pins, sin lente ni efectos de cursor; todo el contenido visible y estático.
 - Sin JS, todo el contenido se lee.
-- Lighthouse mobile medido localmente: Performance 97–99, Accesibilidad 100, Buenas prácticas 100, SEO 100 (LCP 1.9 s, CLS 0).
+- Lighthouse mobile medido localmente: Performance 96–98, Accesibilidad 100, Buenas prácticas 100, SEO 100 (CLS 0).
 - Probado en Chromium a 360, 390, 768, 1024 y 1440 px, con teclado, con reduced motion y sin JS. **Falta probar en un iPhone (Safari) y en Android reales**, sobre todo el vidrio del header, el zoom de servicios y la lente.
 
 ## Deploy en Vercel

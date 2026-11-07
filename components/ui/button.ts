@@ -15,7 +15,7 @@ export const button = {
   /** Secundario sobre fondos oscuros. */
   ghostDark: `${base} border border-white/25 text-white hover:border-white hover:bg-white hover:text-ink`,
   /** Secundario sobre fondos claros. */
-  ghostLight: `${base} border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-white`,
+  ghostLight: `${base} border border-ink/20 text-ink hover:border-ceibo hover:bg-ceibo hover:text-white`,
   /** Variante compacta. */
   small: "min-h-10 px-5 text-sm",
 } as const;

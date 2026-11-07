@@ -3,7 +3,9 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { isotipoPaths } from "./brand";
 
-const CEIBO = "#C22640";
+import { colors } from "./colors";
+
+const CEIBO = colors.ceibo;
 
 /** Isotipo como JSX para next/og (satori dibuja SVG inline). */
 export function Isotipo({ height, color = "#FFFFFF" }: { height: number; color?: string }) {

@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#141113",
+  themeColor: "#CE313D",
   colorScheme: "light",
   // Para que env(safe-area-inset-*) funcione en iPhone (CTA flotante).
   viewportFit: "cover",

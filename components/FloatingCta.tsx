@@ -48,7 +48,7 @@ export function FloatingCta() {
       <a
         href={wa ?? "#hablemos"}
         {...(wa ? { target: "_blank", rel: "noopener noreferrer" } : { "data-confirmar": "" })}
-        className={`${button.primary} pointer-events-auto shadow-[0_10px_30px_-8px_rgb(20_17_19/0.45)]`}
+        className={`${button.primary} pointer-events-auto shadow-[0_10px_30px_-8px_rgb(42_16_19/0.5)] ring-1 ring-white/40`}
       >
         <WhatsAppIcon className="size-5" />
         Hablemos por WhatsApp

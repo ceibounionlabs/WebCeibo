@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
+import { colors } from "@/lib/colors";
 import { googleSans, Isotipo } from "@/lib/brand-image";
 
 export const dynamic = "force-static";
@@ -19,7 +20,7 @@ export function GET() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "#C22640",
+          background: colors.ceibo,
           color: "#FFFFFF",
           fontFamily: "Google Sans",
         }}

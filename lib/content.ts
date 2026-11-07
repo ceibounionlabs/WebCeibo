@@ -10,7 +10,6 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  eyebrow: "laboratorio de software · rubro óptico",
   titleLead: "Construimos las herramientas que el rubro óptico necesita,",
   titleAccent: "con la tecnología que viene.",
   lead: "Software a medida para ópticas y laboratorios, hecho por un equipo joven que trabaja con las herramientas que están cambiando cómo se construye software.",
@@ -20,7 +19,6 @@ export const hero = {
 } as const;
 
 export const manifesto = {
-  eyebrow: "manifiesto",
   // CONFIRMAR tono de los tres enunciados (borrador de CAMBIOS-v2, B1).
   statements: [
     "El rubro óptico trabaja con precisión. Su software también debería.",
@@ -34,7 +32,6 @@ export const manifesto = {
 } as const;
 
 export const services = {
-  eyebrow: "qué hacemos",
   title: "Herramientas que entienden cómo trabaja el rubro",
   lead: "Un mismo equipo para pensar, diseñar y desarrollar, así no tenés que coordinar a diez proveedores distintos.",
   seeMore: "Ver más",
@@ -108,7 +105,6 @@ export type Service = (typeof services.cards)[number];
 export const serviceWhatsappMessage = (title: string) => `¡Hola Ceibo! Quiero saber más sobre ${title}.`;
 
 export const solves = {
-  eyebrow: "qué hacemos",
   title: "Lo que resolvemos",
   // CONFIRMAR lista (borrador de CAMBIOS-v2, B5).
   items: [
@@ -125,7 +121,6 @@ export const solves = {
 } as const;
 
 export const howWeWork = {
-  eyebrow: "cómo trabajamos",
   title: "De la semilla a la flor, en cuatro etapas",
   lead: "Un proceso claro, con avances visibles. Siempre sabés en qué punto está tu proyecto y qué viene después.",
   steps: [
@@ -149,15 +144,12 @@ export const howWeWork = {
 } as const;
 
 export const future = {
-  eyebrow: "hacia dónde vamos",
   titleLead: "Empezamos por la óptica.",
   titleAccent: "Vamos por más.",
   body: "Raíces en el rubro óptico, ramas hacia todo lo que viene.",
-  marquee: "Donde las ideas echan raíces ·",
 } as const;
 
 export const contactSection = {
-  eyebrow: "hablemos",
   titleLead: "¿Tenés una idea?",
   titleAccent: "Hagámosla crecer juntos.",
   bodyBefore: "Contanos qué necesita tu óptica o tu laboratorio. Te respondemos en",
@@ -171,9 +163,4 @@ export const contactSection = {
     submit: "Enviar",
   },
   socialTitle: "Redes",
-} as const;
-
-export const footer = {
-  cta: "Construyamos lo que viene",
-  ctaButton: "Hablemos",
 } as const;

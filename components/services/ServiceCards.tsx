@@ -3,12 +3,11 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { services } from "@/lib/content";
-import { cursorFollow, serviceZoom as zoom } from "@/lib/motion";
+import { serviceZoom as zoom } from "@/lib/motion";
 import { loadGsap, prefersReducedMotion, type GsapModule } from "@/lib/load-gsap";
 import { getLenis, scrollToHash } from "@/lib/scroll";
 import { focusables, setPageInert, setUiFlag, trapFocus } from "@/lib/ui-flags";
-import { useMedia } from "@/lib/use-media";
-import { BtnArrow } from "@/components/ui/icons";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { ServiceDetail } from "./ServiceDetail";
 
 const cards = services.cards;
@@ -20,18 +19,12 @@ const num = (i: number) => String(i + 1).padStart(2, "0");
 type Open = { index: number; via: "zoom" | "fade"; from: number };
 
 /**
- * Qué hacemos (B3, B4, B3b).
- * - Desktop: fila de 4 tarjetas; la activa crece (hover, foco o click), su
- *   número sube y aparecen el texto y el botón "Ver más +", que sigue al cursor.
- * - Mobile: acordeón, una abierta a la vez, con "Ver detalle".
- * - El detalle se abre con un zoom de elemento compartido (Flip): la tarjeta
- *   crece hasta ocupar la pantalla. Tiene URL propia (#servicio-…), el botón
- *   atrás lo cierra y entrar con el hash lo abre directo.
+ * Qué hacemos: lista de servicios. Cada fila abre su detalle con un zoom de
+ * elemento compartido (B3b, Flip): la fila crece hasta ocupar la pantalla.
+ * El detalle tiene URL propia (#servicio-…), el botón atrás lo cierra y
+ * entrar con el hash lo abre directo.
  */
 export function ServiceCards() {
-  const desktop = useMedia("(min-width: 64rem)", true);
-  const finePointer = useMedia("(hover: hover) and (pointer: fine)");
-  const [active, setActive] = useState<number | null>(0);
   const [open, setOpen] = useState<Open | null>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const detailRef = useRef<HTMLDivElement>(null);
@@ -43,7 +36,6 @@ export function ServiceCards() {
   const openRef = useRef<Open | null>(null);
   openRef.current = open;
 
-  const shown = desktop ? (active ?? 0) : active;
   const card = (i: number) => {
     const li = listRef.current?.children[i] as HTMLElement | undefined;
     return {
@@ -51,7 +43,7 @@ export function ServiceCards() {
       bg: li?.querySelector<HTMLElement>("[data-flip-id^='bg-']") ?? null,
       num: li?.querySelector<HTMLElement>("[data-card-num]") ?? null,
       title: li?.querySelector<HTMLElement>("[data-card-title]") ?? null,
-      trigger: li?.querySelector<HTMLButtonElement>("button[aria-expanded]") ?? null,
+      trigger: li?.querySelector<HTMLButtonElement>("button") ?? null,
     };
   };
   const backdrop = () => ["contenido", "pie"].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
@@ -252,7 +244,6 @@ export function ServiceCards() {
       const apply = () => {
         for (const li of Array.from(listRef.current?.children ?? [])) li.classList.remove("is-zoomed");
         card(next).li?.classList.add("is-zoomed");
-        setActive(next);
         setOpen({ ...current, index: next });
         history.replaceState(history.state, "", `${location.pathname}${location.search}${HASH}${cards[next].slug}`);
       };
@@ -276,110 +267,39 @@ export function ServiceCards() {
     [],
   );
 
-  // B4: "Ver más +" sigue al cursor dentro de la tarjeta activa.
-  useEffect(() => {
-    if (!desktop || !finePointer || shown === null) return;
-    const { li } = card(shown);
-    const btn = li?.querySelector<HTMLElement>("[data-see-more]");
-    if (!li || !btn) return;
-    let x = 0;
-    let y = 0;
-    let tx = 0;
-    let ty = 0;
-    let frame = 0;
-    const onMove = (e: PointerEvent) => {
-      const r = li.getBoundingClientRect();
-      const b = btn.offsetWidth;
-      // Desplazamiento respecto de su lugar por defecto (abajo a la derecha).
-      tx = e.clientX - r.left - b / 2 - (li.clientWidth - b - 32);
-      ty = e.clientY - r.top - b / 2 - (li.clientHeight - b - 32);
-      li.classList.add("is-hovering");
-    };
-    const onLeave = () => {
-      tx = 0;
-      ty = 0;
-      li.classList.remove("is-hovering");
-    };
-    const tick = () => {
-      x += (tx - x) * cursorFollow.lerp;
-      y += (ty - y) * cursorFollow.lerp;
-      btn.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    li.addEventListener("pointermove", onMove);
-    li.addEventListener("pointerleave", onLeave);
-    return () => {
-      cancelAnimationFrame(frame);
-      li.removeEventListener("pointermove", onMove);
-      li.removeEventListener("pointerleave", onLeave);
-      li.classList.remove("is-hovering");
-      btn.style.translate = "";
-    };
-  }, [desktop, finePointer, shown]);
 
-  function onTrigger(event: React.MouseEvent, i: number) {
-    if (desktop) {
-      const keyboard = event.detail === 0;
-      if (shown === i && !keyboard) openDetail(i, "zoom", true);
-      else setActive(i);
-    } else {
-      setActive(active === i ? null : i);
-    }
-  }
 
   return (
     <>
-      <ul ref={listRef} className="service-list mt-14 lg:mt-20" data-reveal>
-        {cards.map((c, i) => {
-          const isActive = shown === i;
-          return (
-            <li
-              key={c.slug}
-              className={`service-card ${isActive ? "is-active" : ""}`}
-              onPointerEnter={desktop && finePointer ? () => setActive(i) : undefined}
+      <ul ref={listRef} className="service-list border-t border-ink/10" data-reveal>
+        {cards.map((c, i) => (
+          <li key={c.slug} className="service-row group relative border-b border-ink/10">
+            <span aria-hidden="true" data-flip-id={`bg-${c.slug}`} className="service-row-bg" />
+            <button
+              type="button"
+              aria-haspopup="dialog"
+              aria-label={`${c.title}: ${services.seeDetail.toLowerCase()}`}
+              aria-describedby={`svc-body-${c.slug}`}
+              onClick={() => openDetail(i, "zoom", true)}
+              className="relative grid w-full grid-cols-[2.5rem_1fr_auto] items-start gap-x-4 px-2 py-8 text-left sm:grid-cols-[3.5rem_1fr_auto] sm:gap-x-6 sm:px-5 lg:py-10"
             >
-              <span aria-hidden="true" data-flip-id={`bg-${c.slug}`} className="service-card-bg" />
-              <h3 className="service-card-heading">
-                <button
-                  type="button"
-                  id={`svc-btn-${c.slug}`}
-                  aria-expanded={isActive}
-                  aria-controls={`svc-panel-${c.slug}`}
-                  onClick={(e) => onTrigger(e, i)}
-                  onFocus={desktop ? () => setActive(i) : undefined}
-                  className="service-card-trigger"
-                >
-                  <span data-card-title className="service-card-title">
-                    {c.title}
-                  </span>
-                  <span aria-hidden="true" className="service-card-plus" />
-                </button>
-              </h3>
-              <span aria-hidden="true" data-card-num className="service-card-number">
+              <span aria-hidden="true" data-card-num className="pt-2 text-sm font-medium tracking-[0.18em] text-ceibo tabular-nums">
                 {num(i)}
               </span>
-              <div id={`svc-panel-${c.slug}`} role="region" aria-labelledby={`svc-btn-${c.slug}`} className="service-card-panel" inert={!isActive}>
-                <div className="service-card-panel-inner">
-                  <p className="service-card-body">{c.body}</p>
-                  <button
-                    type="button"
-                    data-see-more
-                    onClick={() => openDetail(i, "zoom", true)}
-                    className="service-see-more group/btn"
-                    aria-label={`${services.seeDetail}: ${c.title}`}
-                  >
-                    <span className="hidden lg:inline">{services.seeMore} +</span>
-                    <span className="inline-flex items-center gap-2.5 lg:hidden">
-                      {services.seeDetail}
-                      <BtnArrow />
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </li>
-          );
-        })}
+              <span>
+                <span data-card-title className="inline-block text-[1.625rem] leading-tight font-medium tracking-[-0.02em] lg:text-[2rem]">
+                  {c.title}
+                </span>
+                <span id={`svc-body-${c.slug}`} className="mt-3 block max-w-[32rem] text-muted text-pretty">
+                  {c.body}
+                </span>
+              </span>
+              <span aria-hidden="true" className="service-row-arrow">
+                <ArrowUpRight className="size-4" />
+              </span>
+            </button>
+          </li>
+        ))}
       </ul>
 
       {open &&

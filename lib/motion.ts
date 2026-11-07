@@ -73,21 +73,6 @@ export const header = {
   tolerance: 6,
 } as const;
 
-/** Manifiesto en tres enunciados (B1). */
-export const statements = {
-  /** Scroll por frase, en viewports (la referencia usa 2; acá 1.2). */
-  scrollPerStatement: 1.2,
-  enter: { filter: "blur(10px)", opacity: 0, y: 30 },
-  exit: { filter: "blur(6px)", opacity: 0, y: -20 },
-} as const;
-
-/** Profundidad de campo (B2). */
-export const depthOfField = {
-  enter: { opacity: 0, scale: 0.9, yPercent: 15, filter: "blur(6px)" },
-  exit: { opacity: 0.5, scale: 0.95, filter: "blur(4px)" },
-  scrub: 0.6,
-} as const;
-
 /** Zoom al detalle de servicio (B3b). */
 export const serviceZoom = {
   duration: 0.9,
@@ -102,38 +87,12 @@ export const serviceZoom = {
   reducedFade: 0.2,
 } as const;
 
-/** "Ver más +" que sigue al cursor (B4). */
-export const cursorFollow = { lerp: 0.2 } as const;
-
 /** Grilla con linterna (B5). */
 export const flashlight = {
   radius: 160,
   enter: { scale: 0.9, opacity: 0 },
   /** Escalonado total, repartido en orden aleatorio entre las celdas. */
   staggerAmount: 0.6,
-} as const;
-
-/** Árbol que crece (5.5). */
-export const tree = {
-  /** Scroll por paso en desktop, en viewports. */
-  scrollPerStep: 0.8,
-  inactiveOpacity: 0.3,
-  /** Hojas por etapa, de abajo hacia arriba (hoja-1 es la punta). */
-  stages: [[], ["hoja-8", "hoja-7"], ["hoja-6", "hoja-5", "hoja-4"], ["hoja-3", "hoja-2", "hoja-1"]] as string[][],
-  /** Hojas que se tiñen de rojo al florecer. */
-  bloom: ["hoja-1", "hoja-2", "hoja-3"],
-} as const;
-
-/** Sección roja que se abre (B6). */
-export const redOpen = { inset: 24, radius: 32 } as const;
-
-/** Marquesina (5.6). */
-export const marquee = {
-  /** Segundos que tarda en recorrer una copia de la frase a velocidad base. */
-  baseDuration: 28,
-  /** Cuánto acelera con la velocidad del scroll. */
-  velocityFactor: 1 / 250,
-  maxBoost: 6,
 } as const;
 
 /** Footer con hojas (B8). */
@@ -150,8 +109,6 @@ export const lens = {
   distortion: 0.1,
   /** Amortiguación al seguir el puntero. */
   damp: 0.1,
-  /** Índices de los chips (easter egg). Más índice = lente más fina. */
-  indices: [1.5, 1.6, 1.67, 1.74],
   /** Lupa DOM de respaldo. */
   magnifier: { scale: 1.15, size: 220 },
 } as const;

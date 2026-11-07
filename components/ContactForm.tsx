@@ -9,8 +9,8 @@ import { BtnArrow } from "@/components/ui/icons";
 const copy = contactSection.form;
 
 const field =
-  "mt-2 block w-full rounded-2xl border border-white/15 bg-white/[0.04] px-4 py-3.5 text-base text-white transition-colors duration-300 placeholder:text-white/35 hover:border-white/30 focus:border-white focus:outline-none focus-visible:outline-none";
-const label = "block text-sm font-medium text-white/70";
+  "mt-2 block w-full rounded-2xl border border-ink/12 bg-white px-4 py-3.5 text-base text-ink transition-colors duration-300 placeholder:text-ink/35 hover:border-ink/30 focus:border-ceibo focus:outline-none focus-visible:outline-none";
+const label = "block text-sm font-medium text-muted";
 
 type Status = "idle" | "sending" | "sent" | "error" | "opened" | "pending";
 
@@ -68,7 +68,7 @@ export function ContactForm() {
   }
 
   return (
-    <form id="contacto-form" onSubmit={onSubmit} aria-labelledby={`${id}-title`} className="rounded-card border border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:p-10">
+    <form id="contacto-form" onSubmit={onSubmit} aria-labelledby={`${id}-title`} className="rounded-card bg-paper p-6 sm:p-8 lg:p-10">
       <h3 id={`${id}-title`} className="text-[1.375rem] font-medium tracking-[-0.02em]">
         {copy.title}
       </h3>
@@ -107,7 +107,7 @@ export function ContactForm() {
           {copy.submit}
           <BtnArrow />
         </button>
-        <p role="status" aria-live="polite" className="text-sm text-white/70">
+        <p role="status" aria-live="polite" className="text-sm text-muted">
           {messages[status]}
         </p>
       </div>

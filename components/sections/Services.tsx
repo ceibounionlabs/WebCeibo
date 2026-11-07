@@ -1,24 +1,33 @@
 import { services } from "@/lib/content";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ServiceCards } from "@/components/services/ServiceCards";
 
-/** Qué hacemos: tarjetas que se expanden (B3) con zoom al detalle (B3b). */
+/**
+ * Qué hacemos: título a la izquierda (fijo al scrollear en desktop) y los
+ * cuatro servicios como lista. Cada uno abre su detalle con un zoom (B3b).
+ */
 export function Services() {
   return (
-    <section id="que-hacemos" data-header="light" data-nav="#que-hacemos" aria-labelledby="services-title" className="section-rounded z-[2] bg-white py-section text-ink">
-      <div className="wrap">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-8">
-          <div className="lg:col-span-7">
-            <Eyebrow className="text-muted">{services.eyebrow}</Eyebrow>
-            <h2 id="services-title" className="mt-6 max-w-[16ch] text-title font-medium text-balance lg:mt-8" data-focus>
+    <section
+      id="que-hacemos"
+      data-header="light"
+      data-nav="#que-hacemos"
+      aria-labelledby="services-title"
+      className="section-rounded z-[2] bg-white py-section text-ink"
+    >
+      <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-x-8">
+        <div className="lg:col-span-5">
+          <div className="lg:sticky lg:top-[calc(var(--spacing-header)+2rem)]">
+            <h2 id="services-title" className="max-w-[15ch] text-title font-medium text-balance" data-focus>
               {services.title}
             </h2>
+            <p className="mt-6 max-w-[26rem] text-lead text-muted text-pretty" data-reveal>
+              {services.lead}
+            </p>
           </div>
-          <p className="max-w-[30rem] text-lead text-muted text-pretty lg:col-span-4 lg:col-start-9" data-reveal>
-            {services.lead}
-          </p>
         </div>
-        <ServiceCards />
+        <div className="lg:col-span-7">
+          <ServiceCards />
+        </div>
       </div>
     </section>
   );

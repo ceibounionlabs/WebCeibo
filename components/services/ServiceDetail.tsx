@@ -35,11 +35,7 @@ export function ServiceDetail({ service, index, total, rootRef, contentRef, onCl
       <div data-flip-id={`bg-${service.slug}`} className="absolute inset-0 bg-ceibo" />
       <div className="relative h-full overflow-y-auto overscroll-contain" data-lenis-prevent>
         <div ref={contentRef} className="wrap flex min-h-full flex-col pt-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] lg:pt-8">
-          <div className="flex items-center justify-between gap-4" data-detail-item>
-            <p className="flex items-center gap-3 text-xs font-medium tracking-[0.12em] uppercase">
-              <span aria-hidden="true" className="h-px w-8 bg-current" />
-              {services.eyebrow} · {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-            </p>
+          <div className="flex items-center justify-end gap-4" data-detail-item>
             <button
               type="button"
               onClick={onClose}
@@ -70,26 +66,26 @@ export function ServiceDetail({ service, index, total, rootRef, contentRef, onCl
               >
                 {service.title}
               </h2>
-              <p className="mt-5 max-w-[28rem] text-lead text-white/90" data-detail-item>
+              <p className="mt-5 max-w-[28rem] text-lead text-white" data-detail-item>
                 {service.tagline}
               </p>
             </div>
 
             <div className="lg:col-span-5 lg:col-start-8 lg:self-end">
-              <h3 className="text-xs font-medium tracking-[0.12em] text-white/80 uppercase" data-detail-item>
+              <h3 className="text-sm font-medium text-white" data-detail-item>
                 {copy.solves}
               </h3>
               <ul className="mt-4 divide-y divide-white/20 border-y border-white/20">
                 {service.points.map((point, i) => (
                   <li key={point} className="flex gap-4 py-4 text-[1.0625rem] leading-snug" data-detail-item>
-                    <span aria-hidden="true" className="text-sm text-white/70 tabular-nums">
+                    <span aria-hidden="true" className="text-sm text-white tabular-nums">
                       {listNumber(i)}
                     </span>
                     {point}
                   </li>
                 ))}
               </ul>
-              <h3 className="mt-8 text-xs font-medium tracking-[0.12em] text-white/80 uppercase" data-detail-item>
+              <h3 className="mt-8 text-sm font-medium text-white" data-detail-item>
                 {copy.audience}
               </h3>
               <p className="mt-3 text-lead" data-detail-item>
@@ -119,11 +115,11 @@ export function ServiceDetail({ service, index, total, rootRef, contentRef, onCl
 
           <nav aria-label="Otros servicios" className="mt-14 flex items-stretch justify-between gap-4 border-t border-white/20 pt-5 lg:mt-16" data-detail-item>
             <button type="button" onClick={() => onNavigate(-1)} className="group/nav flex max-w-[48%] flex-col items-start gap-1 text-left">
-              <span className="text-xs font-medium tracking-[0.12em] text-white/70 uppercase">← {copy.prev}</span>
+              <span className="text-sm text-white">← {copy.prev}</span>
               <span className="text-[1.0625rem] font-medium group-hover/nav:underline">{prev.title}</span>
             </button>
             <button type="button" onClick={() => onNavigate(1)} className="group/nav flex max-w-[48%] flex-col items-end gap-1 text-right">
-              <span className="text-xs font-medium tracking-[0.12em] text-white/70 uppercase">{copy.next} →</span>
+              <span className="text-sm text-white">{copy.next} →</span>
               <span className="text-[1.0625rem] font-medium group-hover/nav:underline">{next.title}</span>
             </button>
           </nav>

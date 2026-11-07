@@ -5,11 +5,14 @@ import { Canvas, createPortal, useFrame, useThree } from "@react-three/fiber";
 import { Environment, Lightformer, MeshTransmissionMaterial, Text, useFBO } from "@react-three/drei";
 import * as THREE from "three";
 import { lens as cfg } from "@/lib/motion";
+import { colors } from "@/lib/colors";
 import type { LensShared, TitleLayout } from "./shared";
 
 const FONT = "/fonts/google-sans-500.ttf";
-const INK = "#141113";
-const CEIBO = "#C22640";
+/** Fondo del hero (lo que la lente ve detrás del texto) y colores del lema. */
+const BG = colors.ceibo;
+const LEAD = colors.white;
+const ACCENT = colors.ink;
 const LENS_Z = 0.6;
 const CAMERA_Z = 10;
 
@@ -44,7 +47,7 @@ export default function LensScene({ layout, shared, mobile, onReady }: Props) {
       <Environment resolution={128} frames={1}>
         <Lightformer form="rect" intensity={2.5} position={[0, 4, 4]} scale={[10, 2, 1]} />
         <Lightformer form="rect" intensity={1.2} position={[-5, -2, 3]} rotation-y={Math.PI / 3} scale={[4, 4, 1]} />
-        <Lightformer form="ring" color={CEIBO} intensity={1} position={[5, -1, 2]} scale={2} />
+        <Lightformer form="ring" color={colors.white} intensity={0.8} position={[5, -1, 2]} scale={2} />
       </Environment>
       <Lens shared={shared} mobile={mobile} layout={layout} onReady={onReady} />
     </Canvas>
@@ -86,7 +89,7 @@ function Title({ layout, onReady }: { layout: TitleLayout; onReady: () => void }
           anchorX="left"
           anchorY="top-baseline"
           position={[(line.x - size.width / 2) * f, (size.height / 2 - line.baseline) * f, 0]}
-          color={line.accent ? CEIBO : "#FFFFFF"}
+          color={line.accent ? ACCENT : LEAD}
           onSync={() => {
             pending.current -= 1;
             if (pending.current <= 0 && !readyFired.current) {
@@ -114,7 +117,7 @@ function Lens({ shared, mobile, layout, onReady }: { shared: LensShared; mobile:
   // El título vive en su propia escena, que se renderiza a un buffer.
   const titleScene = useMemo(() => {
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(INK);
+    scene.background = new THREE.Color(BG);
     return scene;
   }, []);
   const dpr = Math.min(gl.getPixelRatio(), mobile ? 1.5 : 2);

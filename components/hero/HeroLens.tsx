@@ -3,7 +3,6 @@
 import { Component, useCallback, useEffect, useRef, useState, type ComponentType, type ReactNode } from "react";
 import { lens } from "@/lib/motion";
 import { prefersReducedMotion } from "@/lib/load-gsap";
-import { lensStore } from "./lensStore";
 import { measureTitle, type LensShared, type TitleLayout } from "./shared";
 
 type SceneProps = { layout: TitleLayout; shared: LensShared; mobile: boolean; onReady: () => void };
@@ -123,9 +122,6 @@ export function HeroLens({ lead, accent }: { lead: string; accent: string }) {
       window.clearTimeout(resizeTimer);
     };
   }, [remeasure]);
-
-  // Índice elegido con los chips.
-  useEffect(() => lensStore.subscribe((n) => (shared.index = n)), [shared]);
 
   // Movimiento: sigue al puntero, flota en un 8 o se arrastra con el dedo.
   useEffect(() => {
@@ -272,14 +268,14 @@ export function HeroLens({ lead, accent }: { lead: string; accent: string }) {
       </div>
 
       {/* Lupa DOM, entre el título y el resto del contenido */}
-      <div ref={domLensRef} className="dom-lens pointer-events-none absolute inset-0 z-[2] bg-ink" style={{ clipPath: "circle(0px at 0 0)" }}>
+      <div ref={domLensRef} className="dom-lens pointer-events-none absolute inset-0 z-[2] bg-ceibo" style={{ clipPath: "circle(0px at 0 0)" }}>
         <div ref={cloneRef} className="absolute text-display font-medium text-balance text-white">
-          <span className="block">{lead}</span> <span className="block text-ceibo">{accent}</span>
+          <span className="block">{lead}</span> <span className="block text-ink">{accent}</span>
         </div>
       </div>
       <div
         ref={ringRef}
-        className="dom-lens pointer-events-none absolute top-0 left-0 z-[2] rounded-full border border-white/50 shadow-[inset_0_0_24px_rgb(255_255_255/0.12),0_0_40px_rgb(0_0_0/0.35)]"
+        className="dom-lens pointer-events-none absolute top-0 left-0 z-[2] rounded-full border border-white/50 shadow-[inset_0_0_24px_rgb(255_255_255/0.18),0_0_40px_rgb(42_16_19/0.25)]"
       />
     </div>
   );

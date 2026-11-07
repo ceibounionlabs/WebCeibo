@@ -30,7 +30,7 @@ const size = 512;
 const scale = (size * 0.74) / Math.max(vw, vh);
 const tx = (size - vw * scale) / 2 - vx * scale;
 const ty = (size - vh * scale) / 2 - vy * scale;
-const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}"><rect width="${size}" height="${size}" rx="112" fill="#C22640"/><g fill="#FFFFFF" transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${scale.toFixed(4)})">${inner.trim()}</g></svg>\n`;
+const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}"><rect width="${size}" height="${size}" rx="112" fill="#CE313D"/><g fill="#FFFFFF" transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${scale.toFixed(4)})">${inner.trim()}</g></svg>\n`;
 writeFileSync(join(root, "app/icon.svg"), icon);
 
 console.log("✓ marca sincronizada desde assets/logo");

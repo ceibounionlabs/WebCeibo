@@ -1,60 +1,76 @@
 import { howWeWork } from "@/lib/content";
-import { inlineSvg } from "@/lib/brand";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { listNumber } from "@/components/ui/button";
+import { isotipoParts } from "@/lib/brand";
 
 /**
- * Cómo trabajamos: el ceibo crece. Fase 1: árbol completo (las hojas de
- * arriba ya en rojo, la "flor") junto a los cuatro pasos. En la Fase 2 el
- * árbol crece con el scroll y el paso activo queda nítido.
- *
- * El isotipo va inline para poder animar sus piezas: [data-part="tronco"],
- * [data-part="rama"] y [data-part="hoja-1"] … [data-part="hoja-8"].
+ * Las cuatro etapas de la planta, armadas con piezas del isotipo:
+ * semilla (la hoja de la punta), brote (las tres de arriba), árbol chico
+ * (tronco con sus hojas) y el ceibo completo, que florece con un glow.
+ */
+const TOP = ["hoja-1", "hoja-2", "hoja-3"];
+const stages = [
+  { parts: ["hoja-1"], height: "h-12 lg:h-14", tone: "text-ceibo-100" },
+  { parts: TOP, height: "h-20 lg:h-24", tone: "text-ceibo-200" },
+  { parts: ["tronco", ...TOP, "hoja-4", "hoja-6"], height: "h-32 lg:h-40", tone: "text-ceibo-300" },
+  { parts: ["tronco", "rama", ...TOP, "hoja-4", "hoja-5", "hoja-6", "hoja-7", "hoja-8"], height: "h-44 lg:h-56", tone: "text-ceibo" },
+] as const;
+
+/**
+ * Cómo trabajamos: de la semilla a la flor (5.5, formato de la referencia).
+ * Todo visible de entrada, sin pin. Con el motor activo, las plantas brotan
+ * de izquierda a derecha la primera vez que la sección entra en pantalla.
  */
 export function HowWeWork() {
   return (
-    <section id="como-trabajamos" data-header="light" data-nav="#como-trabajamos" aria-labelledby="process-title" className="bg-paper py-section text-ink">
+    <section
+      id="como-trabajamos"
+      data-header="dark"
+      data-nav="#como-trabajamos"
+      aria-labelledby="process-title"
+      className="process-bg relative overflow-hidden py-section text-white"
+    >
       <div className="wrap">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-8">
-          <div className="lg:col-span-7">
-            <Eyebrow className="text-muted">{howWeWork.eyebrow}</Eyebrow>
-            <h2 id="process-title" className="mt-6 max-w-[15ch] text-title font-medium text-balance lg:mt-8" data-focus>
-              {howWeWork.title}
-            </h2>
-          </div>
-          <p className="max-w-[30rem] text-lead text-muted text-pretty lg:col-span-4 lg:col-start-9" data-reveal>
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-8">
+          <h2 id="process-title" className="max-w-[16ch] text-title font-medium text-balance lg:col-span-7" data-focus>
+            {howWeWork.title}
+          </h2>
+          <p className="max-w-[32rem] text-lead text-white/75 text-pretty lg:col-span-5 lg:justify-self-end" data-reveal>
             {howWeWork.lead}
           </p>
         </div>
 
-        <div data-process className="process relative mt-14 lg:mt-20 lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8">
-          <div className="process-tree sticky top-0 z-10 -mx-4 flex justify-center bg-paper px-4 pt-4 pb-6 lg:static lg:col-span-5 lg:mx-0 lg:justify-start lg:p-0">
-            <div
-              className="tree-bloom h-44 text-ink sm:h-60 lg:h-[min(64vh,34rem)]"
-              data-tree
-              dangerouslySetInnerHTML={{ __html: inlineSvg("ceibo-isotipo.svg", "h-full w-auto overflow-visible") }}
-            />
-          </div>
-
-          <ol className="process-steps lg:col-span-6 lg:col-start-7">
-            {howWeWork.steps.map((step, i) => (
-              <li
-                key={step.title}
-                className="process-step relative grid grid-cols-[2.75rem_1fr] gap-x-4 border-t border-ink/15 py-8 last:border-b sm:grid-cols-[4rem_1fr]"
-                data-step
-              >
-                <span aria-hidden="true" data-step-line className="absolute -top-px left-0 h-px w-0 bg-ceibo" />
-                <span aria-hidden="true" className="pt-1.5 text-sm font-medium text-muted tabular-nums lg:pt-2.5">
-                  {listNumber(i)}
-                </span>
-                <div>
-                  <h3 className="text-[2rem] leading-none font-medium tracking-[-0.03em] lg:text-[2.5rem]">{step.title}</h3>
-                  <p className="mt-3 max-w-[28rem] text-lead text-muted text-pretty">{step.body}</p>
+        <ol data-stages className="relative mt-14 grid gap-y-12 sm:grid-cols-2 sm:gap-x-8 lg:mt-24 lg:grid-cols-4 lg:gap-x-10">
+          {/* Línea de suelo compartida (desktop). */}
+          <span aria-hidden="true" data-ground className="process-ground absolute inset-x-0 top-56 hidden h-0.5 origin-left lg:block" />
+          {howWeWork.steps.map((step, i) => {
+            const stage = stages[i];
+            const art = isotipoParts(stage.parts);
+            const last = i === stages.length - 1;
+            return (
+              <li key={step.title} className="relative">
+                <div className="relative flex items-end border-b-2 border-white/15 pt-4 sm:h-44 sm:pt-0 lg:h-56 lg:border-0">
+                  {last && <span aria-hidden="true" data-glow className="process-glow" />}
+                  <svg
+                    aria-hidden="true"
+                    viewBox={art.viewBox}
+                    data-plant
+                    className={`relative w-auto ${stage.height} ${stage.tone} ${last ? "process-bloom" : ""}`}
+                  >
+                    {art.paths.map((p) => (
+                      <path key={p.id} d={p.d} fill="currentColor" fillRule="evenodd" />
+                    ))}
+                  </svg>
+                </div>
+                <div className="mt-8 lg:mt-10" data-reveal>
+                  <span aria-hidden="true" className="text-sm font-medium tracking-[0.18em] text-ceibo-200 tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-3 text-[1.75rem] leading-tight font-medium tracking-[-0.02em]">{step.title}</h3>
+                  <p className="mt-3 max-w-[22rem] text-white/75 text-pretty">{step.body}</p>
                 </div>
               </li>
-            ))}
-          </ol>
-        </div>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

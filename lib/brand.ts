@@ -72,3 +72,27 @@ export const isotipoPaths = cache(() => {
   const paths = Array.from(svg.matchAll(/<path[^>]*\sd="([^"]+)"/g)).map((m) => m[1].replace(/(\d+\.\d)\d+/g, "$1"));
   return { viewBox, paths };
 });
+
+/**
+ * Un subconjunto de piezas del isotipo, con el viewBox recortado a esas
+ * piezas (para dibujar las etapas de la planta en "Cómo trabajamos").
+ */
+export const isotipoParts = cache((ids: readonly string[]) => {
+  const svg = read("ceibo-isotipo.svg");
+  const paths: { id: string; d: string }[] = [];
+  const xs: number[] = [];
+  const ys: number[] = [];
+  for (const id of ids) {
+    const match = svg.match(new RegExp(`id="${id}"[^>]*\\sd="([^"]+)"`)) ?? svg.match(new RegExp(`d="([^"]+)"[^>]*id="${id}"`));
+    if (!match) continue;
+    const nums = (match[1].match(/-?\d*\.?\d+/g) ?? []).map(Number);
+    nums.forEach((n, i) => (i % 2 ? ys : xs).push(n));
+    paths.push({ id, d: match[1].replace(/(\d+\.\d)\d+/g, "$1") });
+  }
+  const pad = 1;
+  const x = Math.min(...xs) - pad;
+  const y = Math.min(...ys) - pad;
+  const w = Math.max(...xs) - x + pad;
+  const h = Math.max(...ys) - y + pad;
+  return { viewBox: `${x.toFixed(1)} ${y.toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`, aspect: w / h, paths };
+});

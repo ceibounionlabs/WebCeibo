@@ -51,3 +51,15 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 - QA en dispositivos reales: iPhone (Safari) y Android (Chrome), también con 4G lento. En este
   entorno solo se pudo probar con Chromium (escritorio y emulación de celular).
 - Elegir el color de las hojas del footer (`LEAF_TONE` en components/Footer.tsx).
+
+## Ronda de ajustes (feedback del equipo)
+
+- **Paleta:** rojo ceibo `#CE313D`; sin fondos negros. El hero pasa a rojo, "Lo que resolvemos" y "Hablemos" a fondo claro, y el footer y "Cómo trabajamos" a un vino oscuro derivado del rojo (el de la referencia).
+- **Sin volantas** (`— QUÉ HACEMOS`) en ninguna sección.
+- **Hero:** sin botones ni chips de índice; título, bajada y la lente.
+- **Nosotros:** sin pin ni contador; los tres enunciados en una fila.
+- **Qué hacemos:** nueva propuesta, lista editorial (número, título, texto, flecha); cada fila abre el detalle con el zoom.
+- **Cómo trabajamos:** formato de la referencia, cuatro etapas visibles de entrada (semilla, brote, árbol chico, ceibo con glow) sobre una línea de suelo; brotan en orden la primera vez, sin pin.
+- **Hacia dónde vamos:** franja roja simple, sin marquesina ni apertura.
+- **Footer:** sin el CTA repetido (Hablemos queda justo arriba).
+- Se quitaron: tarjetas que se expandían y "Ver más +" que seguía al cursor (B3, B4), enunciados pineados (B1), sección que se abría y marquesina (B6, 5.6), chips de índice.
