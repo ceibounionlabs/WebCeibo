@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Google_Sans } from "next/font/google";
 import { site, siteUrl } from "@/lib/site";
+import { GlassFilter } from "@/components/GlassFilter";
 import "./globals.css";
 
 // Español completo (á, ñ, ¿, ¡) entra en el subset "latin": no hace falta precargar latin-ext.
@@ -28,6 +29,14 @@ export const metadata: Metadata = {
   description: site.tagline,
   applicationName: site.name,
   alternates: { canonical: "/" },
+  // Íconos e imagen OG generados en build (app/icon.svg, app/*.png/route.tsx).
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "es_AR",
@@ -35,10 +44,11 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.title,
     description: site.tagline,
-    // Fase 3: imagen OG 1200×630 (logo sobre rojo + lema).
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${site.name}: ${site.tagline}` }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    images: ["/og.png"],
     title: site.title,
     description: site.tagline,
   },
@@ -47,14 +57,27 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: "#141113",
   colorScheme: "light",
+  // Para que env(safe-area-inset-*) funcione en iPhone (CTA flotante).
+  viewportFit: "cover",
 };
 
 /**
- * Clase .js en <html> antes del primer pintado: los estados ocultos de las
- * animaciones solo existen con JS. Failsafe: si el motor de animación no
- * arrancó a los 4 s, se muestra todo (clase .no-motion).
+ * Boot script, antes del primer pintado:
+ * - `.js`: los estados ocultos de las animaciones solo existen con JS.
+ * - `data-stand`: modo stand (?stand=1).
+ * - `.loader`: loader solo en la primera visita (sessionStorage), sin reduced
+ *   motion y fuera del modo stand.
+ * - `.glass-distort`: distorsión del vidrio solo en Chromium de escritorio.
+ * - Failsafe: si el motor de animación no arrancó a los 4 s, se muestra todo.
  */
-const bootScript = `(function(d){d.classList.add('js');setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('no-motion')},4000)})(document.documentElement)`;
+const bootScript = `(function(d){
+d.classList.add('js');
+var stand=/[?&]stand=1(&|$)/.test(location.search);if(stand)d.setAttribute('data-stand','1');
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+try{if(!stand&&!rm&&!sessionStorage.getItem('ceibo-intro')){d.classList.add('loader');sessionStorage.setItem('ceibo-intro','1')}}catch(e){}
+try{var u=navigator.userAgentData;if(u&&!u.mobile&&u.brands.some(function(b){return b.brand==='Chromium'})&&matchMedia('(hover: hover) and (pointer: fine)').matches)d.classList.add('glass-distort')}catch(e){}
+setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('no-motion')},4000);
+})(document.documentElement)`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -62,7 +85,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <GlassFilter />
+        {children}
+      </body>
     </html>
   );
 }

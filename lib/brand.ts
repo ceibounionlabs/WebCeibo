@@ -37,3 +37,38 @@ export const inlineSvg = cache((file: LogoFile, className = "") =>
     })
     .trim(),
 );
+
+export type LeafShape = { id: string; d: string; viewBox: string; aspect: number };
+
+/**
+ * Las hojas del isotipo (hoja-1 … hoja-8), cada una con su propio viewBox
+ * ajustado (para el footer, B8). El bounding box sale de los puntos del path
+ * (comandos absolutos M/C/L/Z, que es lo que tiene el SVG vectorizado).
+ */
+export const leafShapes = cache((): LeafShape[] => {
+  const svg = read("ceibo-isotipo.svg");
+  const leaves: LeafShape[] = [];
+  for (let n = 1; n <= 8; n++) {
+    const match = svg.match(new RegExp(`id="hoja-${n}"[^>]*\\sd="([^"]+)"`)) ?? svg.match(new RegExp(`d="([^"]+)"[^>]*id="hoja-${n}"`));
+    if (!match) continue;
+    const d = match[1];
+    const nums = (d.match(/-?\d*\.?\d+(?:e-?\d+)?/gi) ?? []).map(Number);
+    const xs = nums.filter((_, i) => i % 2 === 0);
+    const ys = nums.filter((_, i) => i % 2 === 1);
+    const pad = 1;
+    const x = Math.min(...xs) - pad;
+    const y = Math.min(...ys) - pad;
+    const w = Math.max(...xs) - x + pad;
+    const h = Math.max(...ys) - y + pad;
+    leaves.push({ id: `hoja-${n}`, d: d.replace(/(\d+\.\d)\d+/g, "$1"), viewBox: `${x.toFixed(1)} ${y.toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`, aspect: w / h });
+  }
+  return leaves;
+});
+
+/** Paths del isotipo y su viewBox, para dibujarlo en imágenes generadas (OG, íconos). */
+export const isotipoPaths = cache(() => {
+  const svg = read("ceibo-isotipo.svg");
+  const viewBox = svg.match(/viewBox="([^"]+)"/)?.[1] ?? "0 0 100 100";
+  const paths = Array.from(svg.matchAll(/<path[^>]*\sd="([^"]+)"/g)).map((m) => m[1].replace(/(\d+\.\d)\d+/g, "$1"));
+  return { viewBox, paths };
+});
