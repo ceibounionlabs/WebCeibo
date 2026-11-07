@@ -41,7 +41,10 @@ export function startMotion(): () => void {
       const ctx = { gsap, ScrollTrigger, SplitText, CustomEase, Flip, desktop, finePointer, skipReveals, stand, lenis };
       const cleanups = features.map((feature) => feature(ctx)).filter((fn): fn is () => void => typeof fn === "function");
 
-      // Las fuentes cambian alturas: recalcular posiciones cuando cargan.
+      // Calcular en el orden de la página (los pins de arriba corren a los de abajo)
+      // y de nuevo cuando cargan las fuentes, que cambian alturas.
+      ScrollTrigger.sort();
+      ScrollTrigger.refresh();
       document.fonts?.ready.then(() => ScrollTrigger.refresh());
 
       return () => {

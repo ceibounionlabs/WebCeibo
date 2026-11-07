@@ -23,6 +23,9 @@
   --text-title: clamp(2.125rem, 1.35rem + 3.3vw, 4.5rem);
   --text-title--line-height: 1.02;
   --text-title--letter-spacing: -0.03em;
+  --text-statement: clamp(1.875rem, 1.1rem + 3.1vw, 4.25rem);
+  --text-statement--line-height: 1.06;
+  --text-statement--letter-spacing: -0.03em;
   --text-manifesto: clamp(1.5rem, 1.05rem + 1.95vw, 3rem);
   --text-manifesto--line-height: 1.22;
   --text-manifesto--letter-spacing: -0.02em;
@@ -433,5 +436,39 @@ html:not(.js) .lens-chips {
 @media (prefers-reduced-motion: reduce) {
   .lens-chips {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   Nosotros: tres enunciados (B1)
+   ========================================================================== */
+/* Contador y progreso: solo en el modo pineado (desktop con el motor activo). */
+.statements-counter,
+.statements-progress {
+  display: none;
+}
+.statements.is-pinned {
+  height: 100svh;
+  padding-top: calc(var(--spacing-header) + 2.5rem);
+  padding-bottom: 4rem;
+}
+.statements.is-pinned :is(.statements-counter, .statements-progress) {
+  display: block;
+}
+.statements.is-pinned .statements-list {
+  position: relative;
+  flex: 1;
+  margin-top: 0;
+}
+.statements.is-pinned .statement {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js:not(.no-motion) [data-statement] {
+    opacity: 0;
   }
 }

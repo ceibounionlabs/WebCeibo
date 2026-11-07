@@ -21,6 +21,12 @@ export const hero = {
 
 export const manifesto = {
   eyebrow: "manifiesto",
+  // CONFIRMAR tono de los tres enunciados (borrador de CAMBIOS-v2, B1).
+  statements: [
+    "El rubro óptico trabaja con precisión. Su software también debería.",
+    "Diseñamos y construimos sistemas para ópticas y laboratorios, con las herramientas que están cambiando cómo se hace software.",
+    "El resultado: herramientas claras, rápidas y hechas a la medida de cómo trabajás.",
+  ],
   title: "Como el ceibo, crecemos en comunidad",
   body: "Somos un grupo de amigos a punto de recibirnos de ingenieros en sistemas. Nos juntamos para construir software que se use de verdad, y elegimos empezar por el rubro óptico. Trabajamos con las prácticas y herramientas más nuevas de la industria, IA incluida, para llegar más rápido sin resignar calidad.",
   closing:
