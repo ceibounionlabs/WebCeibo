@@ -6,7 +6,7 @@ Web de **Ceibo Union Labs**. La especificación está en [`BRIEF.md`](./BRIEF.md
 
 ## Paleta
 
-Rojo ceibo `#CE313D` (principal, en bloques grandes con texto blanco), blanco, paper `#F7F3F1` y, como único fondo oscuro, un vino `#2A1013` derivado del rojo (no se usa negro de fondo). Los tintes `ceibo-100/200/300` solo se usan en las etapas de "Cómo trabajamos". Todo está en el bloque `@theme` de `app/globals.css` y, para el código JS (3D, imágenes generadas), en `lib/colors.ts`.
+Rojo ceibo `#CE313D` (principal, en bloques grandes con texto blanco), blanco, paper `#F7F3F1` y, como único fondo oscuro, un vino `#2A1013` derivado del rojo con un glow rojo (hero, "Cómo trabajamos" y footer; no se usa negro de fondo). Los tintes `ceibo-100/200/300` solo se usan en las etapas de "Cómo trabajamos". Todo está en el bloque `@theme` de `app/globals.css` y, para el código JS (3D, imágenes generadas), en `lib/colors.ts`.
 
 ## Correr el proyecto
 
@@ -56,7 +56,6 @@ app/
 components/
   Header.tsx              header en píldoras de vidrio, lupita y menú diafragma (A1, A2, A4)
   Loader.tsx              loader de primera visita, CSS puro (A7)
-  ReadingProgress.tsx     línea de progreso (A3)
   FloatingCta.tsx         CTA de WhatsApp en mobile (A6)
   Footer.tsx              footer con las hojas del ceibo (B8)
   StandMode.tsx, StandQr.tsx   modo stand con QR (5.8)

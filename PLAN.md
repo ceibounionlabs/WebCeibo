@@ -63,3 +63,10 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 - **Hacia dónde vamos:** franja roja simple, sin marquesina ni apertura.
 - **Footer:** sin el CTA repetido (Hablemos queda justo arriba).
 - Se quitaron: tarjetas que se expandían y "Ver más +" que seguía al cursor (B3, B4), enunciados pineados (B1), sección que se abría y marquesina (B6, 5.6), chips de índice.
+
+## Segunda ronda de ajustes
+
+- Sin barra de progreso de lectura (A3) ni indicador "Deslizá".
+- Header siempre visible (ya no se oculta al bajar).
+- Hero con el estilo de "Cómo trabajamos": fondo vino con glow rojo, título blanco y el acento en rojo que brilla. El loader también pasa a vino, con el isotipo rojo que se enfoca y brilla.
+- Sin botones magnéticos (5.7).

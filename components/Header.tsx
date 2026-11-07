@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { nav } from "@/lib/content";
-import { header as cfg } from "@/lib/motion";
 import { getLenis, scrollToHash } from "@/lib/scroll";
 import { contact, isPending, mailHref, whatsappHref } from "@/lib/site";
 import { focusables, setPageInert, setUiFlag, trapFocus } from "@/lib/ui-flags";
@@ -15,13 +14,12 @@ const menuItems = [...nav, { href: "#hablemos", label: "Hablemos" }];
 const MENU_CLOSE_MS = 450;
 
 /**
- * Header "lente flotante" (A1): tres píldoras de vidrio que cambian de tema
- * según la sección de abajo, con la lupita de sección activa (A2) y el menú
- * mobile "diafragma" (A4).
+ * Header "lente flotante" (A1): tres píldoras de vidrio, siempre visibles,
+ * que cambian de tema según la sección de abajo, con la lupita de sección
+ * activa (A2) y el menú mobile "diafragma" (A4).
  */
 export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
-  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
@@ -61,29 +59,6 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
     );
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
-  }, []);
-
-  // Se oculta al bajar y reaparece al subir.
-  useEffect(() => {
-    let last = window.scrollY;
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const y = window.scrollY;
-      const delta = y - last;
-      if (y <= cfg.hideAfter) setHidden(false);
-      if (Math.abs(delta) < cfg.tolerance) return;
-      setHidden(delta > 0 && y > cfg.hideAfter);
-      last = y;
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(frame);
-    };
   }, []);
 
   // Posición y ancho de la lupita.
@@ -164,11 +139,9 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
         id="cabecera"
         data-site-header
         data-theme={shownTheme}
-        onFocusCapture={() => setHidden(false)}
         className={[
           "site-header pointer-events-none fixed inset-x-0 top-0 z-50 pt-3 sm:pt-4 lg:pt-6",
           "transition-[translate] duration-600 ease-lente",
-          hidden && !open ? "-translate-y-[130%]" : "translate-y-0",
         ].join(" ")}
       >
         <div className="header-in wrap flex items-center justify-between gap-2">

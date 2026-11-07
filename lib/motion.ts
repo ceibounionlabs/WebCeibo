@@ -65,14 +65,6 @@ export const focusTitle = {
   start: "top 85%",
 } as const;
 
-/** Header (A1). */
-export const header = {
-  /** A partir de cuántos px de scroll se puede ocultar al bajar. */
-  hideAfter: 120,
-  /** Px mínimos de movimiento para cambiar de estado (evita parpadeos). */
-  tolerance: 6,
-} as const;
-
 /** Zoom al detalle de servicio (B3b). */
 export const serviceZoom = {
   duration: 0.9,
@@ -97,9 +89,6 @@ export const flashlight = {
 
 /** Footer con hojas (B8). */
 export const footerLeaves = { rise: 30, stagger: 0.06, sway: 2 } as const;
-
-/** Botones magnéticos (5.7). */
-export const magnetic = { maxShift: 16, radius: 80 } as const;
 
 /** Lente del hero (5.3). */
 export const lens = {

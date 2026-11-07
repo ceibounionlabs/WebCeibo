@@ -10,9 +10,9 @@ import type { LensShared, TitleLayout } from "./shared";
 
 const FONT = "/fonts/google-sans-500.ttf";
 /** Fondo del hero (lo que la lente ve detrás del texto) y colores del lema. */
-const BG = colors.ceibo;
+const BG = colors.vino;
 const LEAD = colors.white;
-const ACCENT = colors.ink;
+const ACCENT = colors.ceibo;
 const LENS_Z = 0.6;
 const CAMERA_Z = 10;
 
@@ -47,7 +47,7 @@ export default function LensScene({ layout, shared, mobile, onReady }: Props) {
       <Environment resolution={128} frames={1}>
         <Lightformer form="rect" intensity={2.5} position={[0, 4, 4]} scale={[10, 2, 1]} />
         <Lightformer form="rect" intensity={1.2} position={[-5, -2, 3]} rotation-y={Math.PI / 3} scale={[4, 4, 1]} />
-        <Lightformer form="ring" color={colors.white} intensity={0.8} position={[5, -1, 2]} scale={2} />
+        <Lightformer form="ring" color={colors.ceibo} intensity={1} position={[5, -1, 2]} scale={2} />
       </Environment>
       <Lens shared={shared} mobile={mobile} layout={layout} onReady={onReady} />
     </Canvas>

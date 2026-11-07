@@ -50,27 +50,6 @@
   --ease-lente: cubic-bezier(0.17, 0.84, 0.44, 1); /* UI: arranca rápido, frena largo */
   --ease-cortina: cubic-bezier(0.05, 0.55, 0.15, 1); /* cortinas y aperturas */
   --ease-soft: cubic-bezier(0.215, 0.61, 0.355, 1); /* ≈ power3.out */
-
-  --animate-scroll-cue: scroll-cue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-
-  @keyframes scroll-cue {
-    0% {
-      transform: scaleY(0);
-      transform-origin: top;
-    }
-    45% {
-      transform: scaleY(1);
-      transform-origin: top;
-    }
-    55% {
-      transform: scaleY(1);
-      transform-origin: bottom;
-    }
-    100% {
-      transform: scaleY(0);
-      transform-origin: bottom;
-    }
-  }
 }
 
 @media (min-width: 64rem) {
@@ -277,21 +256,6 @@ html[data-stand] .site-header {
   color: var(--color-ceibo);
 }
 
-/* A3. Progreso de lectura. */
-.reading-progress {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 60;
-  height: 2px;
-  background-color: var(--color-ceibo);
-  transform-origin: left center;
-  scale: var(--progress, 0) 1;
-  pointer-events: none;
-}
-html[data-stand] .reading-progress {
-  display: none;
-}
-
 /* A4. Menú "diafragma": un círculo rojo que se abre desde el botón. */
 .menu-diafragma {
   clip-path: circle(0% at var(--mx) var(--my));
@@ -349,8 +313,8 @@ html.loader .site-loader {
   z-index: 100;
   display: grid;
   place-items: center;
-  background-color: var(--color-ceibo);
-  color: var(--color-white);
+  background-color: var(--color-vino);
+  color: var(--color-ceibo);
   animation: loader-curtain 0.95s var(--ease-cortina) 1s forwards;
 }
 .loader-ring circle {
@@ -359,7 +323,7 @@ html.loader .site-loader {
   animation: loader-ring 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 .loader-logo {
-  filter: blur(12px);
+  filter: blur(12px) drop-shadow(0 0 0 rgb(206 49 61 / 0));
   animation: loader-focus 1s var(--ease-soft) forwards;
 }
 @keyframes loader-ring {
@@ -369,7 +333,7 @@ html.loader .site-loader {
 }
 @keyframes loader-focus {
   to {
-    filter: blur(0);
+    filter: blur(0) drop-shadow(0 0 18px rgb(206 49 61 / 0.55));
   }
 }
 @keyframes loader-curtain {
@@ -415,8 +379,21 @@ html.loader .site-loader {
 }
 
 /* ==========================================================================
-   Hero: la lente (5.3)
+   Hero: la lente (5.3), con el mismo fondo vino y glow que "Cómo trabajamos"
    ========================================================================== */
+.hero-bg {
+  background:
+    radial-gradient(55% 65% at 85% 88%, var(--color-vino-glow) 0%, transparent 70%),
+    radial-gradient(35% 45% at 12% 8%, rgb(206 49 61 / 0.12) 0%, transparent 70%),
+    var(--color-vino);
+}
+/* El acento del título brilla en rojo, como el ceibo florecido. */
+.hero-accent {
+  color: var(--color-ceibo);
+  text-shadow:
+    0 0 18px rgb(206 49 61 / 0.45),
+    0 0 48px rgb(206 49 61 / 0.25);
+}
 .hero-canvas,
 .dom-lens {
   opacity: 0;

@@ -103,7 +103,7 @@ export function ContactForm() {
       </div>
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" disabled={status === "sending"} className={`${button.primary} w-full disabled:opacity-60 sm:w-auto`} data-magnetic>
+        <button type="submit" disabled={status === "sending"} className={`${button.primary} w-full disabled:opacity-60 sm:w-auto`}>
           {copy.submit}
           <BtnArrow />
         </button>

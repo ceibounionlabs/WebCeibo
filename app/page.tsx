@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Loader } from "@/components/Loader";
-import { ReadingProgress } from "@/components/ReadingProgress";
 import { FloatingCta } from "@/components/FloatingCta";
 import { Logo } from "@/components/ui/Logo";
 import { MotionRoot } from "@/components/motion/MotionRoot";
@@ -29,7 +28,6 @@ export default function Home() {
         Saltar al contenido
       </a>
       <Loader />
-      <ReadingProgress />
       <Header
         isotipo={<Logo variant="isotipo" label={null} className="h-7" />}
         wordmark={<Logo label={null} className="h-12" />}

@@ -15,7 +15,6 @@ export const hero = {
   lead: "Software a medida para ópticas y laboratorios, hecho por un equipo joven que trabaja con las herramientas que están cambiando cómo se construye software.",
   ctaPrimary: "Hablemos",
   ctaSecondary: "Conocé el lab",
-  scrollCue: "Deslizá",
 } as const;
 
 export const manifesto = {
