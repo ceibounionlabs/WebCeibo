@@ -13,7 +13,7 @@ const total = String(manifesto.statements.length).padStart(2, "0");
  */
 export function Manifesto() {
   return (
-    <section id="nosotros" data-header="light" data-nav="#nosotros" aria-labelledby="manifesto-title" className="bg-paper text-ink">
+    <section id="nosotros" data-header="light" data-nav="#nosotros" aria-labelledby="manifesto-title" className="section-rounded z-[3] bg-paper text-ink">
       <div data-statements className="statements wrap flex flex-col pt-section">
         <div className="flex items-center justify-between gap-6">
           <Eyebrow className="text-muted">{manifesto.eyebrow}</Eyebrow>

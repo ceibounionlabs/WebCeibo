@@ -768,3 +768,54 @@ html:not(.js) .lens-chips {
 .process.is-pinned .process-step p {
   font-size: 1rem;
 }
+
+/* ==========================================================================
+   Footer: hojas del ceibo (B8)
+   ========================================================================== */
+/* Gigantes (~30vh), alineadas abajo y centradas: las de los costados y la
+   base quedan recortadas por los bordes. */
+.footer-leaves {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.5vw;
+  height: 30vh;
+  margin-top: 2rem;
+  overflow: hidden;
+  pointer-events: none;
+}
+.leaves-white {
+  color: rgb(255 255 255 / 0.08);
+}
+.leaves-red {
+  color: var(--color-ceibo);
+}
+.footer-leaf {
+  flex: none;
+  width: auto;
+  height: 100%;
+  /* Recortadas por el borde inferior. */
+  translate: 0 22%;
+  transform-origin: 50% 100%;
+}
+/* Mobile: hojas grandes y recortadas también a los costados. */
+@media (max-width: 63.99rem) {
+  .footer-leaves {
+    height: 22vh;
+    gap: 4vw;
+  }
+}
+
+/* ==========================================================================
+   Transiciones entre secciones (B7): las claras terminan redondeadas y se
+   superponen a la siguiente.
+   ========================================================================== */
+.section-rounded {
+  position: relative;
+  margin-bottom: -2.5rem;
+  border-bottom-left-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
+}
+.section-rounded + section {
+  padding-top: calc(var(--spacing-section) + 2.5rem);
+}

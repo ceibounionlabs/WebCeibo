@@ -82,7 +82,7 @@ export function ContactForm() {
       </div>
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className={`${button.primary} w-full sm:w-auto`}>
+        <button type="submit" className={`${button.primary} w-full sm:w-auto`} data-magnetic>
           {copy.submit}
           <BtnArrow />
         </button>

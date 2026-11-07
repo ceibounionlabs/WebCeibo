@@ -172,3 +172,9 @@ export const contactSection = {
   },
   socialTitle: "Redes",
 } as const;
+
+export const footer = {
+  eyebrow: "hablemos",
+  cta: "Construyamos lo que viene",
+  ctaButton: "Hablemos",
+} as const;

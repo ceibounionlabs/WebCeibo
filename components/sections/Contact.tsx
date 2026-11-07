@@ -31,13 +31,14 @@ export function Contact() {
             <a
               href={wa ?? "#contacto-form"}
               className={button.primary}
+              data-magnetic
               {...(wa ? { target: "_blank", rel: "noopener noreferrer" } : { "data-confirmar": "" })}
             >
               <WhatsAppIcon className="size-5" />
               {copy.whatsappLabel}
               <BtnArrow />
             </a>
-            <a href={mail ?? "#contacto-form"} className={button.ghostDark}>
+            <a href={mail ?? "#contacto-form"} className={button.ghostDark} data-magnetic>
               <MailIcon className="size-5" />
               <Confirmable value={contact.email} />
               <BtnArrow />

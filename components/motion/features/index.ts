@@ -5,9 +5,20 @@ import { statementsFeature } from "./statements";
 import { flashlightFeature } from "./flashlight";
 import { treeFeature } from "./tree";
 import { marqueeFeature, redOpenFeature } from "./red-open";
+import { footerLeavesFeature, magneticFeature } from "./closing";
 
 /**
  * Efectos del motor, en orden de aparición en la página (importa para los
  * pins: ScrollTrigger calcula posiciones de arriba hacia abajo).
  */
-export const features: Feature[] = [statementsFeature, flashlightFeature, treeFeature, redOpenFeature, marqueeFeature, revealFeature, focusTitlesFeature];
+export const features: Feature[] = [
+  statementsFeature,
+  flashlightFeature,
+  treeFeature,
+  redOpenFeature,
+  marqueeFeature,
+  footerLeavesFeature,
+  revealFeature,
+  focusTitlesFeature,
+  magneticFeature,
+];

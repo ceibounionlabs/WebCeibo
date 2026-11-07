@@ -5,7 +5,7 @@ import { ServiceCards } from "@/components/services/ServiceCards";
 /** Qué hacemos: tarjetas que se expanden (B3) con zoom al detalle (B3b). */
 export function Services() {
   return (
-    <section id="que-hacemos" data-header="light" data-nav="#que-hacemos" aria-labelledby="services-title" className="bg-white py-section text-ink">
+    <section id="que-hacemos" data-header="light" data-nav="#que-hacemos" aria-labelledby="services-title" className="section-rounded z-[2] bg-white py-section text-ink">
       <div className="wrap">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="lg:col-span-7">
