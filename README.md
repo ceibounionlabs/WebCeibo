@@ -27,7 +27,7 @@ npm run typecheck
 | Qué | Dónde |
 |---|---|
 | Textos de todas las secciones (incluidos los borradores de CAMBIOS-v2) | `lib/content.ts` |
-| Datos pendientes: dominio, WhatsApp, mail, plazo, redes, ciudad, Formspree | `lib/site.ts` |
+| Datos de contacto y pendientes: dominio, WhatsApp, mail, redes, ciudad | `lib/site.ts` |
 | Colores, tipografía, escala de textos, radios, espaciado y eases en CSS | `app/globals.css`, bloque `@theme` |
 | Eases, duraciones y distancias de todas las animaciones | `lib/motion.ts` |
 | Logos | `assets/logo/*.svg` |
@@ -38,9 +38,8 @@ npm run typecheck
 
 Mientras un dato de `lib/site.ts` siga pendiente, la web muestra `[CONFIRMAR …]` con borde punteado. Para encontrarlos en el código, buscá `CONFIRMAR`.
 
-- **`lib/site.ts`:** dominio, número de WhatsApp, mail, plazo de respuesta (hoy "menos de 48 horas"), Instagram (también lo usa el botón de vidrio del header) y LinkedIn, ciudad, ID de Formspree.
+- **`lib/site.ts`:** dominio, número de WhatsApp, mail y LinkedIn. (Instagram y ciudad ya están cargados.)
 - **`lib/content.ts`, borradores de CAMBIOS-v2 que hay que revisar:** los tres enunciados de Nosotros (B1), el contenido del detalle de cada servicio (B3b) y la lista de "Lo que resolvemos" (B5).
-- **Formulario:** crear el formulario en [Formspree](https://formspree.io) y poner su ID en `contact.formspreeId`. Mientras tanto, el formulario arma un mail con los datos.
 - **B9 (preguntas frecuentes) y B10 (equipo):** no se hicieron porque faltan las respuestas y las fotos.
 
 ## Estructura

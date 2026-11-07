@@ -149,15 +149,6 @@ export const future = {
 export const contactSection = {
   titleLead: "¿Tenés una idea?",
   titleAccent: "Hagámosla crecer juntos.",
-  bodyBefore: "Contanos qué necesita tu óptica o tu laboratorio. Te respondemos en",
   whatsappLabel: "Escribinos por WhatsApp",
-  form: {
-    title: "O dejanos tu mensaje",
-    name: "Nombre",
-    email: "Email",
-    company: "Óptica, laboratorio o empresa",
-    message: "¿Qué te gustaría resolver?",
-    submit: "Enviar",
-  },
   socialTitle: "Redes",
 } as const;

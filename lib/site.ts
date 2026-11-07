@@ -25,8 +25,8 @@ export const site = {
   // CONFIRMAR dominio, sin protocolo. Ej: "ceibounionlabs.com"
   domain: confirmar("dominio") as string | Pending,
 
-  // CONFIRMAR ciudad, para el footer. Ej: "Rosario, Santa Fe"
-  city: confirmar("ciudad") as string | Pending,
+  // Ciudad, para el footer.
+  city: "Casilda, Santa Fe" as string | Pending,
 } as const;
 
 export const contact = {
@@ -38,16 +38,9 @@ export const contact = {
   // CONFIRMAR mail de contacto. Ej: "hola@ceibounionlabs.com"
   email: confirmar("mail") as string | Pending,
 
-  // CONFIRMAR plazo de respuesta (el brief propone "menos de 48 horas").
-  responseTime: "menos de 48 horas" as string | Pending,
-  responseTimeConfirmed: false,
-
-  // CONFIRMAR ID del formulario de Formspree (formspree.io/f/<ID>). Mientras sea null,
-  // el formulario arma un mail y abre la app de correo.
-  formspreeId: null as string | null,
-
-  // CONFIRMAR redes. URL completa o null para no mostrarla.
-  instagram: confirmar("Instagram") as string | Pending | null,
+  // Redes. URL completa o null para no mostrarla.
+  instagram: "https://www.instagram.com/ceibounionlabs" as string | Pending | null,
+  // CONFIRMAR LinkedIn (o null para no mostrarlo).
   linkedin: confirmar("LinkedIn") as string | Pending | null,
 } as const;
 

@@ -132,7 +132,6 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
   const shownTheme: Theme = open ? "red" : theme;
   const wa = whatsappHref();
   const mail = mailHref();
-  // Instagram: CONFIRMAR la URL en lib/site.ts (contact.instagram).
   const ig = typeof contact.instagram === "string" ? contact.instagram : null;
 
   return (
