@@ -76,3 +76,8 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 - Fuera todas las animaciones de aparición y las que cambian con el scroll: reveals, títulos que se enfocan, plantas que brotan, entrada del hero y del header, linterna de la grilla, hojas del footer que suben y se mecen, links del menú desenfocados. También el loader de primera visita (A7).
 - Quedan las interacciones (lente, menú diafragma, zoom de servicios, lupita, hovers) y el scroll suave.
 - Fondo oscuro: de vino con glow a marrón corteza `#2B1E19` plano. El acento del hero en rojo liso. El único brillo que queda es el del ceibo florecido en "Cómo trabajamos".
+
+## "¿Se te cayó una idea?"
+
+- La franja roja suma el ceibo en blanco. La hoja de la punta se suelta al llegar al centro de la pantalla y cae hasta Contacto a la velocidad del scroll (queda fija en el centro: el foco está en la hoja), meciéndose y creciendo; al cruzar al blanco pasa a rojo y aterriza sobre el título nuevo, "¿Se te cayó una idea? Contactanos.".
+- Es la única animación ligada al scroll. Sin JS o con reduced motion, la hoja ya está en Contacto. GSAP se carga recién cuando la sección roja se acerca.

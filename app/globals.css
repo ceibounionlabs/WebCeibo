@@ -443,3 +443,18 @@ html[data-stand] .stand-qr {
     left: 6rem;
   }
 }
+
+/* ==========================================================================
+   "¿Se te cayó una idea?": la hoja que cae del ceibo hasta Contacto
+   ========================================================================== */
+.seed-leaf {
+  overflow: visible;
+  transition: color 0.35s var(--ease-soft);
+}
+.seed-leaf.is-over-red {
+  color: var(--color-white);
+}
+[data-seed],
+[data-seed-zoom] {
+  will-change: transform;
+}

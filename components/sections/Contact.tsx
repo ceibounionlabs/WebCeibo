@@ -3,9 +3,15 @@ import { contact, isPending, mailHref, whatsappHref } from "@/lib/site";
 import { Confirmable } from "@/components/ui/Confirmable";
 import { button } from "@/components/ui/button";
 import { BtnArrow, InstagramIcon, MailIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { isotipoParts } from "@/lib/brand";
 
-/** Hablemos: el título y los canales de contacto (WhatsApp, mail y redes). */
+/**
+ * Hablemos: la "idea" (la hoja que se cayó del ceibo) apoyada sobre el título,
+ * y los canales de contacto. La caída la anima components/SeedFall.tsx; sin
+ * JS o con reduced motion, la hoja ya está acá.
+ */
 export function Contact() {
+  const seed = isotipoParts(["hoja-1"]);
   const wa = whatsappHref();
   const mail = mailHref();
   const socials = [
@@ -16,9 +22,20 @@ export function Contact() {
   return (
     <section id="hablemos" data-header="light" aria-labelledby="contact-title" className="bg-white py-section text-ink">
       <div className="wrap grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-x-8">
-        <h2 id="contact-title" className="text-title font-medium text-balance lg:col-span-7">
-          <span className="block">{copy.titleLead}</span> <span className="block text-ceibo">{copy.titleAccent}</span>
-        </h2>
+        <div className="lg:col-span-7">
+          <div data-seed-slot aria-hidden="true" className="relative mb-6 h-14 lg:h-16" style={{ aspectRatio: seed.aspect }}>
+            <div data-seed className="absolute inset-0 z-20">
+              <div data-seed-zoom className="size-full">
+                <svg data-seed-leaf viewBox={seed.viewBox} className="seed-leaf size-full text-ceibo">
+                  <path d={seed.paths[0]?.d} fill="currentColor" fillRule="evenodd" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <h2 id="contact-title" className="text-title font-medium text-balance">
+            <span className="block">{copy.titleLead}</span> <span className="block text-ceibo">{copy.titleAccent}</span>
+          </h2>
+        </div>
 
         <div className="lg:col-span-4 lg:col-start-9">
           <div className="flex flex-col gap-3">

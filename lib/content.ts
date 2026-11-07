@@ -147,8 +147,8 @@ export const future = {
 } as const;
 
 export const contactSection = {
-  titleLead: "¿Tenés una idea?",
-  titleAccent: "Hagámosla crecer juntos.",
+  titleLead: "¿Se te cayó una idea?",
+  titleAccent: "Contactanos.",
   whatsappLabel: "Escribinos por WhatsApp",
   socialTitle: "Redes",
 } as const;
