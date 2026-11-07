@@ -404,3 +404,34 @@ html.loader .site-loader {
     translate: 0 20px;
   }
 }
+
+/* ==========================================================================
+   Hero: la lente (5.3)
+   ========================================================================== */
+.hero-canvas,
+.dom-lens {
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-soft);
+}
+[data-lens="dom"] .dom-lens,
+[data-lens="3d"] .hero-canvas {
+  opacity: 1;
+}
+/* Los chips reservan su lugar desde el primer pintado (sin salto de layout)
+   y se muestran cuando hay lente. Sin JS o con reduced motion no existen. */
+.lens-chips {
+  display: flex;
+  visibility: hidden;
+}
+[data-lens="dom"] .lens-chips,
+[data-lens="3d"] .lens-chips {
+  visibility: visible;
+}
+html:not(.js) .lens-chips {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lens-chips {
+    display: none;
+  }
+}
