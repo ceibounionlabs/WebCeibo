@@ -16,14 +16,14 @@ export function Manifesto() {
     >
       <div className="wrap">
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-8">
-          <h2 id="manifesto-title" className="max-w-[18ch] text-title font-medium text-balance lg:col-span-7" data-focus>
+          <h2 id="manifesto-title" className="max-w-[18ch] text-title font-medium text-balance lg:col-span-7">
             {manifesto.title}
           </h2>
           <div className="lg:col-span-5 lg:pt-3">
-            <p className="text-lead text-muted text-pretty" data-reveal>
+            <p className="text-lead text-muted text-pretty">
               {manifesto.body}
             </p>
-            <div className="mt-8 flex items-start gap-4" data-reveal>
+            <div className="mt-8 flex items-start gap-4">
               <Logo variant="isotipo" label={null} className="h-10 shrink-0 text-ceibo" />
               <p className="text-ink/80 text-pretty">{manifesto.closing}</p>
             </div>
@@ -32,7 +32,7 @@ export function Manifesto() {
 
         <ol className="mt-16 grid gap-10 border-t border-ink/10 pt-12 lg:mt-24 lg:grid-cols-3 lg:gap-x-10">
           {manifesto.statements.map((text, i) => (
-            <li key={i} data-reveal>
+            <li key={i}>
               <span aria-hidden="true" className="text-sm font-medium tracking-[0.18em] text-ceibo tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </span>

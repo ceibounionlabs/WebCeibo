@@ -45,31 +45,10 @@ export const smoothScroll = {
   anchorDuration: 1.4,
 } as const;
 
-/** Reveal estándar (5.1): sube 50px y aparece, una sola vez, al 85% del viewport. */
-export const reveal = {
-  from: { y: 50, opacity: 0 },
-  to: { y: 0, opacity: 1 },
-  duration: duration.reveal,
-  ease: ease.main,
-  /** Escalonado entre elementos que entran juntos (0.08–0.12 s). */
-  stagger: 0.1,
-  start: "top 85%",
-} as const;
-
-/** Firma "enfocar" (5.2) en títulos de sección. */
-export const focusTitle = {
-  from: { filter: "blur(10px)", opacity: 0, y: 30 },
-  duration: duration.reveal,
-  ease: ease.main,
-  stagger: 0.1,
-  start: "top 85%",
-} as const;
-
 /** Zoom al detalle de servicio (B3b). */
 export const serviceZoom = {
   duration: 0.9,
   contentDelay: 0.4,
-  contentStagger: 0.06,
   /** La página de atrás se aleja y se desenfoca. */
   backdrop: { scale: 0.96, filter: "blur(4px)", opacity: 0.6 },
   /** Cambio entre servicios sin cerrar. */
@@ -78,17 +57,6 @@ export const serviceZoom = {
   /** Con prefers-reduced-motion: fundido simple. */
   reducedFade: 0.2,
 } as const;
-
-/** Grilla con linterna (B5). */
-export const flashlight = {
-  radius: 160,
-  enter: { scale: 0.9, opacity: 0 },
-  /** Escalonado total, repartido en orden aleatorio entre las celdas. */
-  staggerAmount: 0.6,
-} as const;
-
-/** Footer con hojas (B8). */
-export const footerLeaves = { rise: 30, stagger: 0.06, sway: 2 } as const;
 
 /** Lente del hero (5.3). */
 export const lens = {

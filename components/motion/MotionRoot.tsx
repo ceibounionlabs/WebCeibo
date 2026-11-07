@@ -7,9 +7,9 @@ import { scrollToHash } from "@/lib/scroll";
  * Raíz del movimiento global.
  * - Navegación por anclas (#id): scroll suave con Lenis si está activo, nativo
  *   si no, y foco accesible en el destino.
- * - Carga el motor de animación (GSAP + ScrollTrigger + Lenis) recién después
- *   de hidratar, para no competir con el primer render (LCP / TBT). Con
- *   `prefers-reduced-motion: reduce` ni siquiera se descarga.
+ * - Carga el scroll suave (Lenis) recién después de hidratar, para no
+ *   competir con el primer render. Con `prefers-reduced-motion: reduce` ni
+ *   siquiera se descarga.
  */
 export function MotionRoot() {
   useEffect(() => {

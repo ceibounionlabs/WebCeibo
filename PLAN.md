@@ -70,3 +70,9 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 - Header siempre visible (ya no se oculta al bajar).
 - Hero con el estilo de "Cómo trabajamos": fondo vino con glow rojo, título blanco y el acento en rojo que brilla. El loader también pasa a vino, con el isotipo rojo que se enfoca y brilla.
 - Sin botones magnéticos (5.7).
+
+## Tercera ronda de ajustes
+
+- Fuera todas las animaciones de aparición y las que cambian con el scroll: reveals, títulos que se enfocan, plantas que brotan, entrada del hero y del header, linterna de la grilla, hojas del footer que suben y se mecen, links del menú desenfocados. También el loader de primera visita (A7).
+- Quedan las interacciones (lente, menú diafragma, zoom de servicios, lupita, hovers) y el scroll suave.
+- Fondo oscuro: de vino con glow a marrón corteza `#2B1E19` plano. El acento del hero en rojo liso. El único brillo que queda es el del ceibo florecido en "Cómo trabajamos".

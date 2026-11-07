@@ -14,9 +14,8 @@
   --color-ceibo-100: #f7cfcb;
   --color-ceibo-200: #f0a8a6;
   --color-ceibo-300: #e37a7f;
-  /* Vino oscuro derivado del rojo: el único fondo oscuro (no se usa negro). */
-  --color-vino: #2a1013;
-  --color-vino-glow: #4a161b;
+  /* Marrón corteza (la del ceibo): el único fondo oscuro, siempre plano (no se usa negro). */
+  --color-corteza: #2b1e19;
   --color-ink: #141113; /* texto sobre claro */
   --color-paper: #f7f3f1; /* blanco roto cálido: secciones claras alternas */
   --color-muted: #6b6366; /* texto secundario sobre claro */
@@ -82,7 +81,7 @@
   }
 
   body {
-    @apply bg-vino font-sans text-ink;
+    @apply bg-corteza font-sans text-ink;
     overflow-x: clip;
   }
 
@@ -132,17 +131,6 @@
   mask: var(--logo-src) center / contain no-repeat;
 }
 
-/* ==========================================================================
-   Estados iniciales de animación.
-   Solo existen con JS (clase .js en <html>) y si el usuario no pidió menos
-   movimiento. Sin JS, o si las animaciones no arrancan, todo queda visible.
-   ========================================================================== */
-@media (prefers-reduced-motion: no-preference) {
-  .js:not(.no-motion) :is([data-reveal], [data-focus]) {
-    opacity: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -163,13 +151,6 @@
 /* ==========================================================================
    Navegación (CAMBIOS-v2, bloque A)
    ========================================================================== */
-:root {
-  /* Demora de las entradas (header, hero): más larga si hay loader. */
-  --intro-delay: 0.1s;
-}
-html.loader {
-  --intro-delay: 1.55s;
-}
 
 /* A1. Tema del header según la sección de abajo. */
 .site-header {
@@ -271,26 +252,6 @@ html[data-stand] .site-header {
     clip-path 0.7s var(--ease-lente),
     visibility 0s;
 }
-.menu-item {
-  opacity: 0;
-  translate: 0 30px;
-  filter: blur(8px);
-  transition:
-    opacity 0.25s,
-    translate 0.25s,
-    filter 0.25s;
-}
-.menu-diafragma[data-open] .menu-item {
-  opacity: 1;
-  translate: 0 0;
-  filter: blur(0);
-  transition:
-    opacity 0.7s var(--ease-lente),
-    translate 0.7s var(--ease-lente),
-    filter 0.7s var(--ease-lente);
-  transition-delay: calc(0.15s + var(--i, 0) * 0.06s);
-}
-
 /* A6. CTA flotante en mobile. */
 .cta-flotante {
   translate: 0 calc(100% + 1.5rem + env(safe-area-inset-bottom));
@@ -303,97 +264,9 @@ html:is([data-menu-open], [data-detail-open], [data-stand]) .cta-flotante {
   translate: 0 calc(100% + 1.5rem + env(safe-area-inset-bottom));
 }
 
-/* A7. Loader de primera visita: corre en CSS puro, antes de que llegue el JS. */
-.site-loader {
-  display: none;
-}
-html.loader .site-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: grid;
-  place-items: center;
-  background-color: var(--color-vino);
-  color: var(--color-ceibo);
-  animation: loader-curtain 0.95s var(--ease-cortina) 1s forwards;
-}
-.loader-ring circle {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: loader-ring 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-.loader-logo {
-  filter: blur(12px) drop-shadow(0 0 0 rgb(206 49 61 / 0));
-  animation: loader-focus 1s var(--ease-soft) forwards;
-}
-@keyframes loader-ring {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes loader-focus {
-  to {
-    filter: blur(0) drop-shadow(0 0 18px rgb(206 49 61 / 0.55));
-  }
-}
-@keyframes loader-curtain {
-  to {
-    translate: 0 -100%;
-    visibility: hidden;
-  }
-}
-
-/* Entradas: el header cae (A1) y los textos del hero suben escalonados (A7). */
-@media (prefers-reduced-motion: no-preference) {
-  /* backwards (no both): si la animación queda activa sobre opacity, el
-     backdrop-filter del vidrio deja de funcionar. */
-  .header-in {
-    animation: header-in 1.5s var(--ease-soft) var(--intro-delay) backwards;
-  }
-  .hero-in {
-    animation: hero-in 1.4s var(--ease-soft) both;
-    animation-delay: calc(var(--intro-delay) + var(--i, 0) * 0.2s);
-  }
-  /* El título no se desvanece (es el LCP): solo sube. */
-  .hero-rise {
-    animation: hero-rise 1.4s var(--ease-soft) both;
-    animation-delay: calc(var(--intro-delay) + var(--i, 0) * 0.2s);
-  }
-}
-@keyframes header-in {
-  from {
-    opacity: 0;
-    translate: 0 -20%;
-  }
-}
-@keyframes hero-in {
-  from {
-    opacity: 0;
-    translate: 0 20px;
-  }
-}
-@keyframes hero-rise {
-  from {
-    translate: 0 20px;
-  }
-}
-
 /* ==========================================================================
-   Hero: la lente (5.3), con el mismo fondo vino y glow que "Cómo trabajamos"
+   Hero: la lente (5.3)
    ========================================================================== */
-.hero-bg {
-  background:
-    radial-gradient(55% 65% at 85% 88%, var(--color-vino-glow) 0%, transparent 70%),
-    radial-gradient(35% 45% at 12% 8%, rgb(206 49 61 / 0.12) 0%, transparent 70%),
-    var(--color-vino);
-}
-/* El acento del título brilla en rojo, como el ceibo florecido. */
-.hero-accent {
-  color: var(--color-ceibo);
-  text-shadow:
-    0 0 18px rgb(206 49 61 / 0.45),
-    0 0 48px rgb(206 49 61 / 0.25);
-}
 .hero-canvas,
 .dom-lens {
   opacity: 0;
@@ -405,7 +278,6 @@ html.loader .site-loader {
 }
 /* Los chips reservan su lugar desde el primer pintado (sin salto de layout)
    y se muestran cuando hay lente. Sin JS o con reduced motion no existen. */
-
 
 /* ==========================================================================
    Qué hacemos: lista de servicios; cada fila abre su detalle (B3b)
@@ -463,7 +335,7 @@ html.loader .site-loader {
 }
 
 /* ==========================================================================
-   Lo que resolvemos: grilla con linterna (B5)
+   Lo que resolvemos: grilla simple
    ========================================================================== */
 .flash-cell {
   position: relative;
@@ -474,38 +346,6 @@ html.loader .site-loader {
 .flash-cell:hover {
   background-color: rgb(206 49 61 / 0.06);
 }
-/* Borde de 1px iluminado: gradiente radial recortado al borde con máscara. */
-.flash-cell::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: radial-gradient(
-    160px circle at calc(var(--mx, -999px) - var(--cx, 0px)) calc(var(--my, -999px) - var(--cy, 0px)),
-    rgb(206 49 61 / 0.9),
-    transparent 70%
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box exclude,
-    linear-gradient(#000 0 0);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
-.flashlight-grid.is-lit .flash-cell::before {
-  opacity: 1;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .js:not(.no-motion) [data-cell] {
-    opacity: 0;
-  }
-}
-
 /* ==========================================================================
    Footer: hojas del ceibo (B8)
    ========================================================================== */
@@ -570,14 +410,8 @@ html[data-stand] .stand-qr {
 /* ==========================================================================
    Cómo trabajamos: de la semilla a la flor (formato de la referencia)
    ========================================================================== */
-.process-bg {
-  background:
-    radial-gradient(60% 70% at 82% 78%, var(--color-vino-glow) 0%, transparent 70%),
-    var(--color-vino);
-}
-/* Línea de suelo: del blanco tenue al rojo, como la planta que crece. */
 .process-ground {
-  background: linear-gradient(90deg, rgb(255 255 255 / 0.18), var(--color-ceibo-300) 70%, var(--color-ceibo));
+  background-color: rgb(255 255 255 / 0.18);
 }
 /* El ceibo florecido brilla. */
 .process-glow {

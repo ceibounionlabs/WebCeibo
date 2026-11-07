@@ -24,7 +24,7 @@ export function Footer() {
   const leaves = leafShapes();
 
   return (
-    <footer id="pie" data-header="dark" className="relative overflow-hidden bg-vino text-white">
+    <footer id="pie" data-header="dark" className="relative overflow-hidden bg-corteza text-white">
       <div className="wrap grid gap-14 pt-section pb-14 lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-5">
           <Logo className="h-14" />
@@ -101,9 +101,9 @@ export function Footer() {
       </div>
 
       {/* Las hojas del ceibo, gigantes y recortadas por el borde inferior. */}
-      <div aria-hidden="true" data-leaves className={`footer-leaves leaves-${LEAF_TONE}`}>
+      <div aria-hidden="true" className={`footer-leaves leaves-${LEAF_TONE}`}>
         {leaves.map((leaf) => (
-          <svg key={leaf.id} viewBox={leaf.viewBox} data-leaf className="footer-leaf" style={{ aspectRatio: leaf.aspect }}>
+          <svg key={leaf.id} viewBox={leaf.viewBox} className="footer-leaf" style={{ aspectRatio: leaf.aspect }}>
             <path d={leaf.d} fillRule="evenodd" fill="currentColor" />
           </svg>
         ))}

@@ -18,14 +18,14 @@ export function Contact() {
     <section id="hablemos" data-header="light" aria-labelledby="contact-title" className="bg-white py-section text-ink">
       <div className="wrap grid gap-16 lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-6">
-          <h2 id="contact-title" className="text-title font-medium text-balance lg:mt-8" data-focus>
+          <h2 id="contact-title" className="text-title font-medium text-balance lg:mt-8">
             <span className="block">{copy.titleLead}</span> <span className="block text-ceibo">{copy.titleAccent}</span>
           </h2>
-          <p className="mt-8 max-w-[32rem] text-lead text-muted text-pretty lg:mt-10" data-reveal>
+          <p className="mt-8 max-w-[32rem] text-lead text-muted text-pretty lg:mt-10">
             {copy.bodyBefore} <Confirmable value={contact.responseTime} confirmed={contact.responseTimeConfirmed} />.
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap" data-reveal>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={wa ?? "#contacto-form"}
               className={button.primary}
@@ -48,7 +48,7 @@ export function Contact() {
           )}
 
           {socials.length > 0 && (
-            <div className="mt-14 border-t border-ink/10 pt-8" data-reveal>
+            <div className="mt-14 border-t border-ink/10 pt-8">
               <h3 className="text-sm font-medium text-muted">{copy.socialTitle}</h3>
               <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
                 {socials.map((s) => (
@@ -69,7 +69,7 @@ export function Contact() {
           )}
         </div>
 
-        <div className="lg:col-span-5 lg:col-start-8" data-reveal>
+        <div className="lg:col-span-5 lg:col-start-8">
           <ContactForm />
         </div>
       </div>

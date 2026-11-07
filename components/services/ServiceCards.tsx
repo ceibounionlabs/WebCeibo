@@ -112,16 +112,7 @@ export function ServiceCards() {
         const scale = fs / parseFloat(getComputedStyle(el).fontSize);
         gsap.from(el, { x: from.left - to.left, y: from.top - to.top, scale, transformOrigin: "0 0", duration: zoom.duration, ease: "lente", clearProps: "transform" });
       }
-      gsap.from(content.querySelectorAll("[data-detail-item]"), {
-        filter: "blur(8px)",
-        y: 20,
-        opacity: 0,
-        duration: 0.7,
-        ease: "lente",
-        stagger: zoom.contentStagger,
-        delay: zoom.contentDelay,
-        clearProps: "filter,transform,opacity",
-      });
+      gsap.from(content, { opacity: 0, duration: 0.35, delay: zoom.contentDelay, ease: "power1.out", clearProps: "opacity" });
       gsap.to(backdrop(), {
         ...zoom.backdrop,
         transformOrigin: `50% ${window.scrollY + window.innerHeight / 2}px`,
@@ -176,7 +167,7 @@ export function ServiceCards() {
       const dBg = root.querySelector<HTMLElement>("[data-flip-id^='bg-']")!;
       const dNum = root.querySelector<HTMLElement>("[data-flip-id^='num-']")!;
       const dTitle = root.querySelector<HTMLElement>("[data-flip-id^='title-']")!;
-      gsap.to(contentRef.current!.querySelectorAll("[data-detail-item]"), { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power1.in" });
+      gsap.to(contentRef.current!, { opacity: 0, duration: 0.2, ease: "power1.in" });
       Flip.fit(dBg, c.bg!, { duration: 0.8, ease: "lente", props: "borderRadius" });
       for (const [el, target] of [
         [dNum, c.num!],
@@ -271,7 +262,7 @@ export function ServiceCards() {
 
   return (
     <>
-      <ul ref={listRef} className="service-list border-t border-ink/10" data-reveal>
+      <ul ref={listRef} className="service-list border-t border-ink/10">
         {cards.map((c, i) => (
           <li key={c.slug} className="service-row group relative border-b border-ink/10">
             <span aria-hidden="true" data-flip-id={`bg-${c.slug}`} className="service-row-bg" />

@@ -10,7 +10,7 @@ import type { LensShared, TitleLayout } from "./shared";
 
 const FONT = "/fonts/google-sans-500.ttf";
 /** Fondo del hero (lo que la lente ve detrás del texto) y colores del lema. */
-const BG = colors.vino;
+const BG = colors.corteza;
 const LEAD = colors.white;
 const ACCENT = colors.ceibo;
 const LENS_Z = 0.6;

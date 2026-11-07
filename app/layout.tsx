@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2A1013",
+  themeColor: "#2B1E19",
   colorScheme: "light",
   // Para que env(safe-area-inset-*) funcione en iPhone (CTA flotante).
   viewportFit: "cover",
@@ -63,20 +63,14 @@ export const viewport: Viewport = {
 
 /**
  * Boot script, antes del primer pintado:
- * - `.js`: los estados ocultos de las animaciones solo existen con JS.
+ * - `.js`: indica que hay JS.
  * - `data-stand`: modo stand (?stand=1).
- * - `.loader`: loader solo en la primera visita (sessionStorage), sin reduced
- *   motion y fuera del modo stand.
  * - `.glass-distort`: distorsión del vidrio solo en Chromium de escritorio.
- * - Failsafe: si el motor de animación no arrancó a los 4 s, se muestra todo.
  */
 const bootScript = `(function(d){
 d.classList.add('js');
-var stand=/[?&]stand=1(&|$)/.test(location.search);if(stand)d.setAttribute('data-stand','1');
-var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-try{if(!stand&&!rm&&!sessionStorage.getItem('ceibo-intro')){d.classList.add('loader');sessionStorage.setItem('ceibo-intro','1')}}catch(e){}
+if(/[?&]stand=1(&|$)/.test(location.search))d.setAttribute('data-stand','1');
 try{var u=navigator.userAgentData;if(u&&!u.mobile&&u.brands.some(function(b){return b.brand==='Chromium'})&&matchMedia('(hover: hover) and (pointer: fine)').matches)d.classList.add('glass-distort')}catch(e){}
-setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('no-motion')},4000);
 })(document.documentElement)`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -6,7 +6,7 @@ Web de **Ceibo Union Labs**. La especificación está en [`BRIEF.md`](./BRIEF.md
 
 ## Paleta
 
-Rojo ceibo `#CE313D` (principal, en bloques grandes con texto blanco), blanco, paper `#F7F3F1` y, como único fondo oscuro, un vino `#2A1013` derivado del rojo con un glow rojo (hero, "Cómo trabajamos" y footer; no se usa negro de fondo). Los tintes `ceibo-100/200/300` solo se usan en las etapas de "Cómo trabajamos". Todo está en el bloque `@theme` de `app/globals.css` y, para el código JS (3D, imágenes generadas), en `lib/colors.ts`.
+Rojo ceibo `#CE313D` (principal, en bloques grandes con texto blanco), blanco, paper `#F7F3F1` y, como único fondo oscuro, el marrón corteza `#2B1E19`, siempre plano (hero, "Cómo trabajamos" y footer; no se usa negro ni degradados de fondo). Los tintes `ceibo-100/200/300` solo se usan en las etapas de "Cómo trabajamos". Todo está en el bloque `@theme` de `app/globals.css` y, para el código JS (3D, imágenes generadas), en `lib/colors.ts`.
 
 ## Correr el proyecto
 
@@ -30,7 +30,6 @@ npm run typecheck
 | Datos pendientes: dominio, WhatsApp, mail, plazo, redes, ciudad, Formspree | `lib/site.ts` |
 | Colores, tipografía, escala de textos, radios, espaciado y eases en CSS | `app/globals.css`, bloque `@theme` |
 | Eases, duraciones y distancias de todas las animaciones | `lib/motion.ts` |
-| Cada efecto del scroll (un archivo por efecto) | `components/motion/features/` |
 | Logos | `assets/logo/*.svg` |
 | Color de las hojas del footer (blanco 8% o rojo) | `LEAF_TONE` en `components/Footer.tsx` |
 | Colores para JS (lente 3D, OG, íconos) | `lib/colors.ts` |
@@ -55,7 +54,6 @@ app/
   favicon-32.png/, apple-touch-icon.png/, og.png/   imágenes generadas en build (next/og)
 components/
   Header.tsx              header en píldoras de vidrio, lupita y menú diafragma (A1, A2, A4)
-  Loader.tsx              loader de primera visita, CSS puro (A7)
   FloatingCta.tsx         CTA de WhatsApp en mobile (A6)
   Footer.tsx              footer con las hojas del ceibo (B8)
   StandMode.tsx, StandQr.tsx   modo stand con QR (5.8)
@@ -65,7 +63,6 @@ components/
   motion/
     MotionRoot.tsx        anclas accesibles; carga el motor después de hidratar
     engine.ts             Lenis + ScrollTrigger dentro de gsap.matchMedia
-    features/             un archivo por efecto (reveals, títulos, linterna, etapas, hojas, magnéticos)
   ui/                     Logo, Eyebrow, Confirmable, botones, íconos
 lib/
   content.ts  site.ts  motion.ts  scroll.ts  brand.ts  gsap.ts  load-gsap.ts  ui-flags.ts
@@ -77,11 +74,11 @@ scripts/sync-brand.mjs
 
 ## Rendimiento y accesibilidad
 
-- El título del hero se pinta al instante en HTML (es el LCP). GSAP y sus plugins se cargan después de hidratar; three.js (la lente 3D, ~310 KB comprimido) se carga aparte: en desktop cuando el navegador está libre y en mobile con la primera interacción. Antes de eso hay una lupa DOM.
-- El loader es CSS puro (menos de 2 s, solo en la primera visita) y no tapa el LCP.
-- `prefers-reduced-motion`: sin loader, sin Lenis, sin blur, sin pins, sin lente ni efectos de cursor; todo el contenido visible y estático.
+- Sin animaciones de aparición: el contenido está siempre a la vista. Solo hay interacciones (la lente, el menú, el zoom de servicios, los hovers) y el scroll suave.
+- El título del hero se pinta al instante en HTML (es el LCP). Lenis se carga después de hidratar; GSAP solo cuando se abre un servicio; three.js (la lente 3D, ~310 KB comprimido) se carga aparte: en desktop cuando el navegador está libre y en mobile con la primera interacción. Antes de eso hay una lupa DOM.
+- `prefers-reduced-motion`: sin Lenis ni lente; el detalle de servicio abre con un fundido corto.
 - Sin JS, todo el contenido se lee.
-- Lighthouse mobile medido localmente: Performance 96–98, Accesibilidad 100, Buenas prácticas 100, SEO 100 (CLS 0).
+- Lighthouse mobile medido localmente: Performance 96–97, Accesibilidad 100, Buenas prácticas 100, SEO 100 (CLS 0).
 - Probado en Chromium a 360, 390, 768, 1024 y 1440 px, con teclado, con reduced motion y sin JS. **Falta probar en un iPhone (Safari) y en Android reales**, sobre todo el vidrio del header, el zoom de servicios y la lente.
 
 ## Deploy en Vercel

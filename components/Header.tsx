@@ -144,7 +144,7 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
           "transition-[translate] duration-600 ease-lente",
         ].join(" ")}
       >
-        <div className="header-in wrap flex items-center justify-between gap-2">
+        <div className="wrap flex items-center justify-between gap-2">
           {/* 1. Logo */}
           <a href="#top" className="glass-pill pointer-events-auto h-12 gap-2.5 pr-5 pl-4" aria-label="Ceibo Union Labs, ir al inicio">
             <GlassLayers />
@@ -226,7 +226,7 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
         <nav aria-label="Menú" className="wrap flex h-full flex-col justify-between pt-[calc(var(--spacing-header)+2.5rem)] pb-[calc(2rem+env(safe-area-inset-bottom))]">
           <ul className="space-y-1">
             {menuItems.map((item, i) => (
-              <li key={item.href} className="menu-item" style={{ "--i": i } as React.CSSProperties}>
+              <li key={item.href}>
                 <a
                   href={item.href}
                   onClick={(e) => onMenuLink(e, item.href)}
@@ -241,7 +241,7 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
             ))}
           </ul>
 
-          <div className="menu-item space-y-6" style={{ "--i": menuItems.length } as React.CSSProperties}>
+          <div className="space-y-6">
             <div className="flex flex-col gap-2.5 sm:flex-row">
               <a href={wa ?? "#hablemos"} onClick={wa ? undefined : (e) => onMenuLink(e, "#hablemos")} className={`${button.inverse} w-full sm:w-auto`} {...(wa ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
                 <WhatsAppIcon className="size-5" />

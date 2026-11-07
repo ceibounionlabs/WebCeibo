@@ -5,8 +5,8 @@
 export const colors = {
   ceibo: "#CE313D",
   ceiboDeep: "#A8262F",
-  /** Vino oscuro derivado del rojo: el fondo oscuro de la marca (no hay negro). */
-  vino: "#2A1013",
+  /** Marrón corteza (la del ceibo): el fondo oscuro de la marca, plano (no hay negro). */
+  corteza: "#2B1E19",
   paper: "#F7F3F1",
   white: "#FFFFFF",
   ink: "#141113",

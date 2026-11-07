@@ -17,10 +17,10 @@ export function Services() {
       <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--spacing-header)+2rem)]">
-            <h2 id="services-title" className="max-w-[15ch] text-title font-medium text-balance" data-focus>
+            <h2 id="services-title" className="max-w-[15ch] text-title font-medium text-balance">
               {services.title}
             </h2>
-            <p className="mt-6 max-w-[26rem] text-lead text-muted text-pretty" data-reveal>
+            <p className="mt-6 max-w-[26rem] text-lead text-muted text-pretty">
               {services.lead}
             </p>
           </div>
