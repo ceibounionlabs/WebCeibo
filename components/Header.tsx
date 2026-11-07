@@ -108,7 +108,7 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
     if (lenis) lenis.stop();
     else html.style.overflow = "hidden";
     setUiFlag("menu", true);
-    setPageInert(true);
+    setPageInert(true, ["cabecera"]);
     const focusFrame = requestAnimationFrame(() => menuRef.current?.querySelector<HTMLElement>("a")?.focus());
 
     const onKey = (event: KeyboardEvent) => {
@@ -131,7 +131,7 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
       if (lenis) lenis.start();
       else html.style.overflow = "";
       setUiFlag("menu", false);
-      setPageInert(false);
+      setPageInert(false, ["cabecera"]);
       document.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", onResize);
       if (restoreFocus.current) toggleRef.current?.focus();
@@ -161,6 +161,7 @@ export function Header({ isotipo, wordmark }: { isotipo: ReactNode; wordmark: Re
   return (
     <>
       <header
+        id="cabecera"
         data-site-header
         data-theme={shownTheme}
         onFocusCapture={() => setHidden(false)}

@@ -11,7 +11,7 @@ export function setUiFlag(flag: UiFlag, on: boolean) {
 
 /** Deja inerte todo lo que no es el elemento activo (menú o detalle). */
 export function setPageInert(on: boolean, except: string[] = []) {
-  const ids = ["contenido", "pie", "cta-flotante"].filter((id) => !except.includes(id));
+  const ids = ["cabecera", "contenido", "pie", "cta-flotante"].filter((id) => !except.includes(id));
   for (const id of ids) {
     const el = document.getElementById(id);
     if (el) el.inert = on;

@@ -54,10 +54,9 @@ export function siteUrl(): URL {
   return new URL(vercel ? `https://${vercel}` : "http://localhost:3000");
 }
 
-export function whatsappHref(): string | null {
+export function whatsappHref(message: string = contact.whatsappMessage): string | null {
   if (isPending(contact.whatsapp)) return null;
-  const text = encodeURIComponent(contact.whatsappMessage);
-  return `https://wa.me/${contact.whatsapp}?text=${text}`;
+  return `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
 export function mailHref(subject?: string, body?: string): string | null {

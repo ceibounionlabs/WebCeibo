@@ -472,3 +472,245 @@ html:not(.js) .lens-chips {
     opacity: 0;
   }
 }
+
+/* ==========================================================================
+   Qué hacemos: tarjetas que se expanden (B3), "Ver más +" (B4), detalle (B3b)
+   ========================================================================== */
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.service-card {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--radius-card);
+  color: var(--color-ink);
+  transition: color 0.4s var(--ease-lente);
+}
+.service-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--radius-card);
+  background-color: var(--color-paper);
+  transition: background-color 0.4s var(--ease-lente);
+}
+.service-card.is-active {
+  color: var(--color-white);
+}
+.service-card.is-active .service-card-bg {
+  background-color: var(--color-ceibo);
+}
+/* Durante el zoom, la tarjeta "se va" al detalle. */
+.service-card.is-zoomed :is(.service-card-bg, .service-card-number, .service-card-title) {
+  visibility: hidden;
+}
+.service-card-heading {
+  font-size: 1.375rem;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.service-card-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1.25rem 4rem;
+  text-align: left;
+  border-radius: var(--radius-card);
+}
+.service-card-title {
+  display: inline-block;
+}
+.service-card-plus {
+  position: relative;
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+.service-card-plus::before,
+.service-card-plus::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 1.5px;
+  margin-top: -0.75px;
+  background: currentColor;
+  transition: rotate 0.4s var(--ease-lente);
+}
+.service-card-plus::after {
+  rotate: 90deg;
+}
+.service-card.is-active .service-card-plus::after {
+  rotate: 0deg;
+}
+.service-card-number {
+  position: absolute;
+  top: 1.45rem;
+  left: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.service-card-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease-lente);
+}
+.service-card.is-active .service-card-panel {
+  grid-template-rows: 1fr;
+}
+.service-card-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.service-card-body {
+  padding: 0 1.25rem 0 4rem;
+  max-width: 34rem;
+}
+.service-see-more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  margin: 1.25rem 1.25rem 1.5rem 4rem;
+  padding: 0 1.5rem;
+  border-radius: 9999px;
+  background: var(--color-white);
+  color: var(--color-ceibo);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+@media (min-width: 64rem) {
+  .service-list {
+    flex-direction: row;
+    gap: 1rem;
+    height: clamp(26rem, 62vh, 34rem);
+  }
+  .service-card {
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    opacity: 0.5;
+    transition:
+      flex-grow 0.7s var(--ease-lente),
+      opacity 0.4s var(--ease-lente),
+      color 0.4s var(--ease-lente);
+  }
+  .service-card.is-active {
+    flex-grow: 3;
+    opacity: 1;
+  }
+  .service-card-heading {
+    font-size: clamp(1.375rem, 0.9rem + 0.9vw, 1.875rem);
+  }
+  .service-card-trigger {
+    position: static;
+    padding: 2rem 2rem 0;
+    align-items: flex-start;
+  }
+  /* Toda la tarjeta es clickeable. */
+  .service-card-trigger::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-card);
+  }
+  .service-card-trigger:focus-visible {
+    outline: none;
+  }
+  .service-card-trigger:focus-visible::after {
+    outline: 2px solid currentColor;
+    outline-offset: -6px;
+  }
+  .service-card-plus {
+    display: none;
+  }
+  .service-card-number {
+    top: auto;
+    bottom: 1.25rem;
+    left: 2rem;
+    font-size: clamp(6rem, 3rem + 5vw, 9.5rem);
+    letter-spacing: -0.05em;
+    opacity: 1;
+    translate: 0 60%;
+    transition: translate 0.7s var(--ease-lente);
+  }
+  .service-card.is-active .service-card-number {
+    translate: 0 0;
+  }
+  .service-card-panel {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s,
+      visibility 0s linear 0.3s;
+  }
+  .service-card.is-active .service-card-panel {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 0.6s var(--ease-lente) 0.15s,
+      visibility 0s;
+  }
+  .service-card-panel-inner {
+    overflow: visible;
+  }
+  .service-card-body {
+    position: relative;
+    z-index: 1;
+    max-width: 26rem;
+    padding: 1rem 2rem 0;
+    pointer-events: none;
+    translate: 0 10px;
+    transition: translate 0.7s var(--ease-lente) 0.08s;
+  }
+  .service-card.is-active .service-card-body {
+    translate: 0 0;
+  }
+  /* B4: botón redondo que sigue al cursor (JS mueve `translate`). */
+  .service-see-more {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 2;
+    width: 7rem;
+    height: 7rem;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    font-size: 0.875rem;
+    scale: 0;
+    transition: scale 0.45s var(--ease-lente);
+  }
+  .service-card.is-hovering .service-see-more,
+  .service-see-more:focus-visible {
+    scale: 1;
+  }
+}
+/* Sin hover real (tablets grandes): el botón queda visible en la activa. */
+@media (min-width: 64rem) and (not ((hover: hover) and (pointer: fine))) {
+  .service-card.is-active .service-see-more {
+    scale: 1;
+  }
+}
+
+/* Detalle con reduced motion: fundido de 200 ms. */
+.service-detail.is-fading-in {
+  animation: fade-in 0.2s ease-out both;
+}
+.service-detail.is-fading-out {
+  animation: fade-in 0.2s ease-in reverse both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

@@ -37,6 +37,8 @@ export function startMotion(): () => void {
       gsap.ticker.add(raf);
       gsap.ticker.lagSmoothing(0);
       setLenis(lenis);
+      // Si el motor llega con el menú o un detalle abiertos, el scroll queda frenado.
+      if (html.hasAttribute("data-menu-open") || html.hasAttribute("data-detail-open")) lenis.stop();
 
       const ctx = { gsap, ScrollTrigger, SplitText, CustomEase, Flip, desktop, finePointer, skipReveals, stand, lenis };
       const cleanups = features.map((feature) => feature(ctx)).filter((fn): fn is () => void => typeof fn === "function");
