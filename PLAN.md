@@ -92,8 +92,8 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 
 ## Una sola idea: el ceibo
 
-- Todo el sitio cuenta lo mismo: Ceibo es un árbol con **raíces** en el rubro óptico (nació en Laboratorio Elena), un **tronco** que es la unión del equipo y **ramas** hacia todo lo que viene. No se cierra al sistema para ópticas: es la primera rama.
-- Hero: "Software con raíces en el rubro óptico. Y ramas hacia todo lo que viene."
+- Todo el sitio cuenta lo mismo: Ceibo es un árbol con **raíces** en el rubro óptico (nació en Laboratorio Elena), un **tronco** que es la unión del equipo y **ramas**, que son el software que hacen. Hacen software de todo tipo y el rubro óptico es su especialidad, dicho sin forzarlo ("para todo lo que venga", "cualquier negocio que quiera crecer" quedaron afuera).
+- Hero: "Hacemos software a medida. Con raíces en el rubro óptico."
 - Nosotros: la idea en una frase y sus tres partes (Raíces, Tronco, Ramas) contadas como la historia del equipo. Sin la frase suelta sobre el ceibo como planta.
-- Qué hacemos, Cómo trabajamos, la franja roja y el footer siguen la misma idea y se abren a cualquier negocio.
+- Qué hacemos, Cómo trabajamos, la franja roja y el footer siguen la misma idea.
 - Se sacó "Lo que resolvemos" (la grilla de cuadrados).

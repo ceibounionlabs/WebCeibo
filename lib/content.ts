@@ -10,15 +10,15 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  titleLead: "Software con raíces en el rubro óptico.",
-  titleAccent: "Y ramas hacia todo lo que viene.",
-  lead: "Nacimos como el área de desarrollo de Laboratorio Elena. Conocemos el rubro desde adentro y hacemos software para ópticas y para cualquier negocio que quiera crecer.",
+  titleLead: "Hacemos software a medida.",
+  titleAccent: "Con raíces en el rubro óptico.",
+  lead: "Nacimos como el área de desarrollo de Laboratorio Elena, y por eso el rubro óptico es nuestra especialidad. Sistemas de gestión, automatizaciones y herramientas internas: lo que tu negocio necesite.",
 } as const;
 
 /**
  * La idea que ordena todo el sitio: Ceibo es un árbol. Raíces en el rubro
- * óptico (Laboratorio Elena), un tronco que es la unión del equipo y ramas
- * hacia todo lo que viene. Nosotros la cuenta en esas tres partes.
+ * óptico (Laboratorio Elena), un tronco que es la unión del equipo y ramas,
+ * que son el software que hacemos. Nosotros la cuenta en esas tres partes.
  */
 export const manifesto = {
   title: "Crecemos como el ceibo",
@@ -34,7 +34,7 @@ export const manifesto = {
     },
     {
       label: "Ramas",
-      text: "Un sistema para ópticas, automatizaciones y software a medida. Para el rubro y para todo lo que venga.",
+      text: "Hacemos todo tipo de software: sistemas de gestión, automatizaciones y desarrollos a medida. El más nuevo, un sistema para ópticas.",
     },
   ],
 } as const;
@@ -51,7 +51,7 @@ export type Service = {
 
 export const services = {
   title: "Herramientas que entienden cómo trabajás",
-  lead: "Empezamos por la óptica, con un sistema que ya habla con el laboratorio. Y lo mismo hacemos para cualquier negocio: automatizar lo repetitivo y construir lo que falta.",
+  lead: "Nuestra especialidad es el rubro óptico, con un sistema que ya habla con el laboratorio. Pero hacemos software de todo tipo: si tu negocio lo necesita, lo construimos.",
   seeMore: "Ver más",
   seeDetail: "Ver detalle",
   // `demo`: el botón del detalle ofrece una demo en vez de una consulta.
@@ -94,7 +94,7 @@ export const services = {
         "Conectamos sistemas y planillas que hoy no se hablan.",
         "Reportes con los datos que ya tenés, para decidir mejor.",
       ],
-      audience: "Cualquier negocio con tareas que se repiten, del rubro óptico o de otro.",
+      audience: "Cualquier negocio con tareas que se repiten.",
     },
     {
       slug: "a-medida",
@@ -106,7 +106,7 @@ export const services = {
         "Arrancamos con un prototipo rápido para validar la idea.",
         "Desarrollamos en ciclos cortos y seguimos acompañando después de entregar.",
       ],
-      audience: "El rubro óptico y cualquier otro.",
+      audience: "Cualquier negocio.",
     },
   ] as readonly Service[],
   detail: {
@@ -150,7 +150,7 @@ export const howWeWork = {
 export const future = {
   titleLead: "Empezamos por la óptica.",
   titleAccent: "Vamos por más.",
-  body: "Si tenés una idea, del rubro que sea, la hacemos crecer.",
+  body: "Si tenés una idea, la hacemos crecer.",
 } as const;
 
 export const contactSection = {
