@@ -20,8 +20,8 @@ export const hero = {
  * ("union" en rojo: la unión es el equipo).
  */
 export const manifesto = {
-  title: "Somos tres amigos y hacemos software.",
-  body: "Empezamos siendo dos, como el área de desarrollo de Laboratorio Elena, y ahí aprendimos cómo funciona el rubro óptico por dentro. Seguimos trabajando igual: primero escuchamos, después construimos.",
+  title: "Unidos desde el primer día.",
+  body: "Ceibo empezó con dos amigos resolviendo los problemas de todos los días del laboratorio. Hoy somos tres, y seguimos trabajando igual: cerca de quien va a usar lo que hacemos, escuchando primero y construyendo después.",
   signature: "Los tres de Ceibo Union Labs",
 } as const;
 

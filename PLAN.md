@@ -100,6 +100,6 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 
 ## Quiénes somos y Qué hacemos, de nuevo
 
-- **Quiénes somos:** el nombre en grande ("ceibo / union / labs", con "union" en rojo) y, al lado, una carta corta firmada: "Somos tres amigos y hacemos software." Reemplaza Raíces / Tronco / Ramas.
+- **Quiénes somos:** el nombre ("ceibo / union / labs", con "union" en rojo) y, al lado, un texto corto firmado: "Unidos desde el primer día." Reemplaza Raíces / Tronco / Ramas.
 - **Qué hacemos:** "¿Te suena alguna?": frases típicas de una óptica y qué hacen con cada una (sistema para ópticas, conexión con Laboratorio Elena, automatización, software a medida). Cierra con "Pedir una demo" y "Contanos la tuya".
 - Se sacó la lista de servicios con el zoom al detalle (B3b) y todo su código (GSAP Flip, estados del diálogo).
