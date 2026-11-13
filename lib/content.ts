@@ -10,9 +10,9 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  titleLead: "Hacemos software a medida.",
-  titleAccent: "Con raíces en el rubro óptico.",
-  lead: "Nacimos como el área de desarrollo de Laboratorio Elena, y por eso el rubro óptico es nuestra especialidad. Sistemas de gestión, automatizaciones y herramientas internas: lo que tu negocio necesite.",
+  titleLead: "Software con precisión",
+  titleAccent: "de laboratorio.",
+  lead: "Nacimos en Laboratorio Elena, donde un cuarto de dioptría hace la diferencia. Con ese mismo cuidado hacemos software de todo tipo, con especialidad en el rubro óptico.",
 } as const;
 
 /**
@@ -26,7 +26,7 @@ export const manifesto = {
   parts: [
     {
       label: "Raíces",
-      text: "Nacimos como el área de desarrollo de Laboratorio Elena. El rubro óptico lo conocemos desde adentro, y ahí seguimos.",
+      text: "Empezamos como el área de desarrollo de Laboratorio Elena, y lo seguimos siendo: el rubro óptico lo conocemos desde adentro.",
     },
     {
       label: "Tronco",
@@ -34,7 +34,7 @@ export const manifesto = {
     },
     {
       label: "Ramas",
-      text: "Hacemos todo tipo de software: sistemas de gestión, automatizaciones y desarrollos a medida. El más nuevo, un sistema para ópticas.",
+      text: "Lo que fue creciendo: la web de pedidos del laboratorio, sus sistemas internos y, ahora, un sistema de gestión para ópticas.",
     },
   ],
 } as const;
@@ -51,7 +51,7 @@ export type Service = {
 
 export const services = {
   title: "Herramientas que entienden cómo trabajás",
-  lead: "Nuestra especialidad es el rubro óptico, con un sistema que ya habla con el laboratorio. Pero hacemos software de todo tipo: si tu negocio lo necesita, lo construimos.",
+  lead: "Un sistema para ópticas que ya habla con el laboratorio, y un equipo para automatizar lo repetitivo y construir lo que falta.",
   seeMore: "Ver más",
   seeDetail: "Ver detalle",
   // `demo`: el botón del detalle ofrece una demo en vez de una consulta.
