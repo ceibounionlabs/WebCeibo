@@ -103,3 +103,8 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 - **Quiénes somos:** el nombre ("ceibo / union / labs", con "union" en rojo) y, al lado, un texto corto firmado: "Unidos desde el primer día." Reemplaza Raíces / Tronco / Ramas.
 - **Qué hacemos:** "¿Te suena alguna?": frases típicas de una óptica y qué hacen con cada una (sistema para ópticas, conexión con Laboratorio Elena, automatización, software a medida). Cierra con "Pedir una demo" y "Contanos la tuya".
 - Se sacó la lista de servicios con el zoom al detalle (B3b) y todo su código (GSAP Flip, estados del diálogo).
+
+## Qué hacemos + sistema para ópticas
+
+- **Qué hacemos** explica el software que hacen, con lo que ya hicieron como ejemplo: sistemas de gestión (los sistemas internos de Laboratorio Elena), plataformas web (su web de pedidos) y automatizaciones. Cierra con un puente en rojo: "Nuestra especialidad es el rubro óptico" → el sistema.
+- **Para ópticas** (sección nueva, también en la navegación): "Un sistema para ópticas, hecho desde el laboratorio", con las frases de "¿Te suena alguna?" y qué resuelve cada una; marca en rojo lo que suma trabajar con Laboratorio Elena. Cierra con "Pedir una demo".

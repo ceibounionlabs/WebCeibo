@@ -39,7 +39,7 @@ npm run typecheck
 Mientras un dato de `lib/site.ts` siga pendiente, la web muestra `[CONFIRMAR …]` con borde punteado. Para encontrarlos en el código, buscá `CONFIRMAR`.
 
 - **`lib/site.ts`:** dominio, número de WhatsApp, mail y LinkedIn. (Instagram y ciudad ya están cargados.)
-- **Textos (`lib/content.ts`):** están escritos con la historia y el sistema que contó el equipo. Las frases de "Qué hacemos" (`services.items`) son ejemplos típicos de una óptica: conviene cambiarlas por las que escuchan de verdad.
+- **Textos (`lib/content.ts`):** están escritos con la historia y el sistema que contó el equipo. Las frases de la sección del sistema para ópticas (`opticsSystem.items`) son ejemplos típicos de una óptica: conviene cambiarlas por las que escuchan de verdad.
 - **B9 (preguntas frecuentes):** no se hizo porque faltan las respuestas.
 
 ## Estructura
@@ -58,7 +58,7 @@ components/
   StandMode.tsx, StandQr.tsx   modo stand con QR (5.8)
   SeedFall.tsx, LeafSlot.tsx   las hojas que caen del ceibo hasta Contacto
   hero/                   lente 3D (LensScene) y lupa DOM (5.3)
-  sections/               Hero, Manifesto, Services, HowWeWork, Future, Contact
+  sections/               Hero, Manifesto, Services, OpticsSystem, HowWeWork, Future, Contact
   motion/
     MotionRoot.tsx        anclas accesibles; carga el motor después de hidratar
     engine.ts             Lenis + ScrollTrigger dentro de gsap.matchMedia

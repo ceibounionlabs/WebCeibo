@@ -6,6 +6,7 @@
 export const nav = [
   { href: "#nosotros", label: "Nosotros" },
   { href: "#que-hacemos", label: "Qué hacemos" },
+  { href: "#sistema", label: "Para ópticas" },
   { href: "#como-trabajamos", label: "Cómo trabajamos" },
 ] as const;
 
@@ -26,41 +27,68 @@ export const manifesto = {
 } as const;
 
 /**
- * Qué hacemos, contado con frases que se escuchan en una óptica y qué
- * hacemos con cada una. `tag` dice a qué servicio corresponde.
+ * Qué hacemos: los tipos de software que hacemos, con lo que ya hicimos como
+ * ejemplo, y un puente al sistema para ópticas (la especialidad).
  */
 export const services = {
-  title: "¿Te suena alguna?",
-  lead: "Frases que se escuchan todos los días en una óptica. Para cada una, tenemos una respuesta.",
+  title: "Construimos herramientas que se usan todos los días.",
+  lead: "Escuchamos cómo trabaja tu equipo y armamos lo que hace falta: un sistema, una plataforma web o una automatización.",
+  items: [
+    {
+      title: "Sistemas de gestión",
+      body: "Ventas, stock, clientes y procesos internos, en un sistema pensado para cómo trabaja tu equipo.",
+      note: "Hicimos los sistemas internos de Laboratorio Elena.",
+    },
+    {
+      title: "Plataformas web",
+      body: "Portales para que tus clientes hagan pedidos, sigan cada estado y se autogestionen.",
+      note: "Hicimos la web de pedidos de Laboratorio Elena.",
+    },
+    {
+      title: "Automatizaciones",
+      body: "Conectamos sistemas que no se hablan y te sacamos de encima las tareas repetitivas.",
+      note: "Planillas, reportes e integraciones entre sistemas.",
+    },
+  ],
+  bridge: { lead: "Nuestra especialidad es el rubro óptico.", cta: "Conocé el sistema para ópticas" },
+} as const;
+
+/**
+ * El sistema para ópticas, contado con frases que se escuchan en una óptica y
+ * qué resuelve en cada caso. `tag` marca qué funciona con cualquier
+ * laboratorio y qué suma trabajar con Laboratorio Elena.
+ */
+export const opticsSystem = {
+  title: "Un sistema para ópticas, hecho desde el laboratorio.",
+  lead: "Lo armamos con todo lo que aprendimos del otro lado del mostrador. Funciona con cualquier laboratorio y, si trabajás con Laboratorio Elena, los precios y los pedidos llegan solos.",
+  heard: "¿Te suena alguna?",
   items: [
     {
       quote: "Las ventas en un lado, el stock en otro y las recetas en un cuaderno.",
-      answer: "Ventas, stock, clientes y recetas en un solo sistema, que funciona con cualquier laboratorio.",
-      tag: "Sistema para ópticas",
+      answer: "Ventas, stock, clientes y recetas en un mismo sistema, pensado para trabajar con cualquier laboratorio sin cargar los artículos de cada uno.",
+      tag: "Con cualquier laboratorio",
+      elena: false,
     },
     {
       quote: "¿Este precio está actualizado?",
-      answer: "Si trabajás con Laboratorio Elena, los precios de las lentes llegan en tiempo real y cada pedido entra solo al sistema.",
-      tag: "Sistema para ópticas · con Laboratorio Elena",
+      answer: "Los precios de las lentes llegan en tiempo real. No hay listas que actualizar.",
+      tag: "Con Laboratorio Elena",
+      elena: true,
+    },
+    {
+      quote: "Lo cargo en la web de pedidos y después en el sistema.",
+      answer: "El pedido se hace una vez y entra solo al sistema, vinculado a la venta.",
+      tag: "Con Laboratorio Elena",
+      elena: true,
     },
     {
       quote: "¿Ya llegaron mis anteojos?",
-      answer: "Tu cliente sigue su pedido con un link, sin tener que llamarte. Y vos lo ves desde la venta.",
-      tag: "Sistema para ópticas · con Laboratorio Elena",
-    },
-    {
-      quote: "Esta planilla la armamos a mano todas las semanas.",
-      answer: "La automatizamos: lo repetitivo, que lo haga la máquina.",
-      tag: "Automatización y datos",
-    },
-    {
-      quote: "Necesitaríamos algo que haga…",
-      answer: "Si no existe, lo construimos.",
-      tag: "Software a medida",
+      answer: "Tu cliente sigue su pedido con un link, sin tener que llamarte.",
+      tag: "Con Laboratorio Elena",
+      elena: true,
     },
   ],
   demo: { label: "Pedir una demo", message: "¡Hola Ceibo! Quiero ver una demo del sistema para ópticas." },
-  more: "Contanos la tuya",
 } as const;
 
 export const howWeWork = {

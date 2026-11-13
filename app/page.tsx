@@ -9,6 +9,7 @@ import { StandQr } from "@/components/StandQr";
 import { Hero } from "@/components/sections/Hero";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Services } from "@/components/sections/Services";
+import { OpticsSystem } from "@/components/sections/OpticsSystem";
 import { HowWeWork } from "@/components/sections/HowWeWork";
 import { Future } from "@/components/sections/Future";
 import { Contact } from "@/components/sections/Contact";
@@ -34,6 +35,7 @@ export default function Home() {
         <Hero />
         <Manifesto />
         <Services />
+        <OpticsSystem />
         <HowWeWork />
         <Future />
         <Contact />

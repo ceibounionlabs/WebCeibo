@@ -1,15 +1,10 @@
 import { services } from "@/lib/content";
-import { whatsappHref } from "@/lib/site";
-import { button } from "@/components/ui/button";
-import { BtnArrow, WhatsAppIcon } from "@/components/ui/icons";
 
 /**
- * Qué hacemos: frases que se escuchan en una óptica y, al lado, qué hacemos
- * con cada una. Cierra con "Pedir una demo" (WhatsApp) y "Contanos la tuya".
+ * Qué hacemos: los tres tipos de software que hacemos, cada uno con un
+ * ejemplo real, y un puente (en rojo) al sistema para ópticas.
  */
 export function Services() {
-  const demo = whatsappHref(services.demo.message);
-
   return (
     <section
       id="que-hacemos"
@@ -20,43 +15,40 @@ export function Services() {
     >
       <div className="wrap">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-8">
-          <h2 id="services-title" className="text-title font-medium text-balance lg:col-span-7">
+          <h2 id="services-title" className="max-w-[18ch] text-title font-medium text-balance lg:col-span-7">
             {services.title}
           </h2>
           <p className="max-w-[28rem] text-lead text-muted text-pretty lg:col-span-5">{services.lead}</p>
         </div>
 
-        <ul className="mt-12 border-t border-ink/10 lg:mt-16">
+        <ul className="mt-12 grid gap-10 border-t border-ink/10 pt-10 lg:mt-16 lg:grid-cols-3 lg:gap-x-10 lg:pt-12">
           {services.items.map((item) => (
-            <li key={item.quote} className="grid gap-4 border-b border-ink/10 py-8 lg:grid-cols-12 lg:items-center lg:gap-x-8 lg:py-9">
-              <p className="text-[1.625rem] leading-[1.15] font-medium tracking-[-0.025em] text-balance lg:col-span-7 lg:text-[2.25rem]">
-                <span className="text-ceibo">“</span>
-                {item.quote}
-                <span className="text-ceibo">”</span>
-              </p>
-              <div className="lg:col-span-5">
-                <p className="text-[1.0625rem] leading-snug text-pretty lg:text-[1.1875rem]">{item.answer}</p>
-                <p className="mt-2 text-sm text-muted">{item.tag}</p>
-              </div>
+            <li key={item.title}>
+              <h3 className="text-[1.625rem] leading-tight font-medium tracking-[-0.02em] lg:text-[2rem]">{item.title}</h3>
+              <p className="mt-3 text-[1.0625rem] leading-relaxed text-muted text-pretty">{item.body}</p>
+              <p className="mt-5 text-[0.9375rem] font-medium text-ceibo text-pretty">{item.note}</p>
             </li>
           ))}
         </ul>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row lg:mt-12">
-          <a
-            href={demo ?? "#hablemos"}
-            className={button.primary}
-            {...(demo ? { target: "_blank", rel: "noopener noreferrer" } : { "data-confirmar": "" })}
-          >
-            <WhatsAppIcon className="size-5" />
-            {services.demo.label}
-            <BtnArrow />
-          </a>
-          <a href="#hablemos" className={button.ghostLight}>
-            {services.more}
-            <BtnArrow />
-          </a>
-        </div>
+        {/* Puente al sistema para ópticas */}
+        <a
+          href="#sistema"
+          className="group mt-14 flex flex-col gap-5 rounded-card bg-ceibo px-6 py-7 text-white transition-colors duration-300 hover:bg-ceibo-deep sm:flex-row sm:items-center sm:justify-between lg:mt-20 lg:px-10 lg:py-9"
+        >
+          <span className="text-[1.5rem] leading-tight font-medium tracking-[-0.02em] text-balance lg:text-[2.25rem]">
+            {services.bridge.lead}
+          </span>
+          <span className="inline-flex shrink-0 items-center gap-3 text-[0.9375rem] font-medium">
+            {services.bridge.cta}
+            <span
+              aria-hidden="true"
+              className="grid size-11 place-items-center rounded-full border border-white/40 transition-transform duration-300 ease-lente group-hover:translate-y-0.5"
+            >
+              ↓
+            </span>
+          </span>
+        </a>
       </div>
     </section>
   );
