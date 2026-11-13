@@ -10,21 +10,33 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  titleLead: "Nacimos dentro de un laboratorio óptico.",
-  titleAccent: "Hacemos el software que el rubro necesita.",
-  lead: "Empezamos como el área de I+D de Laboratorio Elena. Hoy hacemos un sistema de gestión para ópticas conectado con el laboratorio, automatizaciones y software a medida.",
+  titleLead: "Software con raíces en el rubro óptico.",
+  titleAccent: "Y ramas hacia todo lo que viene.",
+  lead: "Nacimos como el área de desarrollo de Laboratorio Elena. Conocemos el rubro desde adentro y hacemos software para ópticas y para cualquier negocio que quiera crecer.",
 } as const;
 
+/**
+ * La idea que ordena todo el sitio: Ceibo es un árbol. Raíces en el rubro
+ * óptico (Laboratorio Elena), un tronco que es la unión del equipo y ramas
+ * hacia todo lo que viene. Nosotros la cuenta en esas tres partes.
+ */
 export const manifesto = {
-  statements: [
-    "Conocemos el rubro desde adentro: lo vivimos todos los días en el laboratorio.",
-    "Lo que hacemos ya se usa: la web de pedidos y los sistemas internos de Laboratorio Elena.",
-    "Ahora lo llevamos a las ópticas, con un sistema pensado para cómo trabajan.",
+  title: "Crecemos como el ceibo",
+  body: "Un ceibo se sostiene en sus raíces, se hace fuerte en el tronco y florece en las ramas. Así estamos hechos nosotros.",
+  parts: [
+    {
+      label: "Raíces",
+      text: "Nacimos como el área de desarrollo de Laboratorio Elena. El rubro óptico lo conocemos desde adentro, y ahí seguimos.",
+    },
+    {
+      label: "Tronco",
+      text: "Empezamos dos amigos y hoy somos tres. Lo que nos sostiene es la unión: de ahí viene el nombre.",
+    },
+    {
+      label: "Ramas",
+      text: "Un sistema para ópticas, automatizaciones y software a medida. Para el rubro y para todo lo que venga.",
+    },
   ],
-  title: "Como el ceibo, crecemos en comunidad",
-  body: "Empezamos siendo dos amigos y hoy somos tres. Seguimos a cargo del desarrollo de Laboratorio Elena y creamos Ceibo para llevar lo que aprendimos a todo el rubro, y a lo que venga. Por eso Union: esto lo armamos juntos.",
-  closing:
-    "El ceibo es resistente, generoso y florece en los lugares más inesperados. Así queremos crecer.",
 } as const;
 
 export type Service = {
@@ -38,8 +50,8 @@ export type Service = {
 };
 
 export const services = {
-  title: "Herramientas que entienden cómo trabaja el rubro",
-  lead: "Un sistema para tu óptica que ya habla con el laboratorio, y un equipo para todo lo demás.",
+  title: "Herramientas que entienden cómo trabajás",
+  lead: "Empezamos por la óptica, con un sistema que ya habla con el laboratorio. Y lo mismo hacemos para cualquier negocio: automatizar lo repetitivo y construir lo que falta.",
   seeMore: "Ver más",
   seeDetail: "Ver detalle",
   // `demo`: el botón del detalle ofrece una demo en vez de una consulta.
@@ -82,7 +94,7 @@ export const services = {
         "Conectamos sistemas y planillas que hoy no se hablan.",
         "Reportes con los datos que ya tenés, para decidir mejor.",
       ],
-      audience: "Ópticas y cualquier negocio con tareas que se repiten.",
+      audience: "Cualquier negocio con tareas que se repiten, del rubro óptico o de otro.",
     },
     {
       slug: "a-medida",
@@ -94,7 +106,7 @@ export const services = {
         "Arrancamos con un prototipo rápido para validar la idea.",
         "Desarrollamos en ciclos cortos y seguimos acompañando después de entregar.",
       ],
-      audience: "El rubro óptico y lo que venga.",
+      audience: "El rubro óptico y cualquier otro.",
     },
   ] as readonly Service[],
   detail: {
@@ -112,24 +124,9 @@ export const services = {
 export const serviceWhatsappMessage = (service: Service) =>
   service.demo ? "¡Hola Ceibo! Quiero ver una demo del sistema para ópticas." : `¡Hola Ceibo! Quiero saber más sobre ${service.title}.`;
 
-export const solves = {
-  title: "Lo que resolvemos",
-  items: [
-    "Ventas",
-    "Control de stock",
-    "Clientes y recetas",
-    "Pedidos al laboratorio",
-    "Seguimiento de pedidos",
-    "Precios en tiempo real",
-    "Link de seguimiento para tus clientes",
-    "Tareas repetitivas",
-    "Desarrollos a medida",
-  ],
-} as const;
-
 export const howWeWork = {
   title: "De la semilla a la flor, en cuatro etapas",
-  lead: "Un proceso claro, con avances visibles. Siempre sabés en qué punto está tu proyecto y qué viene después.",
+  lead: "Cada proyecto crece como un ceibo: de a una etapa y con avances que ves. Siempre sabés en qué punto está y qué viene después.",
   steps: [
     {
       title: "Sembrar",
@@ -153,7 +150,7 @@ export const howWeWork = {
 export const future = {
   titleLead: "Empezamos por la óptica.",
   titleAccent: "Vamos por más.",
-  body: "Raíces en el rubro óptico, ramas hacia todo lo que viene.",
+  body: "Si tenés una idea, del rubro que sea, la hacemos crecer.",
 } as const;
 
 export const contactSection = {

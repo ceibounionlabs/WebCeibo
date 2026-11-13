@@ -59,7 +59,7 @@ components/
   SeedFall.tsx, LeafSlot.tsx   las hojas que caen del ceibo hasta Contacto
   hero/                   lente 3D (LensScene) y lupa DOM (5.3)
   services/               lista de servicios y zoom al detalle (B3b)
-  sections/               Hero, Manifesto, Services, Solves, HowWeWork, Future, Contact
+  sections/               Hero, Manifesto, Services, HowWeWork, Future, Contact
   motion/
     MotionRoot.tsx        anclas accesibles; carga el motor después de hidratar
     engine.ts             Lenis + ScrollTrigger dentro de gsap.matchMedia

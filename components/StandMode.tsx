@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { stand } from "@/lib/motion";
 import { getLenis } from "@/lib/scroll";
 
-const SECTIONS = ["top", "nosotros", "que-hacemos", "lo-que-resolvemos", "como-trabajamos", "hacia-donde", "hablemos", "pie"];
+const SECTIONS = ["top", "nosotros", "que-hacemos", "como-trabajamos", "hacia-donde", "hablemos", "pie"];
 const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
 /**

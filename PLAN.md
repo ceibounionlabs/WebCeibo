@@ -88,5 +88,12 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 
 - **Origen:** Ceibo nació como el área de I+D de Laboratorio Elena y se nombra en la web. El hero, Nosotros y la descripción del sitio cuentan eso. Ceibo es la marca del software; Elena, la del laboratorio.
 - **Producto:** "Qué hacemos" pasa a ser: 1) Sistema para ópticas (sin nombre por ahora; funciona con cualquier laboratorio), 2) Conectado con Laboratorio Elena (precios en tiempo real, pedidos que entran solos al sistema, seguimiento vinculado a la venta y link de seguimiento para el cliente final), 3) Automatización y datos, 4) Software a medida. Los dos primeros ofrecen "Pedir una demo" por WhatsApp.
-- **"Lo que resolvemos":** solo lo que el sistema hace hoy.
 - **Afuera, por ahora:** sistemas para otros laboratorios, la sección de equipo (B10) y contenido sobre la feria. También se sacó "a punto de recibirnos" y la IA como argumento de venta.
+
+## Una sola idea: el ceibo
+
+- Todo el sitio cuenta lo mismo: Ceibo es un árbol con **raíces** en el rubro óptico (nació en Laboratorio Elena), un **tronco** que es la unión del equipo y **ramas** hacia todo lo que viene. No se cierra al sistema para ópticas: es la primera rama.
+- Hero: "Software con raíces en el rubro óptico. Y ramas hacia todo lo que viene."
+- Nosotros: la idea en una frase y sus tres partes (Raíces, Tronco, Ramas) contadas como la historia del equipo. Sin la frase suelta sobre el ceibo como planta.
+- Qué hacemos, Cómo trabajamos, la franja roja y el footer siguen la misma idea y se abren a cualquier negocio.
+- Se sacó "Lo que resolvemos" (la grilla de cuadrados).

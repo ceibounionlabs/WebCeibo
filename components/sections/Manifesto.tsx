@@ -1,9 +1,8 @@
 import { manifesto } from "@/lib/content";
-import { Logo } from "@/components/ui/Logo";
 
 /**
- * Nosotros (B1, simplificado): título y texto, y los tres enunciados en una
- * fila. Sin pin ni contador: se lee de un vistazo.
+ * Nosotros: la idea del ceibo en una frase y, en una fila, sus tres partes
+ * (raíces, tronco, ramas) contadas como la historia del equipo.
  */
 export function Manifesto() {
   return (
@@ -20,23 +19,15 @@ export function Manifesto() {
             {manifesto.title}
           </h2>
           <div className="lg:col-span-5 lg:pt-3">
-            <p className="text-lead text-muted text-pretty">
-              {manifesto.body}
-            </p>
-            <div className="mt-8 flex items-start gap-4">
-              <Logo variant="isotipo" label={null} className="h-10 shrink-0 text-ceibo" />
-              <p className="text-ink/80 text-pretty">{manifesto.closing}</p>
-            </div>
+            <p className="text-lead text-muted text-pretty">{manifesto.body}</p>
           </div>
         </div>
 
         <ol className="mt-16 grid gap-10 border-t border-ink/10 pt-12 lg:mt-24 lg:grid-cols-3 lg:gap-x-10">
-          {manifesto.statements.map((text, i) => (
-            <li key={i}>
-              <span aria-hidden="true" className="text-sm font-medium tracking-[0.18em] text-ceibo tabular-nums">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <p className="mt-4 text-[1.375rem] leading-snug font-medium tracking-[-0.015em] text-pretty lg:text-[1.5rem]">{text}</p>
+          {manifesto.parts.map((part) => (
+            <li key={part.label}>
+              <h3 className="text-sm font-medium text-ceibo">{part.label}</h3>
+              <p className="mt-4 text-[1.375rem] leading-snug font-medium tracking-[-0.015em] text-pretty lg:text-[1.5rem]">{part.text}</p>
             </li>
           ))}
         </ol>

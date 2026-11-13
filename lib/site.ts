@@ -17,10 +17,10 @@ export const isPending = (value: unknown): value is Pending =>
 export const site = {
   name: "Ceibo Union Labs",
   shortName: "ceibo union labs",
-  tagline: "Software para el rubro óptico, nacido en Laboratorio Elena.",
+  tagline: "Software con raíces en el rubro óptico y ramas hacia todo lo que viene.",
   description:
-    "Software para el rubro óptico, nacido en Laboratorio Elena: un sistema de gestión para ópticas conectado con el laboratorio, automatizaciones y desarrollos a medida.",
-  title: "Ceibo Union Labs · Software para el rubro óptico",
+    "Software con raíces en el rubro óptico: nacimos en Laboratorio Elena y hacemos un sistema de gestión para ópticas, automatizaciones y desarrollos a medida para cualquier negocio.",
+  title: "Ceibo Union Labs · Software con raíces en el rubro óptico",
   year: 2026,
 
   // CONFIRMAR dominio, sin protocolo. Ej: "ceibounionlabs.com"
