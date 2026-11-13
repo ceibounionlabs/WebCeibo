@@ -13,8 +13,8 @@ export function startMotion(): () => void {
   const html = document.documentElement;
   const lenis = new Lenis({ lerp: smoothScroll.lerp, autoRaf: true });
   setLenis(lenis);
-  // Si llega con el menú o un detalle abiertos, el scroll queda frenado.
-  if (html.hasAttribute("data-menu-open") || html.hasAttribute("data-detail-open")) lenis.stop();
+  // Si llega con el menú abierto, el scroll queda frenado.
+  if (html.hasAttribute("data-menu-open")) lenis.stop();
   return () => {
     setLenis(null);
     lenis.destroy();

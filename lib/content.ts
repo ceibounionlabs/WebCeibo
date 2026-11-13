@@ -16,113 +16,52 @@ export const hero = {
 } as const;
 
 /**
- * La idea que ordena todo el sitio: Ceibo es un árbol. Raíces en el rubro
- * óptico (Laboratorio Elena), un tronco que es la unión del equipo y ramas,
- * que son el software que hacemos. Nosotros la cuenta en esas tres partes.
+ * Nosotros: una carta corta en primera persona, al lado del nombre en grande
+ * ("union" en rojo: la unión es el equipo).
  */
 export const manifesto = {
-  title: "Crecemos como el ceibo",
-  body: "Un ceibo se sostiene en sus raíces, se hace fuerte en el tronco y florece en las ramas. Así estamos hechos nosotros.",
-  parts: [
+  title: "Somos tres amigos y hacemos software.",
+  body: "Empezamos siendo dos, como el área de desarrollo de Laboratorio Elena, y ahí aprendimos cómo funciona el rubro óptico por dentro. Seguimos trabajando igual: primero escuchamos, después construimos.",
+  signature: "Los tres de Ceibo Union Labs",
+} as const;
+
+/**
+ * Qué hacemos, contado con frases que se escuchan en una óptica y qué
+ * hacemos con cada una. `tag` dice a qué servicio corresponde.
+ */
+export const services = {
+  title: "¿Te suena alguna?",
+  lead: "Frases que se escuchan todos los días en una óptica. Para cada una, tenemos una respuesta.",
+  items: [
     {
-      label: "Raíces",
-      text: "Empezamos como el área de desarrollo de Laboratorio Elena, y lo seguimos siendo: el rubro óptico lo conocemos desde adentro.",
+      quote: "Las ventas en un lado, el stock en otro y las recetas en un cuaderno.",
+      answer: "Ventas, stock, clientes y recetas en un solo sistema, que funciona con cualquier laboratorio.",
+      tag: "Sistema para ópticas",
     },
     {
-      label: "Tronco",
-      text: "Empezamos dos amigos y hoy somos tres. Lo que nos sostiene es la unión: de ahí viene el nombre.",
+      quote: "¿Este precio está actualizado?",
+      answer: "Si trabajás con Laboratorio Elena, los precios de las lentes llegan en tiempo real y cada pedido entra solo al sistema.",
+      tag: "Sistema para ópticas · con Laboratorio Elena",
     },
     {
-      label: "Ramas",
-      text: "Lo que fue creciendo: la web de pedidos del laboratorio, sus sistemas internos y, ahora, un sistema de gestión para ópticas.",
+      quote: "¿Ya llegaron mis anteojos?",
+      answer: "Tu cliente sigue su pedido con un link, sin tener que llamarte. Y vos lo ves desde la venta.",
+      tag: "Sistema para ópticas · con Laboratorio Elena",
+    },
+    {
+      quote: "Esta planilla la armamos a mano todas las semanas.",
+      answer: "La automatizamos: lo repetitivo, que lo haga la máquina.",
+      tag: "Automatización y datos",
+    },
+    {
+      quote: "Necesitaríamos algo que haga…",
+      answer: "Si no existe, lo construimos.",
+      tag: "Software a medida",
     },
   ],
+  demo: { label: "Pedir una demo", message: "¡Hola Ceibo! Quiero ver una demo del sistema para ópticas." },
+  more: "Contanos la tuya",
 } as const;
-
-export type Service = {
-  slug: string;
-  title: string;
-  body: string;
-  tagline: string;
-  points: readonly string[];
-  audience: string;
-  demo?: boolean;
-};
-
-export const services = {
-  title: "Herramientas que entienden cómo trabajás",
-  lead: "Un sistema para ópticas que ya habla con el laboratorio, y un equipo para automatizar lo repetitivo y construir lo que falta.",
-  seeMore: "Ver más",
-  seeDetail: "Ver detalle",
-  // `demo`: el botón del detalle ofrece una demo en vez de una consulta.
-  cards: [
-    {
-      slug: "sistema",
-      title: "Sistema para ópticas",
-      body: "Ventas, stock, clientes, recetas y pedidos, en un solo sistema pensado para cómo trabaja una óptica.",
-      tagline: "Toda la gestión de tu óptica, en un solo lugar.",
-      points: [
-        "Ventas y control de stock.",
-        "Tus clientes, con sus recetas.",
-        "Cada venta vinculada al pedido de sus lentes y a su estado.",
-        "Pensado para trabajar con cualquier laboratorio, sin cargar los artículos de cada uno.",
-      ],
-      audience: "Ópticas, trabajen con el laboratorio que trabajen.",
-      demo: true,
-    },
-    {
-      slug: "elena",
-      title: "Conectado con Laboratorio Elena",
-      body: "Si sos cliente de Elena, los precios de las lentes llegan en tiempo real y cada pedido entra solo al sistema.",
-      tagline: "Sin listas de precios. Sin cargar los pedidos dos veces.",
-      points: [
-        "Precios de las lentes en tiempo real: los actualiza el laboratorio y vos ya los ves.",
-        "Los pedidos que hacés en la web de pedidos aparecen solos en el sistema.",
-        "El seguimiento de cada pedido, vinculado a su venta.",
-        "Un link para que tu cliente consulte cómo va su pedido, sin tener que llamarte.",
-      ],
-      audience: "Ópticas clientes de Laboratorio Elena.",
-      demo: true,
-    },
-    {
-      slug: "automatizacion",
-      title: "Automatización y datos",
-      body: "Tareas repetitivas, planillas y reportes: que los haga la máquina y vos decidas con datos claros.",
-      tagline: "Lo repetitivo, que lo haga la máquina.",
-      points: [
-        "Automatizamos las tareas que hoy se hacen a mano, una y otra vez.",
-        "Conectamos sistemas y planillas que hoy no se hablan.",
-        "Reportes con los datos que ya tenés, para decidir mejor.",
-      ],
-      audience: "Cualquier negocio con tareas que se repiten.",
-    },
-    {
-      slug: "a-medida",
-      title: "Software a medida",
-      body: "Si la herramienta que necesitás no existe, la construimos.",
-      tagline: "Si no existe, lo construimos.",
-      points: [
-        "Entendemos cómo trabajás antes de proponer nada.",
-        "Arrancamos con un prototipo rápido para validar la idea.",
-        "Desarrollamos en ciclos cortos y seguimos acompañando después de entregar.",
-      ],
-      audience: "Cualquier negocio.",
-    },
-  ] as readonly Service[],
-  detail: {
-    solves: "Qué resuelve",
-    audience: "Para quién",
-    whatsapp: "Consultar por WhatsApp",
-    demo: "Pedir una demo",
-    back: "Volver a servicios",
-    close: "Cerrar",
-    prev: "Anterior",
-    next: "Siguiente",
-  },
-} as const;
-
-export const serviceWhatsappMessage = (service: Service) =>
-  service.demo ? "¡Hola Ceibo! Quiero ver una demo del sistema para ópticas." : `¡Hola Ceibo! Quiero saber más sobre ${service.title}.`;
 
 export const howWeWork = {
   title: "De la semilla a la flor, en cuatro etapas",

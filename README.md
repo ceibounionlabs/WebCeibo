@@ -39,7 +39,7 @@ npm run typecheck
 Mientras un dato de `lib/site.ts` siga pendiente, la web muestra `[CONFIRMAR …]` con borde punteado. Para encontrarlos en el código, buscá `CONFIRMAR`.
 
 - **`lib/site.ts`:** dominio, número de WhatsApp, mail y LinkedIn. (Instagram y ciudad ya están cargados.)
-- **Textos (`lib/content.ts`):** están escritos con la historia y el sistema que contó el equipo. El sistema para ópticas todavía no tiene nombre: si lo toma, se cambia en el servicio `sistema`. Los puntos de "Automatización y datos" son generales; si hay ejemplos concretos, conviene ponerlos.
+- **Textos (`lib/content.ts`):** están escritos con la historia y el sistema que contó el equipo. Las frases de "Qué hacemos" (`services.items`) son ejemplos típicos de una óptica: conviene cambiarlas por las que escuchan de verdad.
 - **B9 (preguntas frecuentes):** no se hizo porque faltan las respuestas.
 
 ## Estructura
@@ -58,7 +58,6 @@ components/
   StandMode.tsx, StandQr.tsx   modo stand con QR (5.8)
   SeedFall.tsx, LeafSlot.tsx   las hojas que caen del ceibo hasta Contacto
   hero/                   lente 3D (LensScene) y lupa DOM (5.3)
-  services/               lista de servicios y zoom al detalle (B3b)
   sections/               Hero, Manifesto, Services, HowWeWork, Future, Contact
   motion/
     MotionRoot.tsx        anclas accesibles; carga el motor después de hidratar
@@ -74,12 +73,12 @@ scripts/sync-brand.mjs
 
 ## Rendimiento y accesibilidad
 
-- Sin animaciones de aparición: el contenido está siempre a la vista. Solo hay interacciones (la lente, el menú, el zoom de servicios, los hovers), el scroll suave y una única animación narrativa: cuatro hojas que se caen del ceibo hasta Contacto ("¿Se te cayó una idea?", `components/SeedFall.tsx`; dónde aterriza cada una se define con `LeafSlot` en `components/sections/Contact.tsx`).
-- El título del hero se pinta al instante en HTML (es el LCP). Lenis se carga después de hidratar; GSAP solo cuando se abre un servicio; three.js (la lente 3D, ~310 KB comprimido) se carga aparte: en desktop cuando el navegador está libre y en mobile con la primera interacción. Antes de eso hay una lupa DOM.
-- `prefers-reduced-motion`: sin Lenis ni lente; el detalle de servicio abre con un fundido corto.
+- Sin animaciones de aparición: el contenido está siempre a la vista. Solo hay interacciones (la lente, el menú, los hovers), el scroll suave y una única animación narrativa: cuatro hojas que se caen del ceibo hasta Contacto ("¿Se te cayó una idea?", `components/SeedFall.tsx`; dónde aterriza cada una se define con `LeafSlot` en `components/sections/Contact.tsx`).
+- El título del hero se pinta al instante en HTML (es el LCP). Lenis se carga después de hidratar; GSAP solo cuando la franja roja se acerca (para las hojas que caen); three.js (la lente 3D, ~310 KB comprimido) se carga aparte: en desktop cuando el navegador está libre y en mobile con la primera interacción. Antes de eso hay una lupa DOM.
+- `prefers-reduced-motion`: sin Lenis, sin lente y sin hojas que caen (ya están en Contacto).
 - Sin JS, todo el contenido se lee.
 - Lighthouse mobile medido localmente: Performance 96–97, Accesibilidad 100, Buenas prácticas 100, SEO 100 (CLS 0).
-- Probado en Chromium a 360, 390, 768, 1024 y 1440 px, con teclado, con reduced motion y sin JS. **Falta probar en un iPhone (Safari) y en Android reales**, sobre todo el vidrio del header, el zoom de servicios y la lente.
+- Probado en Chromium a 360, 390, 768, 1024 y 1440 px, con teclado, con reduced motion y sin JS. **Falta probar en un iPhone (Safari) y en Android reales**, sobre todo el vidrio del header, la lente y las hojas que caen.
 
 ## Deploy en Vercel
 

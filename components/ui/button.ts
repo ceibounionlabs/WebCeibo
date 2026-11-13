@@ -24,5 +24,3 @@ export const button = {
 export const btnArrow =
   "size-3.5 shrink-0 transition-transform duration-300 ease-lente group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5";
 
-/** Numeración de listas (CAMBIOS-v2 C): "01.". */
-export const listNumber = (i: number) => `${String(i + 1).padStart(2, "0")}.`;

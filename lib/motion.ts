@@ -45,19 +45,6 @@ export const smoothScroll = {
   anchorDuration: 1.4,
 } as const;
 
-/** Zoom al detalle de servicio (B3b). */
-export const serviceZoom = {
-  duration: 0.9,
-  contentDelay: 0.4,
-  /** La página de atrás se aleja y se desenfoca. */
-  backdrop: { scale: 0.96, filter: "blur(4px)", opacity: 0.6 },
-  /** Cambio entre servicios sin cerrar. */
-  switchX: 40,
-  switchDuration: 0.5,
-  /** Con prefers-reduced-motion: fundido simple. */
-  reducedFade: 0.2,
-} as const;
-
 /** Lente del hero (5.3). */
 export const lens = {
   ior: 1.5,

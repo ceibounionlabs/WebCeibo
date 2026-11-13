@@ -97,3 +97,9 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 - Nosotros: la idea en una frase y sus tres partes (Raíces, Tronco, Ramas) contadas como la historia del equipo. Sin la frase suelta sobre el ceibo como planta.
 - Qué hacemos, Cómo trabajamos, la franja roja y el footer siguen la misma idea.
 - Se sacó "Lo que resolvemos" (la grilla de cuadrados).
+
+## Quiénes somos y Qué hacemos, de nuevo
+
+- **Quiénes somos:** el nombre en grande ("ceibo / union / labs", con "union" en rojo) y, al lado, una carta corta firmada: "Somos tres amigos y hacemos software." Reemplaza Raíces / Tronco / Ramas.
+- **Qué hacemos:** "¿Te suena alguna?": frases típicas de una óptica y qué hacen con cada una (sistema para ópticas, conexión con Laboratorio Elena, automatización, software a medida). Cierra con "Pedir una demo" y "Contanos la tuya".
+- Se sacó la lista de servicios con el zoom al detalle (B3b) y todo su código (GSAP Flip, estados del diálogo).

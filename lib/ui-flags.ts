@@ -1,15 +1,15 @@
 /**
  * Estados globales de la interfaz como atributos en <html>
- * (`data-menu-open`, `data-detail-open`). Así cualquier pieza (header,
+ * (`data-menu-open`). Así cualquier pieza (header,
  * CTA flotante, progreso) reacciona por CSS sin acoplarse en React.
  */
-export type UiFlag = "menu" | "detail";
+export type UiFlag = "menu";
 
 export function setUiFlag(flag: UiFlag, on: boolean) {
   document.documentElement.toggleAttribute(`data-${flag}-open`, on);
 }
 
-/** Deja inerte todo lo que no es el elemento activo (menú o detalle). */
+/** Deja inerte todo lo que no es el elemento activo (el menú). */
 export function setPageInert(on: boolean, except: string[] = []) {
   const ids = ["cabecera", "contenido", "pie", "cta-flotante"].filter((id) => !except.includes(id));
   for (const id of ids) {

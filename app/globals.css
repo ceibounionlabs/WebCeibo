@@ -168,9 +168,6 @@
   --glass-bg: rgb(20 17 19 / 0.06);
   --lupa-bg: rgb(206 49 61 / 0.1);
 }
-html[data-detail-open] .site-header {
-  translate: 0 -130%;
-}
 html[data-stand] .site-header {
   display: none;
 }
@@ -260,7 +257,7 @@ html[data-stand] .site-header {
 .cta-flotante[data-show] {
   translate: 0 0;
 }
-html:is([data-menu-open], [data-detail-open], [data-stand]) .cta-flotante {
+html:is([data-menu-open], [data-stand]) .cta-flotante {
   translate: 0 calc(100% + 1.5rem + env(safe-area-inset-bottom));
 }
 
@@ -289,61 +286,6 @@ html:is([data-menu-open], [data-detail-open], [data-stand]) .cta-flotante {
 }
 /* Los chips reservan su lugar desde el primer pintado (sin salto de layout)
    y se muestran cuando hay lente. Sin JS o con reduced motion no existen. */
-
-/* ==========================================================================
-   Qué hacemos: lista de servicios; cada fila abre su detalle (B3b)
-   ========================================================================== */
-.service-row-bg {
-  position: absolute;
-  inset: 0.5rem 0;
-  border-radius: var(--radius-card);
-  background-color: var(--color-paper);
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-lente);
-  pointer-events: none;
-}
-.service-row:hover .service-row-bg,
-.service-row:focus-within .service-row-bg {
-  opacity: 1;
-}
-/* Durante el zoom, la fila "se va" al detalle. */
-.service-row.is-zoomed :is(.service-row-bg, [data-card-num], [data-card-title]) {
-  visibility: hidden;
-}
-.service-row-arrow {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  margin-top: 0.25rem;
-  border-radius: 9999px;
-  border: 1px solid rgb(20 17 19 / 0.15);
-  transition:
-    background-color 0.3s var(--ease-lente),
-    color 0.3s var(--ease-lente),
-    border-color 0.3s var(--ease-lente),
-    rotate 0.4s var(--ease-lente);
-}
-.service-row:hover .service-row-arrow,
-.service-row:focus-within .service-row-arrow {
-  border-color: var(--color-ceibo);
-  background-color: var(--color-ceibo);
-  color: var(--color-white);
-  rotate: 45deg;
-}
-
-/* Detalle con reduced motion: fundido de 200 ms. */
-.service-detail.is-fading-in {
-  animation: fade-in 0.2s ease-out both;
-}
-.service-detail.is-fading-out {
-  animation: fade-in 0.2s ease-in reverse both;
-}
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-}
 
 /* ==========================================================================
    Footer: hojas del ceibo (B8)

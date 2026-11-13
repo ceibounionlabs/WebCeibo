@@ -8,11 +8,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { CustomEase } from "gsap/CustomEase";
-import { Flip } from "gsap/Flip";
 import { customEases } from "./motion";
 
-gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase, Flip);
+gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
 CustomEase.create("lente", customEases.lente);
 CustomEase.create("cortina", customEases.cortina);
 
-export { gsap, ScrollTrigger, SplitText, CustomEase, Flip };
+export { gsap, ScrollTrigger, SplitText, CustomEase };
