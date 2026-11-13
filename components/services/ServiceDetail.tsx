@@ -26,7 +26,8 @@ type Props = {
  * para que el zoom los lleve de un lugar al otro sin cortes.
  */
 export function ServiceDetail({ service, index, total, rootRef, contentRef, onClose, onContact, onNavigate }: Props) {
-  const wa = whatsappHref(serviceWhatsappMessage(service.title));
+  const wa = whatsappHref(serviceWhatsappMessage(service));
+  const ctaLabel = service.demo ? copy.demo : copy.whatsapp;
   const prev = services.cards[(index - 1 + total) % total];
   const next = services.cards[(index + 1) % total];
 
@@ -95,13 +96,13 @@ export function ServiceDetail({ service, index, total, rootRef, contentRef, onCl
                 {wa ? (
                   <a href={wa} target="_blank" rel="noopener noreferrer" className={button.inverse}>
                     <WhatsAppIcon className="size-5" />
-                    {copy.whatsapp}
+                    {ctaLabel}
                     <BtnArrow />
                   </a>
                 ) : (
                   <button type="button" onClick={onContact} data-confirmar="" className={button.inverse}>
                     <WhatsAppIcon className="size-5" />
-                    {copy.whatsapp}
+                    {ctaLabel}
                     <BtnArrow />
                   </button>
                 )}

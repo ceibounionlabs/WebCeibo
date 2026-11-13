@@ -10,68 +10,79 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  titleLead: "Construimos las herramientas que el rubro óptico necesita,",
-  titleAccent: "con la tecnología que viene.",
-  lead: "Software a medida para ópticas y laboratorios, hecho por un equipo joven que trabaja con las herramientas que están cambiando cómo se construye software.",
+  titleLead: "Nacimos dentro de un laboratorio óptico.",
+  titleAccent: "Hacemos el software que el rubro necesita.",
+  lead: "Empezamos como el área de I+D de Laboratorio Elena. Hoy hacemos un sistema de gestión para ópticas conectado con el laboratorio, automatizaciones y software a medida.",
 } as const;
 
 export const manifesto = {
-  // CONFIRMAR tono de los tres enunciados (borrador de CAMBIOS-v2, B1).
   statements: [
-    "El rubro óptico trabaja con precisión. Su software también debería.",
-    "Diseñamos y construimos sistemas para ópticas y laboratorios, con las herramientas que están cambiando cómo se hace software.",
-    "El resultado: herramientas claras, rápidas y hechas a la medida de cómo trabajás.",
+    "Conocemos el rubro desde adentro: lo vivimos todos los días en el laboratorio.",
+    "Lo que hacemos ya se usa: la web de pedidos y los sistemas internos de Laboratorio Elena.",
+    "Ahora lo llevamos a las ópticas, con un sistema pensado para cómo trabajan.",
   ],
   title: "Como el ceibo, crecemos en comunidad",
-  body: "Somos un grupo de amigos a punto de recibirnos de ingenieros en sistemas. Nos juntamos para construir software que se use de verdad, y elegimos empezar por el rubro óptico. Trabajamos con las prácticas y herramientas más nuevas de la industria, IA incluida, para llegar más rápido sin resignar calidad.",
+  body: "Empezamos siendo dos amigos y hoy somos tres. Seguimos a cargo del desarrollo de Laboratorio Elena y creamos Ceibo para llevar lo que aprendimos a todo el rubro, y a lo que venga. Por eso Union: esto lo armamos juntos.",
   closing:
     "El ceibo es resistente, generoso y florece en los lugares más inesperados. Así queremos crecer.",
 } as const;
 
+export type Service = {
+  slug: string;
+  title: string;
+  body: string;
+  tagline: string;
+  points: readonly string[];
+  audience: string;
+  demo?: boolean;
+};
+
 export const services = {
   title: "Herramientas que entienden cómo trabaja el rubro",
-  lead: "Un mismo equipo para pensar, diseñar y desarrollar, así no tenés que coordinar a diez proveedores distintos.",
+  lead: "Un sistema para tu óptica que ya habla con el laboratorio, y un equipo para todo lo demás.",
   seeMore: "Ver más",
   seeDetail: "Ver detalle",
-  // CONFIRMAR contenido del detalle de cada servicio (borrador de CAMBIOS-v2, B3b).
-  // Si algo no lo hacemos, se saca de la lista.
+  // `demo`: el botón del detalle ofrece una demo en vez de una consulta.
   cards: [
     {
-      slug: "gestion",
-      title: "Gestión para ópticas",
-      body: "Ventas, compras, historias clínicas, recetas y el seguimiento de cada trabajo, en un solo sistema.",
-      tagline: "Todo lo de tu óptica, en un solo sistema.",
+      slug: "sistema",
+      title: "Sistema para ópticas",
+      body: "Ventas, stock, clientes, recetas y pedidos, en un solo sistema pensado para cómo trabaja una óptica.",
+      tagline: "Toda la gestión de tu óptica, en un solo lugar.",
       points: [
-        "Fichas de pacientes con su historia clínica.",
-        "Recetas, graduaciones y datos de cada trabajo, incluidos los lentes de contacto.",
-        "Seguimiento de cada trabajo: en qué estado está y a qué laboratorio se pidió.",
-        "Ventas y compras en el mismo lugar.",
+        "Ventas y control de stock.",
+        "Tus clientes, con sus recetas.",
+        "Cada venta vinculada al pedido de sus lentes y a su estado.",
+        "Pensado para trabajar con cualquier laboratorio, sin cargar los artículos de cada uno.",
       ],
-      audience: "Ópticas.",
+      audience: "Ópticas, trabajen con el laboratorio que trabajen.",
+      demo: true,
     },
     {
-      slug: "pedidos",
-      title: "Pedidos a laboratorio",
-      body: "Ópticas y laboratorios intercambiando pedidos sin papeles, sin llamadas y sin mensajes perdidos.",
-      tagline: "Del mostrador al laboratorio, sin papeles.",
+      slug: "elena",
+      title: "Conectado con Laboratorio Elena",
+      body: "Si sos cliente de Elena, los precios de las lentes llegan en tiempo real y cada pedido entra solo al sistema.",
+      tagline: "Sin listas de precios. Sin cargar los pedidos dos veces.",
       points: [
-        "Cargar el pedido con la receta y el tipo de lente.",
-        "Ver el estado del pedido sin llamar ni mandar mensajes.",
-        "Historial de pedidos por óptica y por paciente.",
+        "Precios de las lentes en tiempo real: los actualiza el laboratorio y vos ya los ves.",
+        "Los pedidos que hacés en la web de pedidos aparecen solos en el sistema.",
+        "El seguimiento de cada pedido, vinculado a su venta.",
+        "Un link para que tu cliente consulte cómo va su pedido, sin tener que llamarte.",
       ],
-      audience: "Ópticas y laboratorios.",
+      audience: "Ópticas clientes de Laboratorio Elena.",
+      demo: true,
     },
     {
       slug: "automatizacion",
       title: "Automatización y datos",
-      body: "Listas de precios, planillas y tareas repetitivas: que las haga la máquina y vos decidas con datos claros.",
+      body: "Tareas repetitivas, planillas y reportes: que los haga la máquina y vos decidas con datos claros.",
       tagline: "Lo repetitivo, que lo haga la máquina.",
       points: [
-        "Leer y ordenar las listas de precios de los laboratorios.",
-        "Comparar precios entre laboratorios.",
-        "Cargar planillas automáticamente y armar reportes.",
+        "Automatizamos las tareas que hoy se hacen a mano, una y otra vez.",
+        "Conectamos sistemas y planillas que hoy no se hablan.",
+        "Reportes con los datos que ya tenés, para decidir mejor.",
       ],
-      audience: "Ópticas y laboratorios.",
+      audience: "Ópticas y cualquier negocio con tareas que se repiten.",
     },
     {
       slug: "a-medida",
@@ -85,11 +96,12 @@ export const services = {
       ],
       audience: "El rubro óptico y lo que venga.",
     },
-  ],
+  ] as readonly Service[],
   detail: {
     solves: "Qué resuelve",
     audience: "Para quién",
     whatsapp: "Consultar por WhatsApp",
+    demo: "Pedir una demo",
     back: "Volver a servicios",
     close: "Cerrar",
     prev: "Anterior",
@@ -97,23 +109,21 @@ export const services = {
   },
 } as const;
 
-export type Service = (typeof services.cards)[number];
-
-export const serviceWhatsappMessage = (title: string) => `¡Hola Ceibo! Quiero saber más sobre ${title}.`;
+export const serviceWhatsappMessage = (service: Service) =>
+  service.demo ? "¡Hola Ceibo! Quiero ver una demo del sistema para ópticas." : `¡Hola Ceibo! Quiero saber más sobre ${service.title}.`;
 
 export const solves = {
   title: "Lo que resolvemos",
-  // CONFIRMAR lista (borrador de CAMBIOS-v2, B5).
   items: [
-    "Historias clínicas",
-    "Recetas y graduaciones",
-    "Seguimiento de trabajos",
-    "Pedidos a laboratorio",
-    "Listas de precios",
-    "Stock",
-    "Ventas y compras",
-    "Reportes",
-    "Automatización de planillas",
+    "Ventas",
+    "Control de stock",
+    "Clientes y recetas",
+    "Pedidos al laboratorio",
+    "Seguimiento de pedidos",
+    "Precios en tiempo real",
+    "Link de seguimiento para tus clientes",
+    "Tareas repetitivas",
+    "Desarrollos a medida",
   ],
 } as const;
 

@@ -2,7 +2,7 @@
 
 Web de **Ceibo Union Labs**. La especificación está en [`BRIEF.md`](./BRIEF.md) y [`CAMBIOS-v2.md`](./CAMBIOS-v2.md) (si chocan, manda CAMBIOS-v2). El plan que une los dos, con el orden de implementación y las decisiones tomadas, está en [`PLAN.md`](./PLAN.md).
 
-**Estado:** implementado todo lo del brief (Fases 1, 2 y 3) y de CAMBIOS-v2 (bloques A, B y C), salvo lo que depende de ustedes: los datos **[CONFIRMAR]**, las respuestas de las preguntas frecuentes (B9) y las fotos del equipo (B10).
+**Estado:** implementado todo lo del brief (Fases 1, 2 y 3) y de CAMBIOS-v2 (bloques A, B y C), salvo los datos **[CONFIRMAR]** y las preguntas frecuentes (B9, faltan las respuestas). La sección de equipo (B10) quedó afuera por decisión del equipo.
 
 ## Paleta
 
@@ -26,7 +26,7 @@ npm run typecheck
 
 | Qué | Dónde |
 |---|---|
-| Textos de todas las secciones (incluidos los borradores de CAMBIOS-v2) | `lib/content.ts` |
+| Textos de todas las secciones | `lib/content.ts` |
 | Datos de contacto y pendientes: dominio, WhatsApp, mail, redes, ciudad | `lib/site.ts` |
 | Colores, tipografía, escala de textos, radios, espaciado y eases en CSS | `app/globals.css`, bloque `@theme` |
 | Eases, duraciones y distancias de todas las animaciones | `lib/motion.ts` |
@@ -39,8 +39,8 @@ npm run typecheck
 Mientras un dato de `lib/site.ts` siga pendiente, la web muestra `[CONFIRMAR …]` con borde punteado. Para encontrarlos en el código, buscá `CONFIRMAR`.
 
 - **`lib/site.ts`:** dominio, número de WhatsApp, mail y LinkedIn. (Instagram y ciudad ya están cargados.)
-- **`lib/content.ts`, borradores de CAMBIOS-v2 que hay que revisar:** los tres enunciados de Nosotros (B1), el contenido del detalle de cada servicio (B3b) y la lista de "Lo que resolvemos" (B5).
-- **B9 (preguntas frecuentes) y B10 (equipo):** no se hicieron porque faltan las respuestas y las fotos.
+- **Textos (`lib/content.ts`):** están escritos con la historia y el sistema que contó el equipo. El sistema para ópticas todavía no tiene nombre: si lo toma, se cambia en el servicio `sistema`. Los puntos de "Automatización y datos" son generales; si hay ejemplos concretos, conviene ponerlos.
+- **B9 (preguntas frecuentes):** no se hizo porque faltan las respuestas.
 
 ## Estructura
 

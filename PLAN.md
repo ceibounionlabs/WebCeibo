@@ -83,3 +83,10 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 - Es la única animación ligada al scroll. Sin JS o con reduced motion, la hoja ya está en Contacto. GSAP se carga recién cuando la sección roja se acerca.
 - Ahora caen cuatro hojas (hoja-1, la "idea", más hoja-3, hoja-5 y hoja-6), cada una a su altura de pantalla y con su propio vaivén, así caen desparramadas y en momentos distintos. Todas aterrizan, como tarde, cuando Contacto queda entero a la vista, repartidas por la sección. El color cambia según dónde está cada hoja respecto del borde rojo/blanco.
 - Ajuste: las hojas que esperan en el árbol ahora calzan exacto (el ángulo de reposo lo lleva un contenedor que GSAP no toca) y el árbol original se cambia por las animadas recién cuando están listas, sin parpadeo. El vuelo es más largo y libre: cada hoja se suelta recién cuando se vio el árbol entero, baja despacio por la pantalla mientras serpentea, sube y baja, gira y aletea en 3D, y aterriza en Contacto. La franja roja suma un tramo libre debajo del árbol (solo con la animación activa) para que tengan aire. Los parámetros de cada hoja están en `FALL`, en `components/SeedFall.tsx`.
+
+## Textos con la historia real
+
+- **Origen:** Ceibo nació como el área de I+D de Laboratorio Elena y se nombra en la web. El hero, Nosotros y la descripción del sitio cuentan eso. Ceibo es la marca del software; Elena, la del laboratorio.
+- **Producto:** "Qué hacemos" pasa a ser: 1) Sistema para ópticas (sin nombre por ahora; funciona con cualquier laboratorio), 2) Conectado con Laboratorio Elena (precios en tiempo real, pedidos que entran solos al sistema, seguimiento vinculado a la venta y link de seguimiento para el cliente final), 3) Automatización y datos, 4) Software a medida. Los dos primeros ofrecen "Pedir una demo" por WhatsApp.
+- **"Lo que resolvemos":** solo lo que el sistema hace hoy.
+- **Afuera, por ahora:** sistemas para otros laboratorios, la sección de equipo (B10) y contenido sobre la feria. También se sacó "a punto de recibirnos" y la IA como argumento de venta.

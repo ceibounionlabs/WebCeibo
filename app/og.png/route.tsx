@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { site } from "@/lib/site";
+import { hero } from "@/lib/content";
 import { colors } from "@/lib/colors";
 import { googleSans, Isotipo } from "@/lib/brand-image";
 
@@ -7,9 +7,8 @@ export const dynamic = "force-static";
 
 const size = { width: 1200, height: 630 };
 
-/** Imagen Open Graph / Twitter 1200×630: logo sobre rojo y el lema. */
+/** Imagen Open Graph / Twitter 1200×630: logo sobre rojo y el título del hero. */
 export function GET() {
-  const [lead, accent] = site.tagline.split(", ");
   return new ImageResponse(
     (
       <div
@@ -33,9 +32,9 @@ export function GET() {
             <span>labs</span>
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", fontSize: 64, lineHeight: 1.04, letterSpacing: -2.2, maxWidth: 1000 }}>
-          <span>{lead},</span>
-          <span style={{ opacity: 0.78 }}>{accent}</span>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 54, lineHeight: 1.06, letterSpacing: -1.8, maxWidth: 1040 }}>
+          <span>{hero.titleLead}</span>
+          <span style={{ opacity: 0.78 }}>{hero.titleAccent}</span>
         </div>
       </div>
     ),

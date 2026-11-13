@@ -26,7 +26,7 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   metadataBase: siteUrl(),
   title: site.title,
-  description: site.tagline,
+  description: site.description,
   applicationName: site.name,
   alternates: { canonical: "/" },
   // Íconos e imagen OG generados en build (app/icon.svg, app/*.png/route.tsx).
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     url: "/",
     siteName: site.name,
     title: site.title,
-    description: site.tagline,
+    description: site.description,
     images: [{ url: "/og.png", width: 1200, height: 630, alt: `${site.name}: ${site.tagline}` }],
   },
   twitter: {
     card: "summary_large_image",
     images: ["/og.png"],
     title: site.title,
-    description: site.tagline,
+    description: site.description,
   },
 };
 

@@ -17,8 +17,9 @@ export const isPending = (value: unknown): value is Pending =>
 export const site = {
   name: "Ceibo Union Labs",
   shortName: "ceibo union labs",
-  tagline:
-    "Construimos las herramientas que el rubro óptico necesita, con la tecnología que viene.",
+  tagline: "Software para el rubro óptico, nacido en Laboratorio Elena.",
+  description:
+    "Software para el rubro óptico, nacido en Laboratorio Elena: un sistema de gestión para ópticas conectado con el laboratorio, automatizaciones y desarrollos a medida.",
   title: "Ceibo Union Labs · Software para el rubro óptico",
   year: 2026,
 
