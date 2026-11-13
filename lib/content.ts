@@ -13,7 +13,7 @@ export const nav = [
 export const hero = {
   titleLead: "Software con precisión",
   titleAccent: "de laboratorio.",
-  lead: "Nacimos en Laboratorio Elena, donde un cuarto de dioptría hace la diferencia. Con ese mismo cuidado hacemos software de todo tipo, con especialidad en el rubro óptico.",
+  lead: "Nacimos como el departamento de I+D de Laboratorio Elena, donde un cuarto de dioptría hace la diferencia. Con ese mismo cuidado hacemos software de todo tipo, con especialidad en el rubro óptico.",
 } as const;
 
 /**
@@ -22,8 +22,8 @@ export const hero = {
  */
 export const manifesto = {
   title: "Unidos desde el primer día.",
-  body: "Ceibo empezó con dos amigos resolviendo los problemas de todos los días del laboratorio. Hoy somos tres, y seguimos trabajando igual: cerca de quien va a usar lo que hacemos, escuchando primero y construyendo después.",
-  signature: "Los tres de Ceibo Union Labs",
+  body: "Ceibo empezó con dos amigos en el departamento de I+D de Laboratorio Elena, resolviendo los problemas de todos los días del laboratorio. Seguimos trabajando igual: cerca de quien va a usar lo que hacemos, escuchando primero y construyendo después.",
+  signature: "El equipo de Ceibo Union Labs",
 } as const;
 
 /**
@@ -32,7 +32,7 @@ export const manifesto = {
  */
 export const services = {
   title: "Nuestro primer cliente fue el laboratorio donde nacimos.",
-  lead: "Ahí aprendimos a hacer software del lado de quien lo usa. Hoy hacemos sistemas de gestión, plataformas web y automatizaciones.",
+  lead: "Como su departamento de I+D, aprendimos a hacer software del lado de quien lo usa. Hoy hacemos sistemas de gestión, plataformas web y automatizaciones.",
   points: [
     {
       title: "Lo probamos en casa.",
@@ -40,7 +40,7 @@ export const services = {
     },
     {
       title: "Hablás con quien lo programa.",
-      body: "Somos tres. No hay vendedores ni intermediarios: el que te escucha es el que lo construye.",
+      body: "Sin vendedores ni intermediarios: el que te escucha es el que lo construye.",
     },
     {
       title: "Conocemos el rubro óptico por dentro.",
@@ -56,7 +56,7 @@ export const services = {
  */
 export const opticsSystem = {
   title: "Un sistema para ópticas, hecho desde el laboratorio.",
-  lead: "Lo armamos con todo lo que aprendimos del otro lado del mostrador. Funciona con cualquier laboratorio y, si trabajás con Laboratorio Elena, los precios y los pedidos llegan solos.",
+  lead: "Salió del I+D de Laboratorio Elena, con todo lo que aprendimos del otro lado del mostrador. Funciona con cualquier laboratorio y, si trabajás con Elena, los precios y los pedidos llegan solos.",
   heard: "¿Te suena alguna?",
   items: [
     {

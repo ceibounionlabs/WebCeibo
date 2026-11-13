@@ -101,10 +101,11 @@ Estado: **todo implementado**, salvo B9 y B10 (falta contenido). Cada bloque tie
 ## Quiénes somos y Qué hacemos, de nuevo
 
 - **Quiénes somos:** el nombre ("ceibo / union / labs", con "union" en rojo) y, al lado, un texto corto firmado: "Unidos desde el primer día." Reemplaza Raíces / Tronco / Ramas.
+- **En todos los textos:** se nombra el origen como el departamento de I+D de Laboratorio Elena (no solo "Laboratorio Elena"), y se dice que empezaron dos amigos, sin decir cuántos son hoy.
 - **Qué hacemos:** "¿Te suena alguna?": frases típicas de una óptica y qué hacen con cada una (sistema para ópticas, conexión con Laboratorio Elena, automatización, software a medida). Cierra con "Pedir una demo" y "Contanos la tuya".
 - Se sacó la lista de servicios con el zoom al detalle (B3b) y todo su código (GSAP Flip, estados del diálogo).
 
 ## Qué hacemos + sistema para ópticas
 
-- **Qué hacemos:** "Nuestro primer cliente fue el laboratorio donde nacimos." Dice una vez qué hacen (sistemas de gestión, plataformas web, automatizaciones) y se diferencia con tres puntos: lo prueban en casa (corre todos los días en Laboratorio Elena), hablás con quien programa (son tres, sin intermediarios) y conocen el rubro óptico por dentro. Sin franja de "especialidad".
+- **Qué hacemos:** "Nuestro primer cliente fue el laboratorio donde nacimos." Dice una vez qué hacen (sistemas de gestión, plataformas web, automatizaciones) y se diferencia con tres puntos: lo prueban en casa (corre todos los días en Laboratorio Elena), hablás con quien programa (sin intermediarios) y conocen el rubro óptico por dentro. Sin franja de "especialidad".
 - **Para ópticas** (sección nueva, también en la navegación): "Un sistema para ópticas, hecho desde el laboratorio", con las frases de "¿Te suena alguna?" y qué resuelve cada una; marca en rojo lo que suma trabajar con Laboratorio Elena. Cierra con "Pedir una demo".
