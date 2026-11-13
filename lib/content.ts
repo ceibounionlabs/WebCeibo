@@ -56,7 +56,7 @@ export const services = {
  */
 export const opticsSystem = {
   title: "Un sistema para ópticas, hecho desde el laboratorio.",
-  lead: "Salió del I+D de Laboratorio Elena, con todo lo que aprendimos del otro lado del mostrador. Funciona con cualquier laboratorio y, si trabajás con Elena, los precios y los pedidos llegan solos.",
+  lead: "Salió de todo lo que aprendimos del otro lado del mostrador. Funciona con cualquier laboratorio y, si trabajás con Elena, los precios y los pedidos llegan solos.",
   heard: "¿Te suena alguna?",
   items: [
     {
