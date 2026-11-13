@@ -30,7 +30,7 @@ export default function Home() {
         isotipo={<Logo variant="isotipo" label={null} className="h-7" />}
         wordmark={<Logo label={null} className="h-12" />}
       />
-      <main id="contenido">
+      <main id="contenido" className="overflow-x-clip">
         <Hero />
         <Manifesto />
         <Services />
