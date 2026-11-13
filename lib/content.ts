@@ -27,30 +27,26 @@ export const manifesto = {
 } as const;
 
 /**
- * Qué hacemos: los tipos de software que hacemos, con lo que ya hicimos como
- * ejemplo, y un puente al sistema para ópticas (la especialidad).
+ * Qué hacemos: lo que hacemos, dicho una vez, y lo que nos diferencia (que
+ * nuestro primer cliente fue el laboratorio donde nacimos).
  */
 export const services = {
-  title: "Construimos herramientas que se usan todos los días.",
-  lead: "Escuchamos cómo trabaja tu equipo y armamos lo que hace falta: un sistema, una plataforma web o una automatización.",
-  items: [
+  title: "Nuestro primer cliente fue el laboratorio donde nacimos.",
+  lead: "Ahí aprendimos a hacer software del lado de quien lo usa. Hoy hacemos sistemas de gestión, plataformas web y automatizaciones.",
+  points: [
     {
-      title: "Sistemas de gestión",
-      body: "Ventas, stock, clientes y procesos internos, en un sistema pensado para cómo trabaja tu equipo.",
-      note: "Hicimos los sistemas internos de Laboratorio Elena.",
+      title: "Lo probamos en casa.",
+      body: "Lo que hacemos corre todos los días en Laboratorio Elena. Si algo falla, somos los primeros en enterarnos.",
     },
     {
-      title: "Plataformas web",
-      body: "Portales para que tus clientes hagan pedidos, sigan cada estado y se autogestionen.",
-      note: "Hicimos la web de pedidos de Laboratorio Elena.",
+      title: "Hablás con quien lo programa.",
+      body: "Somos tres. No hay vendedores ni intermediarios: el que te escucha es el que lo construye.",
     },
     {
-      title: "Automatizaciones",
-      body: "Conectamos sistemas que no se hablan y te sacamos de encima las tareas repetitivas.",
-      note: "Planillas, reportes e integraciones entre sistemas.",
+      title: "Conocemos el rubro óptico por dentro.",
+      body: "Recetas, lentes, pedidos y urgencias de mostrador: no hace falta explicarnos cómo funciona una óptica.",
     },
   ],
-  bridge: { lead: "Nuestra especialidad es el rubro óptico.", cta: "Conocé el sistema para ópticas" },
 } as const;
 
 /**
